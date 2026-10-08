@@ -4,6 +4,7 @@ import FilterPanel from './components/FilterPanel';
 import StatisticsCard from './components/StatisticsCard';
 import ParcelPopup from './components/ParcelPopup';
 import MetricsModal from './components/MetricsModal';
+import DisasterImpactPanel from './components/DisasterImpactPanel';
 
 export default function App() {
   const [geojsonData, setGeojsonData] = useState(null);
@@ -13,9 +14,18 @@ export default function App() {
   const [featureImportance, setFeatureImportance] = useState(null);
   const [healthInfo, setHealthInfo] = useState(null);
 
+  // Natural Hazard & Damage Assessment State
+  const [hazardData, setHazardData] = useState(null);
+  const [damageSummary, setDamageSummary] = useState(null);
+  const [fundPriority, setFundPriority] = useState(null);
+  const [activeViewMode, setActiveViewMode] = useState('classification'); // 'classification' | 'hazard'
+  const [showInundationLayer, setShowInundationLayer] = useState(false);
+  const [isDamageMode, setIsDamageMode] = useState(false);
+
   const [visibleCrops, setVisibleCrops] = useState({
     Paddy: true,
     Banana: true,
+    'Non-Crop': true,
     Other: true
   });
   const [selectedTaluk, setSelectedTaluk] = useState('all');
@@ -27,20 +37,23 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all GIS and ML layers from backend
+  // Fetch all GIS, ML, and Hazard Assessment Layers from backend
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
         setError(null);
 
-        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes] = await Promise.all([
+        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes, hazardRes, dmgSummaryRes, fundRes] = await Promise.all([
           fetch('/api/parcels'),
           fetch('/api/statistics'),
           fetch('/api/metrics'),
           fetch('/api/feature-importance').catch(() => null),
           fetch('/api/health').catch(() => null),
-          fetch('/api/infrastructure').catch(() => null)
+          fetch('/api/infrastructure').catch(() => null),
+          fetch('/api/hazards/latest').catch(() => null),
+          fetch('/api/damage/by-crop').catch(() => null),
+          fetch('/api/fund-priority').catch(() => null)
         ]);
 
         if (!parcelsRes.ok) throw new Error(`Parcels fetch failed: ${parcelsRes.statusText}`);
@@ -52,6 +65,9 @@ export default function App() {
         const fiData = fiRes && fiRes.ok ? await fiRes.json() : null;
         const health = healthRes && healthRes.ok ? await healthRes.json() : null;
         const infra = infraRes && infraRes.ok ? await infraRes.json() : null;
+        const hazard = hazardRes && hazardRes.ok ? await hazardRes.json() : null;
+        const dmgSum = dmgSummaryRes && dmgSummaryRes.ok ? await dmgSummaryRes.json() : null;
+        const fund = fundRes && fundRes.ok ? await fundRes.json() : null;
 
         setGeojsonData(parcels);
         setStatistics(stats);
@@ -59,6 +75,9 @@ export default function App() {
         setFeatureImportance(fiData);
         setHealthInfo(health);
         setInfrastructureData(infra);
+        setHazardData(hazard);
+        setDamageSummary(dmgSum);
+        setFundPriority(fund);
       } catch (err) {
         console.error('Error fetching GIS data:', err);
         setError(err.message || 'Error connecting to backend API');
@@ -78,7 +97,7 @@ export default function App() {
   };
 
   const handleResetFilters = () => {
-    setVisibleCrops({ Paddy: true, Banana: true, Other: true });
+    setVisibleCrops({ Paddy: true, Banana: true, 'Non-Crop': true, Other: true });
     setSelectedTaluk('all');
     setMinConfidence(0.0);
   };
@@ -86,11 +105,11 @@ export default function App() {
   // Filter features based on crop, confidence, and taluk
   const allFeatures = geojsonData?.features || [];
   const filteredFeatures = allFeatures.filter((f) => {
-    const crop = f.properties?.predicted_crop;
+    const crop = f.properties?.predicted_crop || f.properties?.crop;
     const conf = f.properties?.confidence || 0;
     const taluk = f.properties?.taluk;
 
-    if (!visibleCrops[crop]) return false;
+    if (visibleCrops[crop] === false) return false;
     if (conf < minConfidence) return false;
     if (selectedTaluk !== 'all') {
       const normTaluk = (taluk || '').toLowerCase();
@@ -113,7 +132,7 @@ export default function App() {
         <div className="brand-section">
           <div className="brand-badge">VIT MAPATHON</div>
           <div>
-            <h1 className="brand-title">Agricultural Land Parcel & Crop Identification</h1>
+            <h1 className="brand-title">Agricultural Land Parcel & Hazard Impact Engine</h1>
             <div className="brand-breadcrumb">
               <span>🇮🇳 India</span>
               <span className="dot">•</span>
@@ -124,6 +143,30 @@ export default function App() {
               <span style={{ color: '#facc15' }}>Ambasamudram & Cheranmahadevi Taluks</span>
             </div>
           </div>
+        </div>
+
+        {/* View Mode Tabs (Crop Classification vs Disaster Impact) */}
+        <div className="view-mode-tabs">
+          <button
+            className={`tab-btn ${activeViewMode === 'classification' ? 'active-tab' : ''}`}
+            onClick={() => {
+              setActiveViewMode('classification');
+              setIsDamageMode(false);
+              setShowInundationLayer(false);
+            }}
+          >
+            🌾 Crop Classification
+          </button>
+          <button
+            className={`tab-btn ${activeViewMode === 'hazard' ? 'active-tab-hazard' : ''}`}
+            onClick={() => {
+              setActiveViewMode('hazard');
+              setIsDamageMode(true);
+              setShowInundationLayer(true);
+            }}
+          >
+            ⚠️ Hazard Impact & Relief Priority
+          </button>
         </div>
 
         <div className="nav-actions">
@@ -160,25 +203,44 @@ export default function App() {
               </div>
             )}
 
-            {/* Study Area Statistics */}
-            <StatisticsCard
-              statistics={statistics}
-              metrics={metrics}
-            />
+            {/* Render Disaster Panel when in Hazard mode */}
+            {activeViewMode === 'hazard' ? (
+              <DisasterImpactPanel
+                hazardData={hazardData}
+                damageSummary={damageSummary}
+                fundPriority={fundPriority}
+                isDamageMode={isDamageMode}
+                onToggleDamageMode={() => setIsDamageMode(!isDamageMode)}
+                showInundationLayer={showInundationLayer}
+                onToggleInundationLayer={() => setShowInundationLayer(!showInundationLayer)}
+                onSelectParcel={(pId) => {
+                  const match = allFeatures.find((f) => f.properties?.parcel_id === pId);
+                  if (match) setSelectedParcel(match);
+                }}
+              />
+            ) : (
+              <>
+                {/* Study Area Statistics */}
+                <StatisticsCard
+                  statistics={statistics}
+                  metrics={metrics}
+                />
 
-            {/* Spatial & Crop Filters */}
-            <FilterPanel
-              visibleCrops={visibleCrops}
-              onToggleCrop={handleToggleCrop}
-              selectedTaluk={selectedTaluk}
-              onSelectTaluk={setSelectedTaluk}
-              minConfidence={minConfidence}
-              onChangeConfidence={setMinConfidence}
-              statistics={statistics}
-              displayedCount={filteredFeatures.length}
-              totalCount={allFeatures.length}
-              onResetFilters={handleResetFilters}
-            />
+                {/* Spatial & Crop Filters */}
+                <FilterPanel
+                  visibleCrops={visibleCrops}
+                  onToggleCrop={handleToggleCrop}
+                  selectedTaluk={selectedTaluk}
+                  onSelectTaluk={setSelectedTaluk}
+                  minConfidence={minConfidence}
+                  onChangeConfidence={setMinConfidence}
+                  statistics={statistics}
+                  displayedCount={filteredFeatures.length}
+                  totalCount={allFeatures.length}
+                  onResetFilters={handleResetFilters}
+                />
+              </>
+            )}
 
             {/* Selected Parcel Inspector */}
             {selectedParcel && (
@@ -198,7 +260,7 @@ export default function App() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem', animation: 'spin 2s infinite linear' }}>🛰️</div>
-                <div style={{ fontWeight: 600, color: '#f8fafc' }}>Loading Tirunelveli Sentinel-2 Classified Parcels...</div>
+                <div style={{ fontWeight: 600, color: '#f8fafc' }}>Loading Tirunelveli Sentinel-2 Geospatial Layers...</div>
                 <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '4px' }}>Ambasamudram & Cheranmahadevi Taluks</div>
               </div>
             </div>
@@ -206,6 +268,9 @@ export default function App() {
             <MapView
               geojsonData={displayedGeojson}
               infrastructureData={infrastructureData}
+              hazardData={hazardData}
+              showInundationLayer={showInundationLayer}
+              isDamageMode={isDamageMode}
               activeBasemap={activeBasemap}
               onChangeBasemap={setActiveBasemap}
               selectedParcel={selectedParcel}

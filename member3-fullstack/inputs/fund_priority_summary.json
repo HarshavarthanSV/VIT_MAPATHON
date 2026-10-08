@@ -1,0 +1,140 @@
+{
+  "status": "AI/GIS-based decision-support recommendation \u2014 requires statutory authority verification.",
+  "total_relief_fund_pool_inr": 10000000.0,
+  "total_priority_score_sum": 1.946,
+  "priority_formula": "Priority_Score = (0.40 * Norm_Affected_Area) + (0.35 * Norm_Damage_Pct) + (0.25 * Severity_Score)",
+  "crop_allocation_summary": [
+    {
+      "Crop": "Banana",
+      "Total_Parcels": 79,
+      "Affected_Parcels": 5,
+      "Total_Area_Ha": 39.31,
+      "Affected_Area_Ha": 0.5,
+      "Crop_Priority_Score": 1.5381,
+      "Recommended_Allocation_INR": 7903691.6,
+      "Allocation_Share_Pct": 79.04
+    },
+    {
+      "Crop": "Non-Crop",
+      "Total_Parcels": 131,
+      "Affected_Parcels": 4,
+      "Total_Area_Ha": 80.88,
+      "Affected_Area_Ha": 0.24,
+      "Crop_Priority_Score": 0.0,
+      "Recommended_Allocation_INR": 0.0,
+      "Allocation_Share_Pct": 0.0
+    },
+    {
+      "Crop": "Paddy",
+      "Total_Parcels": 83,
+      "Affected_Parcels": 4,
+      "Total_Area_Ha": 51.46,
+      "Affected_Area_Ha": 0.11,
+      "Crop_Priority_Score": 0.408,
+      "Recommended_Allocation_INR": 2096308.4,
+      "Allocation_Share_Pct": 20.96
+    }
+  ],
+  "highest_priority_crop": "Banana",
+  "top_priority_parcels": [
+    {
+      "parcel_id": "PARCEL_0217",
+      "crop": "Banana",
+      "taluk": "Cheranmahadevi",
+      "parcel_area_ha": 0.4507,
+      "affected_area_ha": 0.4423,
+      "damage_percentage": 98.14,
+      "severity": "Severe Damage",
+      "priority_score": 1.14251,
+      "recommended_relief_inr": 5870948.18
+    },
+    {
+      "parcel_id": "PARCEL_0076",
+      "crop": "Paddy",
+      "taluk": "Cheranmahadevi",
+      "parcel_area_ha": 0.6299,
+      "affected_area_ha": 0.0681,
+      "damage_percentage": 10.81,
+      "severity": "Low Damage",
+      "priority_score": 0.16192,
+      "recommended_relief_inr": 832048.67
+    },
+    {
+      "parcel_id": "PARCEL_0157",
+      "crop": "Banana",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.8131,
+      "affected_area_ha": 0.0276,
+      "damage_percentage": 3.4,
+      "severity": "Low Damage",
+      "priority_score": 0.11426,
+      "recommended_relief_inr": 587141.07
+    },
+    {
+      "parcel_id": "PARCEL_0143",
+      "crop": "Banana",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.3914,
+      "affected_area_ha": 0.0141,
+      "damage_percentage": 3.6,
+      "severity": "Low Damage",
+      "priority_score": 0.10103,
+      "recommended_relief_inr": 519156.85
+    },
+    {
+      "parcel_id": "PARCEL_0019",
+      "crop": "Paddy",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.5544,
+      "affected_area_ha": 0.02,
+      "damage_percentage": 3.61,
+      "severity": "Low Damage",
+      "priority_score": 0.09322,
+      "recommended_relief_inr": 479024.07
+    },
+    {
+      "parcel_id": "PARCEL_0147",
+      "crop": "Banana",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.8194,
+      "affected_area_ha": 0.0129,
+      "damage_percentage": 1.57,
+      "severity": "Low Damage",
+      "priority_score": 0.09161,
+      "recommended_relief_inr": 470750.86
+    },
+    {
+      "parcel_id": "PARCEL_0127",
+      "crop": "Banana",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.3198,
+      "affected_area_ha": 0.0073,
+      "damage_percentage": 2.29,
+      "severity": "Low Damage",
+      "priority_score": 0.08868,
+      "recommended_relief_inr": 455694.64
+    },
+    {
+      "parcel_id": "PARCEL_0007",
+      "crop": "Paddy",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.6957,
+      "affected_area_ha": 0.01,
+      "damage_percentage": 1.44,
+      "severity": "Low Damage",
+      "priority_score": 0.07658,
+      "recommended_relief_inr": 393517.09
+    },
+    {
+      "parcel_id": "PARCEL_0025",
+      "crop": "Paddy",
+      "taluk": "Ambasamudram",
+      "parcel_area_ha": 0.7478,
+      "affected_area_ha": 0.01,
+      "damage_percentage": 1.34,
+      "severity": "Low Damage",
+      "priority_score": 0.07623,
+      "recommended_relief_inr": 391718.57
+    }
+  ]
+}

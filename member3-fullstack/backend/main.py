@@ -17,7 +17,7 @@ if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
 from database import init_db_connection, is_db_connected, resolve_artifact_path
-from routers import parcels, statistics, layers
+from routers import parcels, statistics, layers, hazards, damage
 
 from contextlib import asynccontextmanager
 
@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="VIT MAPATHON — Agricultural GIS Dashboard API",
-    description="Spatial API for Ambasamudram & Cheranmahadevi Taluks Agricultural Land Parcel & Crop Classification.",
+    description="Spatial API for Ambasamudram & Cheranmahadevi Taluks Agricultural Land Parcel, Crop Classification, Natural Hazard Impact & Relief Priority.",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -51,6 +51,8 @@ app.add_middleware(
 app.include_router(parcels.router)
 app.include_router(statistics.router)
 app.include_router(layers.router)
+app.include_router(hazards.router)
+app.include_router(damage.router)
 
 
 @app.get("/", include_in_schema=False)

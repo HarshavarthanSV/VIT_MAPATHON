@@ -1,0 +1,4 @@
+Crop,Total_Parcels,Affected_Parcels,Total_Area_Ha,Affected_Area_Ha,Crop_Priority_Score,Recommended_Allocation_INR,Allocation_Share_Pct
+Banana,79,5,39.31,0.5,1.5381,7903691.6,79.04
+Paddy,83,4,51.46,0.11,0.408,2096308.4,20.96
+Non-Crop,131,4,80.88,0.24,0.0,0.0,0.0

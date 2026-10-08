@@ -141,3 +141,52 @@ def test_get_infrastructure():
     assert data["type"] == "FeatureCollection"
     assert "features" in data
 
+
+def test_get_latest_hazard():
+    res = client.get("/api/hazards/latest")
+    assert res.status_code == 200
+    data = res.json()
+    assert "hazard_id" in data
+    assert "total_inundated_area_ha" in data
+    assert data["total_inundated_area_ha"] > 0
+    assert "geojson" in data
+
+
+def test_get_latest_damage():
+    res = client.get("/api/damage/latest")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["type"] == "FeatureCollection"
+    assert len(data["features"]) == 293
+    first = data["features"][0]["properties"]
+    assert "affected_area_ha" in first
+    assert "damage_percentage" in first
+    assert "severity" in first
+
+
+def test_get_damage_by_crop():
+    res = client.get("/api/damage/by-crop")
+    assert res.status_code == 200
+    data = res.json()
+    assert "crop_damage_breakdown" in data
+    assert len(data["crop_damage_breakdown"]) > 0
+
+
+def test_get_fund_priority():
+    res = client.get("/api/fund-priority")
+    assert res.status_code == 200
+    data = res.json()
+    assert "crop_allocation_summary" in data
+    assert "top_priority_parcels" in data
+    assert data["total_priority_score_sum"] > 0
+
+
+def test_get_fund_allocation():
+    res = client.get("/api/fund-allocation?total_fund=5000000")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["input_relief_fund_pool_inr"] == 5000000
+    assert "crop_allocation_recommendations" in data
+    assert len(data["crop_allocation_recommendations"]) > 0
+
+

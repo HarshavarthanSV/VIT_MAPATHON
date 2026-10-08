@@ -1,0 +1,68 @@
+{
+  "project": "VIT_MAPATHON",
+  "module": "Agricultural Hazard Impact, Crop Damage Assessment and Fund Priority",
+  "version": "1.0.0-prototype",
+  "status": "Configurable prototype thresholds — require field/ground-truth validation for official statutory assessment",
+  "spectral_thresholds": {
+    "flood_inundation": {
+      "ndwi_threshold": -0.05,
+      "delta_ndwi_min": 0.08,
+      "lswi_threshold": 0.08,
+      "delta_ndvi_drop": -0.05,
+      "permanent_water_ndwi_baseline": -0.05,
+      "permanent_water_nir_max": 0.12,
+      "nir_reflectance_absorption_max": 0.20
+    },
+    "drought_stress": {
+      "ndvi_drop_severe": -0.25,
+      "ndvi_drop_moderate": -0.15,
+      "ndwi_drop_severe": -0.20
+    }
+  },
+  "damage_severity_levels": {
+    "low": {
+      "min_percentage": 0.0,
+      "max_percentage": 20.0,
+      "label": "Low Damage",
+      "severity_score": 0.25,
+      "color": "#f1c40f"
+    },
+    "moderate": {
+      "min_percentage": 20.0,
+      "max_percentage": 50.0,
+      "label": "Moderate Damage",
+      "severity_score": 0.50,
+      "color": "#e67e22"
+    },
+    "high": {
+      "min_percentage": 50.0,
+      "max_percentage": 75.0,
+      "label": "High Damage",
+      "severity_score": 0.75,
+      "color": "#e74c3c"
+    },
+    "severe": {
+      "min_percentage": 75.0,
+      "max_percentage": 100.0,
+      "label": "Severe Damage",
+      "severity_score": 1.0,
+      "color": "#8e44ad"
+    }
+  },
+  "priority_score_weights": {
+    "weight_affected_area": 0.40,
+    "weight_damage_percentage": 0.35,
+    "weight_severity_score": 0.25,
+    "formula_description": "Priority_Score = (0.40 * Norm_Affected_Area) + (0.35 * Norm_Damage_Pct) + (0.25 * Severity_Score)"
+  },
+  "fund_allocation_policy": {
+    "allocation_basis": "Proportional to verified multi-criteria priority score",
+    "disclaimer": "AI/GIS-based decision-support recommendation — requires statutory authority verification before disbursement.",
+    "default_currency": "INR",
+    "crop_economic_weights": {
+      "Paddy": 1.0,
+      "Banana": 1.15,
+      "Non-Crop": 0.0
+    }
+  }
+}

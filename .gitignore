@@ -14,11 +14,10 @@ lib/
 lib64/
 parts/
 sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+# Node & Frontend Build
+node_modules/
+dist/
+package-lock.json
 
 # Python Cache & Bytecode
 __pycache__/

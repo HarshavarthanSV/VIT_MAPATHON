@@ -1,0 +1,61 @@
+{
+  "hazard_event": "Monsoon Flood / Inundation",
+  "observation_before": "2026-04-22",
+  "observation_after": "2026-09-09",
+  "total_study_area_ha": 171.66,
+  "total_affected_area_ha": 0.85,
+  "total_affected_parcels": 13,
+  "crop_damage_breakdown": [
+    {
+      "Crop": "Banana",
+      "Total_Parcels": 79,
+      "Affected_Parcels": 5,
+      "Total_Area_Ha": 39.31,
+      "Total_Area_Acres": 97.14,
+      "Affected_Area_Ha": 0.5,
+      "Affected_Area_Acres": 1.25,
+      "Crop_Damage_Percentage": 1.28,
+      "Low_Damage_Ha": 0.06,
+      "Moderate_Damage_Ha": 0.0,
+      "High_Damage_Ha": 0.0,
+      "Severe_Damage_Ha": 0.44,
+      "Share_of_Total_Damage_Pct": 59.19
+    },
+    {
+      "Crop": "Non-Crop",
+      "Total_Parcels": 131,
+      "Affected_Parcels": 4,
+      "Total_Area_Ha": 80.88,
+      "Total_Area_Acres": 199.87,
+      "Affected_Area_Ha": 0.24,
+      "Affected_Area_Acres": 0.59,
+      "Crop_Damage_Percentage": 0.3,
+      "Low_Damage_Ha": 0.04,
+      "Moderate_Damage_Ha": 0.2,
+      "High_Damage_Ha": 0.0,
+      "Severe_Damage_Ha": 0.0,
+      "Share_of_Total_Damage_Pct": 28.13
+    },
+    {
+      "Crop": "Paddy",
+      "Total_Parcels": 83,
+      "Affected_Parcels": 4,
+      "Total_Area_Ha": 51.46,
+      "Total_Area_Acres": 127.15,
+      "Affected_Area_Ha": 0.11,
+      "Affected_Area_Acres": 0.27,
+      "Crop_Damage_Percentage": 0.21,
+      "Low_Damage_Ha": 0.11,
+      "Moderate_Damage_Ha": 0.0,
+      "High_Damage_Ha": 0.0,
+      "Severe_Damage_Ha": 0.0,
+      "Share_of_Total_Damage_Pct": 12.69
+    }
+  ],
+  "severity_counts": {
+    "No Damage / Unaffected": 280,
+    "Low Damage": 11,
+    "Severe Damage": 1,
+    "Moderate Damage": 1
+  }
+}

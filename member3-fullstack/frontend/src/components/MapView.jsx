@@ -21,6 +21,9 @@ const SETTLEMENTS = [
 export default function MapView({
   geojsonData,
   infrastructureData,
+  hazardData,
+  showInundationLayer = false,
+  isDamageMode = false,
   activeBasemap,
   onChangeBasemap,
   selectedParcel,
@@ -35,6 +38,7 @@ export default function MapView({
   const geojsonLayerRef = useRef(null);
   const settlementsLayerRef = useRef(null);
   const infraLayerRef = useRef(null);
+  const hazardLayerRef = useRef(null);
 
   const [showPlaces, setShowPlaces] = useState(true);
   const [showInfra, setShowInfra] = useState(true);
@@ -234,6 +238,37 @@ export default function MapView({
     infraLayerRef.current = infraLayer;
   }, [infrastructureData, showInfra]);
 
+  // Inundation / Hazard Footprint Layer
+  useEffect(() => {
+    if (!mapInstanceRef.current) return;
+    const map = mapInstanceRef.current;
+
+    if (hazardLayerRef.current) {
+      map.removeLayer(hazardLayerRef.current);
+      hazardLayerRef.current = null;
+    }
+
+    if (!showInundationLayer || !hazardData) return;
+
+    const hGeojson = hazardData.geojson || hazardData;
+    if (!hGeojson || !hGeojson.features) return;
+
+    const layer = L.geoJSON(hGeojson, {
+      style: {
+        fillColor: '#00e5ff',
+        fillOpacity: 0.7,
+        color: '#0284c7',
+        weight: 1.2
+      },
+      onEachFeature: (feature, l) => {
+        const ha = (feature.properties?.area_ha || 0).toFixed(2);
+        l.bindTooltip(`<strong>🌊 Flood Inundation Footprint</strong><br>Area: ${ha} ha<br><small>Sentinel-2 Change Detection</small>`, { sticky: true });
+      }
+    }).addTo(map);
+
+    hazardLayerRef.current = layer;
+  }, [hazardData, showInundationLayer]);
+
   // Classified Agricultural Parcels Layer
   useEffect(() => {
     if (!mapInstanceRef.current || !geojsonData) return;
@@ -245,9 +280,26 @@ export default function MapView({
     }
 
     const parcelStyle = (feature) => {
-      const crop = feature.properties?.predicted_crop;
-      const colors = getCropColor(crop);
+      const props = feature.properties || {};
+      const crop = props.predicted_crop || props.crop;
 
+      if (isDamageMode) {
+        const sev = props.severity || 'No Damage / Unaffected';
+        switch (sev) {
+          case 'Severe Damage':
+            return { fillColor: '#8e44ad', weight: 2, opacity: 1, color: '#6c3483', fillOpacity: 0.85 };
+          case 'High Damage':
+            return { fillColor: '#e74c3c', weight: 2, opacity: 1, color: '#c0392b', fillOpacity: 0.85 };
+          case 'Moderate Damage':
+            return { fillColor: '#e67e22', weight: 1.8, opacity: 0.95, color: '#d35400', fillOpacity: 0.8 };
+          case 'Low Damage':
+            return { fillColor: '#f1c40f', weight: 1.5, opacity: 0.95, color: '#d4ac0d', fillOpacity: 0.75 };
+          default:
+            return { fillColor: '#334155', weight: 1, opacity: 0.5, color: '#1e293b', fillOpacity: 0.35 };
+        }
+      }
+
+      const colors = getCropColor(crop);
       return {
         fillColor: colors.fill,
         weight: 1.5,
@@ -283,7 +335,7 @@ export default function MapView({
     };
 
     const filterFeature = (feature) => {
-      const crop = feature.properties?.predicted_crop;
+      const crop = feature.properties?.predicted_crop || feature.properties?.crop;
       const conf = feature.properties?.confidence || 0;
 
       if (visibleCrops && !visibleCrops[crop]) return false;
@@ -298,7 +350,7 @@ export default function MapView({
     }).addTo(map);
 
     geojsonLayerRef.current = parcelLayer;
-  }, [geojsonData, visibleCrops, minConfidence, onSelectParcel]);
+  }, [geojsonData, visibleCrops, minConfidence, onSelectParcel, isDamageMode]);
 
   const handleFlyTo = (lat, lon, zoom = 14) => {
     if (mapInstanceRef.current) {
