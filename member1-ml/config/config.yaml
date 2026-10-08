@@ -1,0 +1,100 @@
+# ==============================================================================
+# VIT MAPATHON — Member 1 ML / AI Pipeline Configuration
+# Problem Statement: Agricultural Land Parcel and Crop Identification
+# Study Area: Ambasamudram & Cheranmahadevi Taluks, Tirunelveli District
+# ==============================================================================
+
+geospatial:
+  target_crs: "EPSG:32643"          # WGS 84 / UTM Zone 43N
+  min_study_area_sq_km: 20.0        # Minimum study area requirement
+  resolution_meters: 10.0           # Standard working spatial resolution
+
+paths:
+  # Upstream inputs from Member 2 (GIS / Remote Sensing)
+  # Can be overridden via CLI --features-dir, --temporal-dir, etc.
+  feature_dir: "member2-gis/outputs/features"
+  temporal_dir: "member2-gis/outputs/temporal"
+  labels_file: "member2-gis/outputs/labels/training_polygons.geojson"
+  parcels_file: "member2-gis/outputs/parcels/parcel_boundaries.geojson"
+
+  # Internal storage / fallbacks
+  local_data_dir: "member1-ml/data"
+
+  # Output artifacts for Member 3 (Full Stack / Web GIS)
+  outputs_dir: "member1-ml/outputs"
+  classified_parcels: "member1-ml/outputs/classified_parcels.geojson"
+  crop_statistics: "member1-ml/outputs/crop_statistics.json"
+  model_metrics: "member1-ml/outputs/model_metrics.json"
+  feature_importance_json: "member1-ml/outputs/feature_importance.json"
+  feature_importance_plot: "member1-ml/outputs/feature_importance.png"
+  confusion_matrix_plot: "member1-ml/outputs/confusion_matrix.png"
+
+  # Model artifacts
+  models_dir: "member1-ml/models"
+  model_artifact: "member1-ml/models/crop_classifier.joblib"
+  model_metadata: "member1-ml/models/model_metadata.json"
+
+features:
+  core_bands:
+    - "B02"   # Blue (10m)
+    - "B03"   # Green (10m)
+    - "B04"   # Red (10m)
+    - "B08"   # NIR (10m)
+    - "B11"   # SWIR-1 (20m -> resampled to 10m)
+    - "B12"   # SWIR-2 (20m -> resampled to 10m)
+
+  spectral_indices:
+    - "NDVI"  # Normalized Difference Vegetation Index: (B08 - B04) / (B08 + B04)
+    - "EVI"   # Enhanced Vegetation Index: 2.5 * (B08 - B04) / (B08 + 6*B04 - 7.5*B02 + 1)
+    - "SAVI"  # Soil Adjusted Vegetation Index: 1.5 * (B08 - B04) / (B08 + B04 + 0.5)
+    - "NDWI"  # Normalized Difference Water Index: (B03 - B08) / (B03 + B08)
+
+  temporal_aggregations:
+    - "mean"
+    - "std"
+    - "min"
+    - "max"
+    - "range"
+
+classes:
+  target_classes:
+    - "Paddy"
+    - "Banana"
+    - "Other"
+  label_column: "crop_type"
+  parcel_id_column: "parcel_id"
+  normalization_map:
+    paddy: "Paddy"
+    rice: "Paddy"
+    PADDY: "Paddy"
+    banana: "Banana"
+    plantain: "Banana"
+    BANANA: "Banana"
+    other: "Other"
+    OTHER: "Other"
+    fallow: "Other"
+    scrub: "Other"
+    builtup: "Other"
+    water: "Other"
+
+dataset:
+  sampling_strategy: "parcel_mean"   # Options: "parcel_mean", "pixel_sample"
+  max_pixels_per_polygon: 100
+  handle_nan: "median_impute"        # Options: "drop", "median_impute"
+
+split:
+  strategy: "GroupShuffleSplit"      # Prevents spatial autocorrelation leakage
+  group_by: "parcel_id"              # Groups pixels by parcel to evaluate unseen parcels
+  test_size: 0.20
+  val_size: 0.10
+  random_state: 42
+
+random_forest:
+  n_estimators: 150
+  max_depth: 16
+  min_samples_split: 4
+  min_samples_leaf: 2
+  max_features: "sqrt"
+  class_weight: "balanced"
+  random_state: 42
+  n_jobs: -1

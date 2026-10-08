@@ -1,0 +1,27 @@
+# Core Geospatial & Numerical Processing
+numpy>=1.25.0
+pandas>=2.0.0
+scipy>=1.11.0
+shapely>=2.0.0
+pyproj>=3.6.0
+geopandas>=0.14.0
+rasterio>=1.3.8
+
+# Machine Learning & Modeling
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# Configuration & Utilities
+pyyaml>=6.0.0
+requests>=2.31.0
+
+# Visualization & Reporting
+matplotlib>=3.8.0
+
+# Testing
+pytest>=7.4.0
+
+# API & Web Services (Member 3 Full Stack backend)
+fastapi>=0.100.0
+uvicorn>=0.23.0
+pydantic>=2.0.0

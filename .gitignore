@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Large Geospatial & Satellite Data (Do NOT commit raw/processed rasters to GitHub)
+*.tif
+*.tiff
+*.TIF
+*.TIFF
+*.SAFE/
+*.jp2
+*.JP2
+*.hdf
+*.HDF
+*.nc
+*.nc4
+*.vrt
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Data directories (keep directory structure with .gitkeep, ignore data contents)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+member2-gis/inputs/*
+!member2-gis/inputs/.gitkeep
+member2-gis/outputs/features/*
+!member2-gis/outputs/features/.gitkeep
+member2-gis/outputs/temporal/*
+!member2-gis/outputs/temporal/.gitkeep
+member1-ml/data/*
+!member1-ml/data/.gitkeep
+
+# Environment variables & secrets
+.env
+.env.local
+*.pem
+*.key
+*.secret
