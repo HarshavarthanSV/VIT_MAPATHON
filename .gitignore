@@ -71,6 +71,7 @@ data/processed/*
 !data/processed/.gitkeep
 member2-gis/inputs/*
 !member2-gis/inputs/.gitkeep
+!member2-gis/inputs/*.geojson
 member2-gis/outputs/features/*
 !member2-gis/outputs/features/.gitkeep
 member2-gis/outputs/temporal/*
