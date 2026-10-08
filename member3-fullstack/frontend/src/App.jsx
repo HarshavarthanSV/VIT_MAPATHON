@@ -92,7 +92,13 @@ export default function App() {
 
     if (!visibleCrops[crop]) return false;
     if (conf < minConfidence) return false;
-    if (selectedTaluk !== 'all' && taluk !== selectedTaluk) return false;
+    if (selectedTaluk !== 'all') {
+      const normTaluk = (taluk || '').toLowerCase();
+      const normSelected = selectedTaluk.toLowerCase();
+      if (!normTaluk.includes(normSelected) && !normSelected.includes(normTaluk)) {
+        return false;
+      }
+    }
     return true;
   });
 

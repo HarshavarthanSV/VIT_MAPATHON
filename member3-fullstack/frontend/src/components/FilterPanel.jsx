@@ -33,14 +33,14 @@ export default function FilterPanel({
             Both Taluks
           </button>
           <button
-            className={`taluk-tab-btn ${selectedTaluk === 'Ambasamudram Taluk' ? 'active' : ''}`}
-            onClick={() => onSelectTaluk('Ambasamudram Taluk')}
+            className={`taluk-tab-btn ${selectedTaluk.toLowerCase().includes('ambasamudram') ? 'active' : ''}`}
+            onClick={() => onSelectTaluk('Ambasamudram')}
           >
             Ambasamudram
           </button>
           <button
-            className={`taluk-tab-btn ${selectedTaluk === 'Cheranmahadevi Taluk' ? 'active' : ''}`}
-            onClick={() => onSelectTaluk('Cheranmahadevi Taluk')}
+            className={`taluk-tab-btn ${selectedTaluk.toLowerCase().includes('cheranmahadevi') ? 'active' : ''}`}
+            onClick={() => onSelectTaluk('Cheranmahadevi')}
           >
             Cheranmahadevi
           </button>

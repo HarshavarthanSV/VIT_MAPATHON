@@ -1,13 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
+# Virtual Environment
 .venv/
+venv/
 ENV/
+env/
+.Python
 build/
 develop-eggs/
 dist/
@@ -24,6 +20,12 @@ wheels/
 .installed.cfg
 *.egg
 
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # Testing & Coverage
 .pytest_cache/
 .coverage
@@ -31,40 +33,41 @@ htmlcov/
 .tox/
 .nox/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IDEs & Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Operating System
-.DS_Store
-Thumbs.db
-ehthumbs.db
-
-# Large Geospatial & Satellite Data (Do NOT commit raw/processed rasters to GitHub)
+# Large Raster & Geospatial Files (Shared via external storage, not Git)
 *.tif
 *.tiff
 *.TIF
 *.TIFF
-*.SAFE/
 *.jp2
 *.JP2
+*.img
 *.hdf
 *.HDF
 *.nc
 *.nc4
 *.vrt
-*.zip
 *.tar
 *.tar.gz
-*.7z
+*.SAFE/
+*.SAFE
 
-# Data directories (keep directory structure with .gitkeep, ignore data contents)
+# Large Archives
+*.zip
+*.7z
+*.rar
+*.gz
+
+# Large Dataset Directories
+data/sentinel2/
+data/raw/
+data/processed/
+data/features/raster_stack/
+data/cache/
+03_PROCESSED/
+04_FEATURES/
+05_TRAINING_DATA/
+
+# Keep directory structures
 data/raw/*
 !data/raw/.gitkeep
 data/processed/*
@@ -79,7 +82,26 @@ member2-gis/outputs/temporal/*
 member1-ml/data/*
 !member1-ml/data/.gitkeep
 
-# Environment variables & secrets
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Operating System & Presentation Drafts
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.pptx
+
+# Jupyter Checkpoints & Logs
+.ipynb_checkpoints/
+*.log
+
+# Secrets
 .env
 .env.local
 *.pem

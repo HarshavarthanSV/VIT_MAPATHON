@@ -7,8 +7,12 @@ import json
 import logging
 from typing import Optional, Dict, Any, List
 from fastapi import APIRouter, Query, HTTPException, Depends
-from sqlalchemy import text
-from sqlalchemy.orm import Session
+try:
+    from sqlalchemy import text
+    from sqlalchemy.orm import Session
+except (ImportError, Exception):
+    text = None
+    Session = None
 
 from database import is_db_connected, get_db, load_json_artifact, resolve_artifact_path
 

@@ -8,8 +8,16 @@ import os
 import json
 import logging
 from typing import Optional, Dict, Any, List
-from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker, declarative_base
+try:
+    from sqlalchemy import create_engine, text
+    from sqlalchemy.orm import sessionmaker, declarative_base
+    Base = declarative_base()
+    _sqlalchemy_available = True
+except (ImportError, Exception):
+    create_engine = None
+    text = None
+    Base = None
+    _sqlalchemy_available = False
 
 logger = logging.getLogger("DatabaseManager")
 
@@ -23,8 +31,6 @@ POSTGRES_DB = os.getenv("POSTGRES_DB", "postgres")
 DEFAULT_DB_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
 DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DB_URL)
 
-Base = declarative_base()
-
 _engine = None
 _SessionLocal = None
 _db_available = False
@@ -33,6 +39,9 @@ _db_available = False
 def init_db_connection() -> bool:
     """Tests connection to PostgreSQL/PostGIS and verifies table presence."""
     global _engine, _SessionLocal, _db_available
+    if not _sqlalchemy_available or create_engine is None:
+        _db_available = False
+        return False
     try:
         engine = create_engine(DATABASE_URL, pool_pre_ping=True, connect_args={"connect_timeout": 3})
         with engine.connect() as conn:
@@ -87,6 +96,8 @@ def resolve_artifact_path(filename: str) -> Optional[str]:
     repo_root = os.path.dirname(member3_dir)
 
     candidates = [
+        os.path.join(repo_root, "results", filename),
+        os.path.join(repo_root, "data", "parcels", "cleaned", filename),
         os.path.join(repo_root, "member1-ml", "outputs", filename),
         os.path.join(member3_dir, "inputs", filename),
     ]

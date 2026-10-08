@@ -113,3 +113,31 @@ def test_get_parcel_detail():
 def test_get_parcel_detail_not_found():
     res = client.get("/api/parcels/non_existent_parcel_99999")
     assert res.status_code == 404
+
+
+def test_get_taluk_acreage():
+    res = client.get("/api/statistics/taluk-acreage")
+    assert res.status_code == 200
+    data = res.json()
+    assert isinstance(data, list)
+    assert len(data) >= 2
+    taluks = {row["taluk"] for row in data}
+    assert "Ambasamudram" in taluks or "Cheranmahadevi" in taluks
+
+
+def test_get_places():
+    res = client.get("/api/places")
+    assert res.status_code == 200
+    data = res.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+    assert any("Ambasamudram" in p.get("name", "") for p in data)
+
+
+def test_get_infrastructure():
+    res = client.get("/api/infrastructure")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["type"] == "FeatureCollection"
+    assert "features" in data
+
