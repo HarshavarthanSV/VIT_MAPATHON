@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "sample_training_parcels",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32643" } },
+"features": [
+{ "type": "Feature", "properties": { "parcel_id": "P001", "crop_name": "Paddy", "class_id": 1 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 340150.0, 961850.0 ], [ 340400.0, 961850.0 ], [ 340400.0, 961700.0 ], [ 340150.0, 961700.0 ], [ 340150.0, 961850.0 ] ] ] } },
+{ "type": "Feature", "properties": { "parcel_id": "P002", "crop_name": "Banana", "class_id": 2 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 340150.0, 961550.0 ], [ 340450.0, 961550.0 ], [ 340450.0, 961400.0 ], [ 340150.0, 961400.0 ], [ 340150.0, 961550.0 ] ] ] } },
+{ "type": "Feature", "properties": { "parcel_id": "P003", "crop_name": "Water", "class_id": 3 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 340100.0, 961280.0 ], [ 340800.0, 961280.0 ], [ 340800.0, 961240.0 ], [ 340100.0, 961240.0 ], [ 340100.0, 961280.0 ] ] ] } }
+]
+}
