@@ -3,11 +3,11 @@ import React from 'react';
 export const getCropColor = (crop) => {
   switch (crop?.toLowerCase()) {
     case 'paddy':
-      return { fill: '#16a34a', stroke: '#15803d', text: '#22c55e', bg: 'rgba(22, 163, 74, 0.2)' };
+      return { fill: '#22c55e', stroke: '#14532d', text: '#4ade80', bg: 'rgba(34, 197, 94, 0.25)' };
     case 'banana':
-      return { fill: '#eab308', stroke: '#ca8a04', text: '#facc15', bg: 'rgba(234, 179, 8, 0.2)' };
+      return { fill: '#facc15', stroke: '#854d0e', text: '#fde047', bg: 'rgba(250, 204, 21, 0.25)' };
     default:
-      return { fill: '#64748b', stroke: '#475569', text: '#94a3b8', bg: 'rgba(100, 116, 139, 0.2)' };
+      return { fill: '#c084fc', stroke: '#581c87', text: '#e9d5ff', bg: 'rgba(192, 132, 252, 0.25)' };
   }
 };
 

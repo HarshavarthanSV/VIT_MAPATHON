@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import { getCropColor, createParcelPopupContent } from './ParcelPopup';
 
-const STUDY_CENTER = [8.70, 77.49];
+const STUDY_CENTER = [8.695, 77.502];
 const DEFAULT_ZOOM = 12;
 
 // Settlement coordinates across Ambasamudram and Cheranmahadevi Taluks
@@ -38,8 +38,9 @@ export default function MapView({
   const geojsonLayerRef = useRef(null);
   const settlementsLayerRef = useRef(null);
   const infraLayerRef = useRef(null);
+  const hasFitInitialBoundsRef = useRef(false);
 
-  // Initialize Map
+  // Initialize Leaflet Map (SVG Renderer for 100% vector reliability)
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
@@ -47,8 +48,12 @@ export default function MapView({
       center: STUDY_CENTER,
       zoom: DEFAULT_ZOOM,
       zoomControl: false,
-      preferCanvas: true
+      preferCanvas: false // SVG renderer ensures path elements always draw
     });
+
+    // Custom high-priority pane for Agricultural Parcels
+    const parcelsPane = map.createPane('parcelsPane');
+    parcelsPane.style.zIndex = '500';
 
     // Custom Zoom Control top-right
     L.control.zoom({ position: 'topright' }).addTo(map);
@@ -94,13 +99,22 @@ export default function MapView({
       topo: topoMap
     };
 
-    // Default: Satellite
+    // Default: Satellite + labels
     satImagery.addTo(map);
     hybridLabelsGroup.addTo(map);
 
     mapInstanceRef.current = map;
 
+    // Invalidate size to guarantee correct container dimensions
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 150);
+
+    const handleResize = () => map.invalidateSize();
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -221,19 +235,6 @@ export default function MapView({
     infraLayerRef.current = infraLayer;
   }, [infrastructureData, showInfra]);
 
-  // Fly to Taluk when selectedTaluk changes
-  useEffect(() => {
-    if (!mapInstanceRef.current) return;
-    const map = mapInstanceRef.current;
-    if (selectedTaluk && selectedTaluk.toLowerCase().includes('ambasamudram')) {
-      map.flyTo([8.712, 77.445], 12.5, { duration: 1.2 });
-    } else if (selectedTaluk && selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
-      map.flyTo([8.685, 77.55], 12.5, { duration: 1.2 });
-    } else {
-      map.flyTo(STUDY_CENTER, DEFAULT_ZOOM, { duration: 1.2 });
-    }
-  }, [selectedTaluk]);
-
   // Classified Agricultural Parcels Layer
   useEffect(() => {
     if (!mapInstanceRef.current || !geojsonData) return;
@@ -244,36 +245,42 @@ export default function MapView({
       geojsonLayerRef.current = null;
     }
 
+    // Force map size re-calculation
+    map.invalidateSize();
+
     const parcelStyle = (feature) => {
       const crop = feature.properties?.predicted_crop;
       const colors = getCropColor(crop);
 
       return {
+        pane: 'parcelsPane',
         fillColor: colors.fill,
-        weight: 1.8,
-        opacity: 0.95,
-        color: colors.border,
-        fillOpacity: 0.65
+        weight: 2.2,
+        opacity: 1.0,
+        color: colors.stroke || '#ffffff',
+        fillOpacity: 0.72
       };
     };
 
     const highlightStyle = {
-      weight: 3.5,
+      pane: 'parcelsPane',
+      weight: 4.0,
       color: '#ffffff',
-      fillOpacity: 0.9,
-      dashArray: ''
+      fillOpacity: 0.95
     };
 
     const parcelLayer = L.geoJSON(geojsonData, {
       style: parcelStyle,
       onEachFeature: (feature, layer) => {
         const props = feature.properties || {};
+        const confPct = Math.round((props.confidence || 0) * 100);
+        const areaHa = props.area_ha ? props.area_ha.toFixed(2) : (props.area_sq_km ? (props.area_sq_km * 100).toFixed(2) : '0.50');
 
         layer.bindTooltip(
           `<strong>${props.parcel_id}</strong><br/>` +
-          `Crop: <strong>${props.predicted_crop}</strong> (${Math.round((props.confidence || 0) * 100)}%)<br/>` +
+          `Crop: <strong>${props.predicted_crop}</strong> (${confPct}%)<br/>` +
           `Taluk: ${props.taluk || 'Study Area'}<br/>` +
-          `Area: ${props.area_ha ? props.area_ha.toFixed(2) + ' ha' : (props.area_sq_km ? (props.area_sq_km * 100).toFixed(2) + ' ha' : 'N/A')}`,
+          `Area: ${areaHa} ha`,
           { sticky: true, className: 'leaflet-custom-tooltip' }
         );
 
@@ -290,7 +297,7 @@ export default function MapView({
           click: (e) => {
             onSelectParcel(feature);
             L.DomEvent.stopPropagation(e);
-            const popupContent = createParcelPopupContent(feature);
+            const popupContent = createParcelPopupContent(props);
             layer.bindPopup(popupContent, { maxWidth: 320 }).openPopup();
           }
         });
@@ -298,16 +305,48 @@ export default function MapView({
     }).addTo(map);
 
     geojsonLayerRef.current = parcelLayer;
+
+    // Auto-fit bounds on initial load of parcels
+    if (!hasFitInitialBoundsRef.current && parcelLayer.getLayers().length > 0) {
+      const bounds = parcelLayer.getBounds();
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [40, 40] });
+        hasFitInitialBoundsRef.current = true;
+      }
+    }
   }, [geojsonData, onSelectParcel]);
 
-  // Fit bounds to parcels
-  const handleFitParcels = () => {
-    if (mapInstanceRef.current) {
-      if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
-        mapInstanceRef.current.fitBounds(geojsonLayerRef.current.getBounds(), { padding: [50, 50] });
-      } else {
-        mapInstanceRef.current.setView(STUDY_CENTER, DEFAULT_ZOOM);
+  // Fly / fit bounds when selectedTaluk changes
+  useEffect(() => {
+    if (!mapInstanceRef.current) return;
+    const map = mapInstanceRef.current;
+
+    if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
+      const bounds = geojsonLayerRef.current.getBounds();
+      if (bounds.isValid()) {
+        map.flyToBounds(bounds, { padding: [40, 40], duration: 1.2 });
+        return;
       }
+    }
+
+    if (selectedTaluk && selectedTaluk.toLowerCase().includes('ambasamudram')) {
+      map.flyTo([8.712, 77.445], 13, { duration: 1.2 });
+    } else if (selectedTaluk && selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
+      map.flyTo([8.685, 77.55], 13, { duration: 1.2 });
+    } else {
+      map.flyTo(STUDY_CENTER, DEFAULT_ZOOM, { duration: 1.2 });
+    }
+  }, [selectedTaluk, geojsonData]);
+
+  // Fit bounds button handler
+  const handleFitParcels = () => {
+    if (mapInstanceRef.current && geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
+      const bounds = geojsonLayerRef.current.getBounds();
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [40, 40] });
+      }
+    } else if (mapInstanceRef.current) {
+      mapInstanceRef.current.setView(STUDY_CENTER, DEFAULT_ZOOM);
     }
   };
 
@@ -315,8 +354,18 @@ export default function MapView({
     <div className="map-viewport-wrapper">
       <div ref={mapContainerRef} className="map-container-elem" />
 
-      {/* Clean Top-Right Fit Parcels Button */}
-      <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 700 }}>
+      {/* Floating Action Controls top right */}
+      <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 700, display: 'flex', gap: '0.5rem' }}>
+        <a
+          href="http://localhost:8000/map"
+          target="_blank"
+          rel="noreferrer"
+          className="map-recenter-pill-btn"
+          title="Open Standalone Folium Fullscreen Map"
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+        >
+          🌐 Standalone Folium Map
+        </a>
         <button
           onClick={handleFitParcels}
           className="map-recenter-pill-btn"
@@ -331,15 +380,15 @@ export default function MapView({
         <div className="legend-title">Classification Legend</div>
         <div className="legend-items">
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#16a34a', border: '1.5px solid #15803d', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#22c55e', border: '1.5px solid #14532d', borderRadius: 3 }} />
             <span>Paddy (நெல்)</span>
           </div>
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#eab308', border: '1.5px solid #ca8a04', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#facc15', border: '1.5px solid #854d0e', borderRadius: 3 }} />
             <span>Banana (வாழை)</span>
           </div>
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#64748b', border: '1.5px solid #475569', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#c084fc', border: '1.5px solid #581c87', borderRadius: 3 }} />
             <span>Other / Fallow</span>
           </div>
           {showInfra && (

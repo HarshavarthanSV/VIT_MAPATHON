@@ -9,7 +9,8 @@ import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, FileResponse
+from fastapi import HTTPException
 
 # Ensure backend directory is in sys.path
 backend_dir = os.path.dirname(os.path.abspath(__file__))
@@ -57,6 +58,19 @@ app.include_router(layers.router)
 def root():
     """Redirects to interactive Swagger API documentation."""
     return RedirectResponse(url="/docs")
+
+
+@app.get("/map", include_in_schema=True, tags=["map"])
+def get_interactive_map():
+    """
+    Returns standalone full-screen interactive open-source Folium/Leaflet map
+    displaying all 293 classified agricultural parcels with layer controls and tooltips.
+    """
+    repo_root = os.path.dirname(os.path.dirname(backend_dir))
+    map_path = os.path.join(repo_root, "results", "interactive_crop_map.html")
+    if os.path.exists(map_path):
+        return FileResponse(map_path, media_type="text/html")
+    raise HTTPException(status_code=404, detail="Interactive map file not found.")
 
 
 @app.get("/api/health")
