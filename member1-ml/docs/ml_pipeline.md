@@ -1,7 +1,7 @@
 # Member 1 ML / AI Pipeline Specification
 
 ## 1. Overview
-The Machine Learning module processes Sentinel-2 Level-2A multi-spectral imagery and spectral indices prepared by Member 2, trains a Random Forest Classifier to distinguish **Paddy**, **Banana**, and **Other** crops, rigorously evaluates model performance, and produces classified parcel GeoJSON and summary statistics for Member 3.
+The Machine Learning module processes Sentinel-2 Level-2A multi-spectral imagery and spectral indices prepared by Member 2, trains a Random Forest Classifier to distinguish **Paddy**, **Banana**, and **Other** crops, rigorously evaluates model performance, and produces classified parcel GeoJSON and summary statistics for backend serving and web GIS visualization.
 
 ---
 

@@ -1,5 +1,5 @@
 """
-VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 Statistics Router: Serves dynamic study area aggregations and ML model metrics.
 """
 

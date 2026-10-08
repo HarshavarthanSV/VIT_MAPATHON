@@ -1,5 +1,5 @@
 """
-Unit and Integration Tests for Member 3 FastAPI Backend.
+Unit and Integration Tests for FastAPI Backend (Maintained by Member 1).
 Verifies endpoints, response structures, filtering logic, and error handling.
 """
 

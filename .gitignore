@@ -75,12 +75,15 @@ data/processed/*
 member2-gis/inputs/*
 !member2-gis/inputs/.gitkeep
 !member2-gis/inputs/*.geojson
+!member2-gis/inputs/*.json
 member2-gis/outputs/features/*
 !member2-gis/outputs/features/.gitkeep
 member2-gis/outputs/temporal/*
 !member2-gis/outputs/temporal/.gitkeep
 member1-ml/data/*
 !member1-ml/data/.gitkeep
+member2-gis/frontend/node_modules/
+member2-gis/frontend/dist/
 
 # IDE & Editor files
 .vscode/

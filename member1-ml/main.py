@@ -193,7 +193,7 @@ def run_pipeline(config_path: str, args: argparse.Namespace) -> int:
     )
 
     # =========================================================================
-    # STEP 6: Parcel-Level Classification & Member 3 Handoff Generation
+    # STEP 6: Parcel-Level Classification & Web GIS Output Generation
     # =========================================================================
     if parcels_file and os.path.exists(parcels_file):
         logger.info("\n--- STEP 6: Performing Inference on Agricultural Parcels ---")

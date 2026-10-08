@@ -22,7 +22,7 @@ requests>=2.31.0
 # Testing
 pytest>=7.4.0
 
-# Full Stack Backend (Member 3)
+# Backend API Services (Member 1)
 fastapi>=0.100.0
 uvicorn>=0.23.0
 pydantic>=2.0.0

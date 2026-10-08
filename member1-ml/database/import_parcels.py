@@ -1,5 +1,5 @@
 """
-VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 PostGIS Importer Script: Ingests classified_parcels.geojson into PostgreSQL / PostGIS.
 """
 
@@ -25,7 +25,7 @@ logger = logging.getLogger("PostGIS_Importer")
 
 
 def resolve_geojson_path(cli_path: Optional[str] = None) -> str:
-    """Resolves GeoJSON input path prioritizing Member 1 output, then Member 3 inputs."""
+    """Resolves GeoJSON input path prioritizing ML output, then results directory."""
     if cli_path and os.path.exists(cli_path):
         return os.path.abspath(cli_path)
 
@@ -33,8 +33,9 @@ def resolve_geojson_path(cli_path: Optional[str] = None) -> str:
     repo_root = os.path.abspath(os.path.join(base_dir, ".."))
 
     candidates = [
-        os.path.join(repo_root, "member1-ml", "outputs", "classified_parcels.geojson"),
-        os.path.join(base_dir, "inputs", "classified_parcels.geojson"),
+        os.path.join(base_dir, "outputs", "classified_parcels.geojson"),
+        os.path.join(repo_root, "data", "parcels", "cleaned", "classified_parcels.geojson"),
+        os.path.join(repo_root, "results", "classified_parcels.geojson"),
     ]
 
     for cand in candidates:

@@ -2,7 +2,7 @@
 Member 1 — ML / AI Crop Classifier Training on Real Member 2 Multi-Temporal Features
 Ingests 240 features across 4 Sentinel-2 dates for 293 parcels in Ambasamudram & Cheranmahadevi.
 Trains Random Forest Classifier, evaluates performance with 5-fold Cross-Validation,
-and exports classified_parcels.geojson & crop_statistics.json for Member 3.
+and exports classified_parcels.geojson & crop_statistics.json for Backend & Frontend.
 """
 
 import os
@@ -259,7 +259,7 @@ def train_and_evaluate(
     plt.close(fig)
     logger.info(f"Saved feature importance plot: {fi_plot_path}")
 
-    # 9. GeoJSON Merge and Final Vector Delivery for Member 3
+    # 9. GeoJSON Merge and Final Vector Delivery for Web GIS Dashboard
     if os.path.exists(parcels_geojson):
         parcels_gdf = gpd.read_file(parcels_geojson)
         logger.info(f"Loaded parcel geometries: {len(parcels_gdf)} parcels in CRS: {parcels_gdf.crs}")
@@ -277,7 +277,7 @@ def train_and_evaluate(
 
         classified_gdf = parcels_gdf.merge(df[pred_cols], on="parcel_id", how="left")
 
-        # Reproject to WGS 84 (EPSG:4326) for Member 3 React-Leaflet
+        # Reproject to WGS 84 (EPSG:4326) for Member 2 React-Leaflet Dashboard
         classified_wgs84 = classified_gdf.to_crs("EPSG:4326")
 
         # Export to member1-ml/outputs/ and data/parcels/cleaned/
@@ -332,7 +332,7 @@ def train_and_evaluate(
     logger.info("=" * 75)
     logger.info("MEMBER 1 TRAINING & PREDICTION COMPLETE!")
     logger.info(f"Test Accuracy: {test_acc:.2%} | Macro-F1: {test_f1_macro:.2%}")
-    logger.info(f"Classified parcels GeoJSON is ready for Member 3!")
+    logger.info(f"Classified parcels GeoJSON is ready for Backend & Web GIS Dashboard!")
     logger.info("=" * 75)
     return test_acc, test_f1_macro
 

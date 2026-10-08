@@ -1,7 +1,7 @@
 """
-VIT MAPATHON — Member 3 Backend Database Connection Manager
+VIT MAPATHON — Member 1 Backend Database Connection Manager
 Provides PostgreSQL / PostGIS connection pooling and automatic graceful fallback
-to Member 1 / Member 3 GeoJSON and JSON artifacts when database is offline.
+to ML GeoJSON and JSON artifacts when database is offline.
 """
 
 import os
@@ -87,19 +87,21 @@ def get_db():
 
 def resolve_artifact_path(filename: str) -> Optional[str]:
     """
-    Resolves data files according to team contract:
+    Resolves data files according to 2-member contract:
     1. Checks member1-ml/outputs/<filename>
-    2. Checks member3-fullstack/inputs/<filename>
+    2. Checks member2-gis/inputs/<filename>
+    3. Checks repository results and data directories
     """
     backend_dir = os.path.dirname(os.path.abspath(__file__))
-    member3_dir = os.path.dirname(backend_dir)
-    repo_root = os.path.dirname(member3_dir)
+    member1_dir = os.path.dirname(backend_dir)
+    repo_root = os.path.dirname(member1_dir)
 
     candidates = [
+        os.path.join(member1_dir, "outputs", filename),
+        os.path.join(repo_root, "member2-gis", "inputs", filename),
         os.path.join(repo_root, "results", filename),
         os.path.join(repo_root, "data", "parcels", "cleaned", filename),
-        os.path.join(repo_root, "member1-ml", "outputs", filename),
-        os.path.join(member3_dir, "inputs", filename),
+        os.path.join(repo_root, "member2-gis", "outputs", "features", filename),
     ]
 
     for cand in candidates:
@@ -113,6 +115,6 @@ def load_json_artifact(filename: str) -> Dict[str, Any]:
     """Loads a JSON deliverable from resolved candidate paths."""
     path = resolve_artifact_path(filename)
     if not path:
-        raise FileNotFoundError(f"Artifact {filename} could not be located in member1-ml/outputs or member3-fullstack/inputs.")
+        raise FileNotFoundError(f"Artifact {filename} could not be located in member1-ml/outputs or member2-gis/inputs.")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)

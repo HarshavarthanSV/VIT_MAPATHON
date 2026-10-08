@@ -1,5 +1,5 @@
 """
-VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 FastAPI Backend Application Entrypoint
 Provides REST endpoints for Agricultural Land Parcel & Crop Identification in Tirunelveli District.
 """
@@ -82,7 +82,7 @@ def health_check():
 
     return {
         "status": "healthy",
-        "module": "Member 3 — Full Stack & Web GIS",
+        "module": "Member 1 — AI, ML & Backend API",
         "study_area": {
             "name": "Ambasamudram & Cheranmahadevi Taluks",
             "district": "Tirunelveli",
@@ -102,9 +102,9 @@ def health_check():
 
 
 # Mount static assets for plots (confusion matrix & feature importance)
-inputs_dir = os.path.join(os.path.dirname(backend_dir), "inputs")
-if os.path.exists(inputs_dir):
-    app.mount("/static", StaticFiles(directory=inputs_dir), name="static")
+outputs_dir = os.path.join(os.path.dirname(backend_dir), "outputs")
+if os.path.exists(outputs_dir):
+    app.mount("/static", StaticFiles(directory=outputs_dir), name="static")
 
 if __name__ == "__main__":
     import uvicorn

@@ -1,5 +1,5 @@
 """
-VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 Analysis Router: Multi-Temporal Comparison, AI Agronomic Chatbot, and PDF Report Export.
 """
 

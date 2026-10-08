@@ -1,5 +1,5 @@
 """
-VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 Professional Cadastral & Temporal PDF Report Generator using ReportLab.
 Generates publication-ready agronomic and remote sensing reports for Ambasamudram & Cheranmahadevi.
 """

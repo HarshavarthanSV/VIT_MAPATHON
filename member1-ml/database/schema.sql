@@ -1,5 +1,5 @@
 -- ==============================================================================
--- VIT MAPATHON — Member 3 (Full Stack / GIS Application Engineer)
+-- VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 -- PostGIS Spatial Schema for Agricultural Land Parcels
 -- Target Area: Ambasamudram & Cheranmahadevi Taluks, Tirunelveli District
 -- ==============================================================================

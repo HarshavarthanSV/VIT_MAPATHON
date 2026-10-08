@@ -1,6 +1,6 @@
 """
-Generator for Member 3 Offline Development & Demonstration Dataset
-Adheres strictly to the data contract in member1-ml/docs/member3_handoff.md.
+Generator for Offline Development & Demonstration Dataset
+Adheres strictly to the data contract in member1-ml/docs/backend_integration.md.
 Generates realistic agricultural parcel geometries in Ambasamudram and Cheranmahadevi Taluks (>= 20 sq. km)
 using exact metric area calculations in EPSG:32643 and exporting standard EPSG:4326 GeoJSON.
 """

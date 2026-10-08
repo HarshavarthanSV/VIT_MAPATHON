@@ -1,7 +1,7 @@
 """
 GIS Postprocessing and Vectorization Module.
 Converts classified crop rasters / parcel masks into clean vector polygons (GeoJSON/Shapefile/GeoPackage)
-for QGIS visual validation, parcel boundary analysis, and handoff to Member 3 (Dashboard API).
+for QGIS visual validation, parcel boundary analysis, and handoff to Backend & Web GIS Dashboard.
 """
 
 from pathlib import Path

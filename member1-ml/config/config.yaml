@@ -20,7 +20,7 @@ paths:
   # Internal storage / fallbacks
   local_data_dir: "member1-ml/data"
 
-  # Output artifacts for Member 3 (Full Stack / Web GIS)
+  # Output artifacts for Backend API and Web GIS Dashboard
   outputs_dir: "member1-ml/outputs"
   classified_parcels: "member1-ml/outputs/classified_parcels.geojson"
   crop_statistics: "member1-ml/outputs/crop_statistics.json"

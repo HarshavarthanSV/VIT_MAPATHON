@@ -77,7 +77,7 @@ member2-gis/outputs/
 ---
 
 ## 6. Agricultural Parcels Vector Contract (`parcel_boundaries.geojson`)
-1. **Purpose**: Represents all agricultural parcel boundaries in Ambasamudram and Cheranmahadevi Taluks that will be classified by the model and ingested into PostGIS by Member 3.
+1. **Purpose**: Represents all agricultural parcel boundaries in Ambasamudram and Cheranmahadevi Taluks that will be classified by the model and ingested into PostGIS for Web GIS serving.
 2. **Required Area**:
    - Total study area covered must be **$\ge 20 \text{ sq. km}$**.
 3. **Required Properties**:
