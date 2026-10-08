@@ -71,14 +71,14 @@ export default function FilterPanel({
           <button
             className={`map-pill-btn ${activeBasemap === 'voyager' ? 'active' : ''}`}
             onClick={() => onChangeBasemap('voyager')}
-            title="CartoDB Voyager Street Map"
+            title="Esri World Street Map"
           >
             🗺️ Street
           </button>
           <button
             className={`map-pill-btn ${activeBasemap === 'dark' ? 'active' : ''}`}
             onClick={() => onChangeBasemap('dark')}
-            title="CartoDB Dark Matter GIS"
+            title="Esri Dark Gray Canvas GIS"
           >
             🌙 Dark
           </button>

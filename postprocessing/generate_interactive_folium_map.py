@@ -33,46 +33,62 @@ def generate_interactive_map():
     center_lat = sum(all_lats) / len(all_lats) if all_lats else 8.695
     center_lon = sum(all_lons) / len(all_lons) if all_lons else 77.502
 
-    # Initialize Folium Map
+    # Initialize Folium Map (tiles=None prevents duplicate untitled openstreetmap layer)
     m = folium.Map(
         location=[center_lat, center_lon],
         zoom_start=12,
         control_scale=True,
-        prefer_canvas=False
+        prefer_canvas=False,
+        tiles=None
     )
 
-    # 1. Add Basemaps
-    # Satellite Imagery (Esri)
+    # 1. Add Basemaps (100% Free, NO API KEY Required, Zero Watermarks)
+    # Satellite Imagery (Esri) - Default
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        attr="Esri World Imagery",
+        attr="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
         name="🛰️ Esri Satellite (Hybrid)",
         max_zoom=19,
         overlay=False,
         control=True
     ).add_to(m)
 
-    # OpenStreetMap
+    # OpenStreetMap Standard
     folium.TileLayer(
-        tiles="OpenStreetMap",
-        name="🗺️ OpenStreetMap",
+        tiles="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        attr="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+        name="🗺️ OpenStreetMap Standard",
+        max_zoom=19,
         overlay=False,
         control=True
     ).add_to(m)
 
-    # CartoDB Voyager
+    # Esri World Street Map (Replaces Carto Voyager — NO API KEY, Clean Roads)
     folium.TileLayer(
-        tiles="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-        attr="CartoDB Voyager",
-        name="🚗 CartoDB Voyager (Street)",
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+        attr="Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS",
+        name="🚗 Street Map (Esri)",
+        max_zoom=19,
         overlay=False,
         control=True
     ).add_to(m)
 
-    # CartoDB Dark Matter
+    # Esri Dark Gray Canvas (Replaces Carto Dark Matter — NO API KEY, Zero Watermarks)
     folium.TileLayer(
-        tiles="CartoDB dark_matter",
-        name="🌙 CartoDB Dark Matter",
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
+        name="🌙 Dark Canvas (Esri)",
+        max_zoom=16,
+        overlay=False,
+        control=True
+    ).add_to(m)
+
+    # Esri World Topographic Map
+    folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+        attr="Tiles &copy; Esri &mdash; National Geographic, DeLorme, NAVTEQ",
+        name="⛰️ Topographic Map (Esri)",
+        max_zoom=19,
         overlay=False,
         control=True
     ).add_to(m)
@@ -174,21 +190,26 @@ def generate_interactive_map():
     banana_group.add_to(m)
     other_group.add_to(m)
 
-    # 4. Add Town markers
+    # 4. Add Town & Village Markers (Clean Minimalist Cadastral Pins)
     towns = [
-        {"name": "Ambasamudram", "lat": 8.7082, "lon": 77.4383, "color": "blue"},
-        {"name": "Cheranmahadevi", "lat": 8.6793, "lon": 77.5617, "color": "blue"},
-        {"name": "Kallidaikurichi", "lat": 8.6809, "lon": 77.4651, "color": "darkblue"},
-        {"name": "Veeravanallur", "lat": 8.6895, "lon": 77.5222, "color": "darkblue"},
-        {"name": "Pattamadai", "lat": 8.6674, "lon": 77.5844, "color": "darkblue"}
+        {"name": "Ambasamudram (HQ)", "lat": 8.7082, "lon": 77.4383, "color": "#0284c7"},
+        {"name": "Cheranmahadevi (HQ)", "lat": 8.6793, "lon": 77.5617, "color": "#0284c7"},
+        {"name": "Kallidaikurichi", "lat": 8.6809, "lon": 77.4651, "color": "#0369a1"},
+        {"name": "Veeravanallur", "lat": 8.6895, "lon": 77.5222, "color": "#0369a1"},
+        {"name": "Pattamadai", "lat": 8.6674, "lon": 77.5844, "color": "#0369a1"}
     ]
     towns_group = folium.FeatureGroup(name="📍 Towns & Villages", show=True)
     for town in towns:
-        folium.Marker(
-            [town["lat"], town["lon"]],
-            popup=f"<b>{town['name']}</b>",
-            tooltip=town["name"],
-            icon=folium.Icon(color=town["color"], icon="info-sign")
+        folium.CircleMarker(
+            location=[town["lat"], town["lon"]],
+            radius=6,
+            color="#ffffff",
+            weight=2,
+            fill=True,
+            fill_color=town["color"],
+            fill_opacity=0.95,
+            popup=folium.Popup(f"<div style='font-family: sans-serif; font-size: 12px; font-weight: bold; color: #0f172a;'>📍 {town['name']}</div>", max_width=220),
+            tooltip=town["name"]
         ).add_to(towns_group)
     towns_group.add_to(m)
 

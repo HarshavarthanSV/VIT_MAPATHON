@@ -49,14 +49,16 @@ export default function MapView({
       attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics'
     });
 
-    const voyagerStreet = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 20,
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    // Esri World Street Map (100% Free, NO API KEY, Zero Watermarks)
+    const streetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS'
     });
 
-    const darkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 20,
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    // Esri Dark Gray Canvas (100% Free, NO API KEY, Zero Watermarks)
+    const darkMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 16,
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
     });
 
     const topoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -79,8 +81,8 @@ export default function MapView({
 
     baseLayersGroupRef.current = {
       satellite: satImagery,
-      voyager: voyagerStreet,
-      dark: darkMatter,
+      voyager: streetMap,
+      dark: darkMap,
       topo: topoMap
     };
 
