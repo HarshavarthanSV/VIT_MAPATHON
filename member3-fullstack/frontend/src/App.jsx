@@ -7,6 +7,7 @@ import MetricsModal from './components/MetricsModal';
 
 export default function App() {
   const [geojsonData, setGeojsonData] = useState(null);
+  const [infrastructureData, setInfrastructureData] = useState(null);
   const [statistics, setStatistics] = useState(null);
   const [metrics, setMetrics] = useState(null);
   const [featureImportance, setFeatureImportance] = useState(null);
@@ -17,6 +18,7 @@ export default function App() {
     Banana: true,
     Other: true
   });
+  const [selectedTaluk, setSelectedTaluk] = useState('all');
   const [minConfidence, setMinConfidence] = useState(0.0);
   const [activeBasemap, setActiveBasemap] = useState('satellite');
   const [selectedParcel, setSelectedParcel] = useState(null);
@@ -25,42 +27,40 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all initial data from FastAPI backend
+  // Fetch all GIS and ML layers from backend
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
         setError(null);
 
-        // Fetch parcels, statistics, metrics, and health in parallel
-        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes] = await Promise.all([
+        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes] = await Promise.all([
           fetch('/api/parcels'),
           fetch('/api/statistics'),
           fetch('/api/metrics'),
           fetch('/api/feature-importance').catch(() => null),
-          fetch('/api/health').catch(() => null)
+          fetch('/api/health').catch(() => null),
+          fetch('/api/infrastructure').catch(() => null)
         ]);
 
-        if (!parcelsRes.ok) {
-          throw new Error(`Failed to fetch parcels: ${parcelsRes.statusText}`);
-        }
-        if (!statsRes.ok) {
-          throw new Error(`Failed to fetch statistics: ${statsRes.statusText}`);
-        }
+        if (!parcelsRes.ok) throw new Error(`Parcels fetch failed: ${parcelsRes.statusText}`);
+        if (!statsRes.ok) throw new Error(`Statistics fetch failed: ${statsRes.statusText}`);
 
-        const parcelsData = await parcelsRes.json();
-        const statsData = await statsRes.json();
+        const parcels = await parcelsRes.json();
+        const stats = await statsRes.json();
         const metricsData = metricsRes.ok ? await metricsRes.json() : null;
         const fiData = fiRes && fiRes.ok ? await fiRes.json() : null;
-        const healthData = healthRes && healthRes.ok ? await healthRes.json() : null;
+        const health = healthRes && healthRes.ok ? await healthRes.json() : null;
+        const infra = infraRes && infraRes.ok ? await infraRes.json() : null;
 
-        setGeojsonData(parcelsData);
-        setStatistics(statsData);
+        setGeojsonData(parcels);
+        setStatistics(stats);
         setMetrics(metricsData);
         setFeatureImportance(fiData);
-        setHealthInfo(healthData);
+        setHealthInfo(health);
+        setInfrastructureData(infra);
       } catch (err) {
-        console.error('Error fetching dashboard data:', err);
+        console.error('Error fetching GIS data:', err);
         setError(err.message || 'Error connecting to backend API');
       } finally {
         setLoading(false);
@@ -79,28 +79,50 @@ export default function App() {
 
   const handleResetFilters = () => {
     setVisibleCrops({ Paddy: true, Banana: true, Other: true });
+    setSelectedTaluk('all');
     setMinConfidence(0.0);
   };
 
-  // Compute displayed count
+  // Filter features based on crop, confidence, and taluk
   const allFeatures = geojsonData?.features || [];
-  const displayedCount = allFeatures.filter((f) => {
+  const filteredFeatures = allFeatures.filter((f) => {
     const crop = f.properties?.predicted_crop;
     const conf = f.properties?.confidence || 0;
-    return visibleCrops[crop] && conf >= minConfidence;
-  }).length;
+    const taluk = f.properties?.taluk;
+
+    if (!visibleCrops[crop]) return false;
+    if (conf < minConfidence) return false;
+    if (selectedTaluk !== 'all') {
+      const normTaluk = (taluk || '').toLowerCase();
+      const normSelected = selectedTaluk.toLowerCase();
+      if (!normTaluk.includes(normSelected) && !normSelected.includes(normTaluk)) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  const displayedGeojson = geojsonData
+    ? { ...geojsonData, features: filteredFeatures }
+    : null;
 
   return (
     <div className="app-layout">
-      {/* Top Navigation Bar */}
+      {/* Top Header Navigation */}
       <header className="top-nav">
         <div className="brand-section">
-          <span className="brand-badge">VIT MAPATHON</span>
+          <div className="brand-badge">VIT MAPATHON</div>
           <div>
             <h1 className="brand-title">Agricultural Land Parcel & Crop Identification</h1>
-            <p className="brand-subtitle">
-              Ambasamudram & Cheranmahadevi Taluks, Tirunelveli District (Lat 8.70° N, Lon 77.49° E)
-            </p>
+            <div className="brand-breadcrumb">
+              <span>🇮🇳 India</span>
+              <span className="dot">•</span>
+              <span style={{ color: '#38bdf8' }}>Tamil Nadu</span>
+              <span className="dot">•</span>
+              <span style={{ color: '#22c55e' }}>Tirunelveli District</span>
+              <span className="dot">•</span>
+              <span style={{ color: '#facc15' }}>Ambasamudram & Cheranmahadevi Taluks</span>
+            </div>
           </div>
         </div>
 
@@ -114,7 +136,7 @@ export default function App() {
               }}
             />
             <span>
-              {healthInfo?.database?.postgis_connected ? 'PostGIS Active' : 'GeoJSON Engine'}
+              {healthInfo?.database?.postgis_connected ? 'PostGIS Active' : 'Sentinel-2 Engine'}
             </span>
           </div>
 
@@ -122,14 +144,14 @@ export default function App() {
             className="btn-primary"
             onClick={() => setIsMetricsOpen(true)}
           >
-            📊 Model Evaluation & Metrics
+            📊 ML Evaluation & Metrics
           </button>
         </div>
       </header>
 
-      {/* Main Content Area */}
+      {/* Main Dashboard Layout */}
       <div className="dashboard-content">
-        {/* Left Control & Analytics Sidebar */}
+        {/* Left Control Sidebar */}
         <aside className="sidebar-panel">
           <div className="sidebar-scrollable">
             {error && (
@@ -138,22 +160,22 @@ export default function App() {
               </div>
             )}
 
-            {/* Analytics Card */}
+            {/* Study Area Statistics */}
             <StatisticsCard
               statistics={statistics}
               metrics={metrics}
             />
 
-            {/* Filter Panel */}
+            {/* Spatial & Crop Filters */}
             <FilterPanel
               visibleCrops={visibleCrops}
               onToggleCrop={handleToggleCrop}
+              selectedTaluk={selectedTaluk}
+              onSelectTaluk={setSelectedTaluk}
               minConfidence={minConfidence}
               onChangeConfidence={setMinConfidence}
-              activeBasemap={activeBasemap}
-              onChangeBasemap={setActiveBasemap}
               statistics={statistics}
-              displayedCount={displayedCount}
+              displayedCount={filteredFeatures.length}
               totalCount={allFeatures.length}
               onResetFilters={handleResetFilters}
             />
@@ -162,7 +184,7 @@ export default function App() {
             {selectedParcel && (
               <div className="panel-card">
                 <div className="panel-card-title">
-                  <span>🔍 Selected Parcel Inspector</span>
+                  <span>🔍 Cadastral Parcel Inspector</span>
                 </div>
                 <ParcelPopup parcel={selectedParcel} />
               </div>
@@ -170,19 +192,22 @@ export default function App() {
           </div>
         </aside>
 
-        {/* Center / Right Interactive GIS Map */}
+        {/* Center / Right Leaflet GIS Map */}
         <main className="map-viewport-wrapper">
           {loading ? (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
-              <div>
-                <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', textAlign: 'center' }}>🛰️</div>
-                <div>Loading Sentinel-2 classified parcels...</div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem', animation: 'spin 2s infinite linear' }}>🛰️</div>
+                <div style={{ fontWeight: 600, color: '#f8fafc' }}>Loading Tirunelveli Sentinel-2 Classified Parcels...</div>
+                <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '4px' }}>Ambasamudram & Cheranmahadevi Taluks</div>
               </div>
             </div>
           ) : (
             <MapView
-              geojsonData={geojsonData}
+              geojsonData={displayedGeojson}
+              infrastructureData={infrastructureData}
               activeBasemap={activeBasemap}
+              onChangeBasemap={setActiveBasemap}
               selectedParcel={selectedParcel}
               onSelectParcel={setSelectedParcel}
               visibleCrops={visibleCrops}
@@ -192,7 +217,7 @@ export default function App() {
         </main>
       </div>
 
-      {/* ML Metrics & Confusion Matrix Modal */}
+      {/* ML Evaluation Modal */}
       <MetricsModal
         isOpen={isMetricsOpen}
         onClose={() => setIsMetricsOpen(false)}

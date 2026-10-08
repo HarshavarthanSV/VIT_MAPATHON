@@ -96,6 +96,8 @@ def resolve_artifact_path(filename: str) -> Optional[str]:
     repo_root = os.path.dirname(member3_dir)
 
     candidates = [
+        os.path.join(repo_root, "results", filename),
+        os.path.join(repo_root, "data", "parcels", "cleaned", filename),
         os.path.join(repo_root, "member1-ml", "outputs", filename),
         os.path.join(member3_dir, "inputs", filename),
     ]
