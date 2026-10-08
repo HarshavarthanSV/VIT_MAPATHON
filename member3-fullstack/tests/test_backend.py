@@ -141,3 +141,33 @@ def test_get_infrastructure():
     assert data["type"] == "FeatureCollection"
     assert "features" in data
 
+
+def test_get_temporal_comparison():
+    res = client.get("/api/temporal-comparison")
+    assert res.status_code == 200
+    data = res.json()
+    assert "period_1" in data
+    assert "period_2" in data
+    assert "deltas" in data
+    assert "ai_suggestions" in data
+    assert len(data["ai_suggestions"]) >= 3
+    assert data["deltas"]["paddy_area_ha_delta"] > 0
+
+
+def test_chat_assistant():
+    res = client.post("/api/chat", json={"message": "How do I improve paddy yield in Cheranmahadevi?"})
+    assert res.status_code == 200
+    data = res.json()
+    assert "reply" in data
+    assert len(data["reply"]) > 20
+    assert "Paddy" in data["reply"] or "paddy" in data["reply"] or "நெல்" in data["reply"]
+
+
+def test_download_pdf_report():
+    res = client.get("/api/reports/download-pdf")
+    assert res.status_code == 200
+    assert res.headers["content-type"] == "application/pdf"
+    assert "VIT_MAPATHON_Agricultural_Cadastral_Report.pdf" in res.headers.get("content-disposition", "")
+    assert len(res.content) > 1000
+
+

@@ -4,6 +4,8 @@ import FilterPanel from './components/FilterPanel';
 import StatisticsCard from './components/StatisticsCard';
 import ParcelPopup from './components/ParcelPopup';
 import MetricsModal from './components/MetricsModal';
+import TemporalComparisonModal from './components/TemporalComparisonModal';
+import AgriChatbot from './components/AgriChatbot';
 
 export default function App() {
   const [geojsonData, setGeojsonData] = useState(null);
@@ -25,6 +27,8 @@ export default function App() {
   const [minConfidence, setMinConfidence] = useState(0.0);
   const [selectedParcel, setSelectedParcel] = useState(null);
   const [isMetricsOpen, setIsMetricsOpen] = useState(false);
+  const [isTemporalOpen, setIsTemporalOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Basemap & Overlays
   const [activeBasemap, setActiveBasemap] = useState('satellite');
@@ -235,10 +239,37 @@ export default function App() {
           </div>
 
           <button
-            className="btn-primary"
-            onClick={() => setIsMetricsOpen(true)}
+            className="btn-outline"
+            onClick={() => setIsTemporalOpen(true)}
+            title="Bi-Seasonal Multi-Temporal Comparison & AI Suggestions"
           >
-            📊 ML Evaluation & Metrics
+            ⏱️ Temporal Comparison & Advisory
+          </button>
+
+          <a
+            href="/api/reports/download-pdf"
+            download="VIT_MAPATHON_Agricultural_Cadastral_Report.pdf"
+            className="btn-outline"
+            style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            title="Download Formal PDF Assessment Report"
+          >
+            📄 PDF Report
+          </a>
+
+          <button
+            className="btn-outline"
+            onClick={() => setIsMetricsOpen(true)}
+            title="Model Evaluation Metrics"
+          >
+            📊 ML Metrics
+          </button>
+
+          <button
+            className="btn-primary"
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            title="Consult Agri-AI Assistant"
+          >
+            🤖 Agri-AI Chat
           </button>
         </div>
       </header>
@@ -331,6 +362,20 @@ export default function App() {
         onClose={() => setIsMetricsOpen(false)}
         metrics={metrics}
         featureImportance={featureImportance}
+      />
+
+      {/* Multi-Temporal Comparison & AI Agronomic Suggestions Modal */}
+      <TemporalComparisonModal
+        isOpen={isTemporalOpen}
+        onClose={() => setIsTemporalOpen(false)}
+        onOpenChat={() => setIsChatOpen(true)}
+      />
+
+      {/* Agri-AI Chatbot Assistant */}
+      <AgriChatbot
+        isOpen={isChatOpen}
+        onToggle={() => setIsChatOpen(!isChatOpen)}
+        onClose={() => setIsChatOpen(false)}
       />
     </div>
   );
