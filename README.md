@@ -68,3 +68,26 @@ Automated identification and differentiation of agricultural land parcels, **Pad
    ```bash
    python member1-ml/main.py
    ```
+
+---
+
+## 🗺️ Running Member 2 GIS Postprocessing & Validation Pipeline
+
+1. Run spatial integrity validation and crop statistics:
+   ```bash
+   python postprocessing/validate_classified_parcels.py
+   ```
+2. Run taluk-level crop acreage summary (Ambasamudram vs Cheranmahadevi):
+   ```bash
+   python postprocessing/calculate_taluk_acreage.py
+   ```
+3. Generate publication-quality 300 DPI classification map:
+   ```bash
+   python postprocessing/generate_classification_map.py
+   ```
+4. Output results generated in:
+   - `results/taluk_crop_acreage_summary.csv`
+   - `results/crop_statistics.csv`
+   - `results/gis_validation_report.txt`
+   - `results/validation_maps/final_crop_classification_map.png`
+
