@@ -1,35 +1,41 @@
 {
   "study_area_summary": {
-    "total_parcels": 850,
-    "total_study_area_sq_km": 26.5799,
-    "total_study_area_hectares": 2657.99,
-    "overall_mean_confidence": 0.8844,
+    "state": "Tamil Nadu",
+    "district": "Tirunelveli District",
+    "taluks": [
+      "Ambasamudram Taluk",
+      "Cheranmahadevi Taluk"
+    ],
+    "total_parcels": 1050,
+    "total_study_area_sq_km": 55.7356,
+    "total_study_area_hectares": 5573.43,
+    "overall_mean_confidence": 0.9039,
     "meets_min_area_requirement": true
   },
   "crop_distribution": {
     "Paddy": {
-      "parcel_count": 447,
-      "percentage_of_parcels": 52.59,
-      "area_sq_km": 13.9896,
-      "area_hectares": 1398.96,
-      "percentage_of_total_area": 52.63,
-      "mean_confidence": 0.9133
+      "parcel_count": 688,
+      "percentage_of_parcels": 65.52,
+      "area_sq_km": 35.9128,
+      "area_hectares": 3591.28,
+      "percentage_of_total_area": 64.43,
+      "mean_confidence": 0.921
     },
     "Banana": {
-      "parcel_count": 254,
-      "percentage_of_parcels": 29.88,
-      "area_sq_km": 7.9298,
-      "area_hectares": 792.98,
-      "percentage_of_total_area": 29.83,
-      "mean_confidence": 0.8746
+      "parcel_count": 251,
+      "percentage_of_parcels": 23.9,
+      "area_sq_km": 14.002,
+      "area_hectares": 1400.2,
+      "percentage_of_total_area": 25.12,
+      "mean_confidence": 0.8895
     },
     "Other": {
-      "parcel_count": 149,
-      "percentage_of_parcels": 17.53,
-      "area_sq_km": 4.6605,
-      "area_hectares": 466.05,
-      "percentage_of_total_area": 17.53,
-      "mean_confidence": 0.8141
+      "parcel_count": 111,
+      "percentage_of_parcels": 10.57,
+      "area_sq_km": 5.8195,
+      "area_hectares": 581.95,
+      "percentage_of_total_area": 10.44,
+      "mean_confidence": 0.8307
     }
   }
 }

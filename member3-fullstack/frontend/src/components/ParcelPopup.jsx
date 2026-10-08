@@ -3,11 +3,11 @@ import React from 'react';
 export const getCropColor = (crop) => {
   switch (crop?.toLowerCase()) {
     case 'paddy':
-      return { fill: '#2e7d32', stroke: '#1b5e20', text: '#4caf50' };
+      return { fill: '#16a34a', stroke: '#15803d', text: '#22c55e', bg: 'rgba(22, 163, 74, 0.2)' };
     case 'banana':
-      return { fill: '#fbc02d', stroke: '#f57f17', text: '#fbc02d' };
+      return { fill: '#eab308', stroke: '#ca8a04', text: '#facc15', bg: 'rgba(234, 179, 8, 0.2)' };
     default:
-      return { fill: '#78909c', stroke: '#455a64', text: '#90a4ae' };
+      return { fill: '#64748b', stroke: '#475569', text: '#94a3b8', bg: 'rgba(100, 116, 139, 0.2)' };
   }
 };
 
@@ -19,52 +19,68 @@ export const createParcelPopupContent = (props) => {
   const pBanana = ((props.prob_banana || 0) * 100).toFixed(1);
   const pOther = ((props.prob_other || 0) * 100).toFixed(1);
 
+  const village = props.village || 'Ambasamudram Field';
+  const taluk = props.taluk || 'Ambasamudram Taluk';
+  const district = props.district || 'Tirunelveli District';
+  const state = props.state || 'Tamil Nadu';
+
+  const ha = (props.area_ha || 0).toFixed(2);
+  const acres = ((props.area_ha || 0) * 2.47105).toFixed(2);
+  const sqkm = (props.area_sq_km || 0).toFixed(4);
+
   return `
     <div class="parcel-popup-card">
+      <div class="popup-location-tag">
+        📍 <strong>${village}</strong>, ${taluk}
+        <div style="font-size: 0.65rem; color: #94a3b8;">${district}, ${state}</div>
+      </div>
+
       <div class="popup-header">
         <span class="popup-id">${props.parcel_id || 'Parcel'}</span>
-        <span class="popup-crop-badge" style="background: ${colors.fill}; color: #fff;">
+        <span class="popup-crop-badge" style="background: ${colors.fill}; color: #ffffff; box-shadow: 0 0 10px ${colors.fill}66;">
           ${crop}
         </span>
       </div>
       
       <div class="popup-metric-row">
-        <span class="popup-metric-label">Confidence:</span>
-        <span class="popup-metric-value" style="color: ${colors.text};">${confPct}%</span>
+        <span class="popup-metric-label">Model Confidence:</span>
+        <span class="popup-metric-value" style="color: ${colors.text}; font-weight: 700;">${confPct}%</span>
       </div>
       
       <div class="popup-metric-row">
-        <span class="popup-metric-label">Area (Hectares):</span>
-        <span class="popup-metric-value">${(props.area_ha || 0).toFixed(2)} ha</span>
+        <span class="popup-metric-label">Parcel Area:</span>
+        <span class="popup-metric-value">${ha} ha <span style="font-size: 0.65rem; color: #94a3b8;">(${acres} acres)</span></span>
       </div>
-      
+
       <div class="popup-metric-row">
-        <span class="popup-metric-label">Area (Sq. Km):</span>
-        <span class="popup-metric-value">${(props.area_sq_km || 0).toFixed(4)} km²</span>
+        <span class="popup-metric-label">Spatial Area:</span>
+        <span class="popup-metric-value">${sqkm} km²</span>
       </div>
       
       <div class="prob-container">
-        <div style="font-size: 0.65rem; color: #94a3b8; margin-bottom: 2px;">Model Probabilities:</div>
-        <div class="prob-row">
-          <span class="prob-crop-name" style="color: #4caf50;">Paddy</span>
-          <div class="prob-track">
-            <div class="prob-fill" style="width: ${pPaddy}%; background: #2e7d32;"></div>
-          </div>
-          <span>${pPaddy}%</span>
+        <div style="font-size: 0.65rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 3px;">
+          S-2 Random Forest Probabilities:
         </div>
         <div class="prob-row">
-          <span class="prob-crop-name" style="color: #fbc02d;">Banana</span>
+          <span class="prob-crop-name" style="color: #22c55e;">Paddy</span>
           <div class="prob-track">
-            <div class="prob-fill" style="width: ${pBanana}%; background: #fbc02d;"></div>
+            <div class="prob-fill" style="width: ${pPaddy}%; background: #16a34a;"></div>
           </div>
-          <span>${pBanana}%</span>
+          <span style="font-family: var(--font-mono);">${pPaddy}%</span>
         </div>
         <div class="prob-row">
-          <span class="prob-crop-name" style="color: #90a4ae;">Other</span>
+          <span class="prob-crop-name" style="color: #facc15;">Banana</span>
           <div class="prob-track">
-            <div class="prob-fill" style="width: ${pOther}%; background: #78909c;"></div>
+            <div class="prob-fill" style="width: ${pBanana}%; background: #eab308;"></div>
           </div>
-          <span>${pOther}%</span>
+          <span style="font-family: var(--font-mono);">${pBanana}%</span>
+        </div>
+        <div class="prob-row">
+          <span class="prob-crop-name" style="color: #94a3b8;">Other</span>
+          <div class="prob-track">
+            <div class="prob-fill" style="width: ${pOther}%; background: #64748b;"></div>
+          </div>
+          <span style="font-family: var(--font-mono);">${pOther}%</span>
         </div>
       </div>
     </div>
@@ -77,25 +93,71 @@ export default function ParcelPopup({ parcel }) {
   const crop = props.predicted_crop || 'Unknown';
   const colors = getCropColor(crop);
 
+  const village = props.village || 'Ambasamudram Rural';
+  const taluk = props.taluk || 'Ambasamudram Taluk';
+  const district = props.district || 'Tirunelveli District';
+  const state = props.state || 'Tamil Nadu';
+
+  const ha = (props.area_ha || 0).toFixed(2);
+  const acres = ((props.area_ha || 0) * 2.47105).toFixed(2);
+  const sqkm = (props.area_sq_km || 0).toFixed(4);
+
   return (
-    <div className="panel-card" style={{ marginTop: '0.75rem' }}>
-      <div className="popup-header">
-        <span className="popup-id">{props.parcel_id}</span>
-        <span className="popup-crop-badge" style={{ background: colors.fill, color: '#fff' }}>
+    <div className="inspector-card">
+      <div className="inspector-loc">
+        <span className="loc-pin">📍</span>
+        <div>
+          <div className="loc-village">{village}</div>
+          <div className="loc-admin">{taluk} • {district}, {state}</div>
+        </div>
+      </div>
+
+      <div className="inspector-crop-row">
+        <span className="inspector-id">{props.parcel_id}</span>
+        <span className="inspector-badge" style={{ background: colors.fill, color: '#fff' }}>
           {crop}
         </span>
       </div>
-      <div className="popup-metric-row">
-        <span className="popup-metric-label">Confidence:</span>
-        <span className="popup-metric-value" style={{ color: colors.text }}>
-          {((props.confidence || 0) * 100).toFixed(1)}%
-        </span>
+
+      <div className="inspector-grid">
+        <div className="inspector-box">
+          <div className="inspector-lbl">Model Confidence</div>
+          <div className="inspector-val" style={{ color: colors.text }}>
+            {((props.confidence || 0) * 100).toFixed(1)}%
+          </div>
+        </div>
+        <div className="inspector-box">
+          <div className="inspector-lbl">Area (Hectares)</div>
+          <div className="inspector-val">{ha} <span style={{ fontSize: '0.7rem' }}>ha</span></div>
+          <div className="inspector-sub">{acres} Acres</div>
+        </div>
       </div>
-      <div className="popup-metric-row">
-        <span className="popup-metric-label">Area:</span>
-        <span className="popup-metric-value">
-          {(props.area_ha || 0).toFixed(2)} ha ({(props.area_sq_km || 0).toFixed(4)} km²)
-        </span>
+
+      <div className="prob-container" style={{ marginTop: '0.75rem' }}>
+        <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600, marginBottom: '4px' }}>
+          Random Forest Class Probabilities
+        </div>
+        <div className="prob-row">
+          <span className="prob-crop-name" style={{ color: '#22c55e' }}>Paddy</span>
+          <div className="prob-track">
+            <div className="prob-fill" style={{ width: `${(props.prob_paddy || 0) * 100}%`, background: '#16a34a' }} />
+          </div>
+          <span>{((props.prob_paddy || 0) * 100).toFixed(1)}%</span>
+        </div>
+        <div className="prob-row">
+          <span className="prob-crop-name" style={{ color: '#facc15' }}>Banana</span>
+          <div className="prob-track">
+            <div className="prob-fill" style={{ width: `${(props.prob_banana || 0) * 100}%`, background: '#eab308' }} />
+          </div>
+          <span>{((props.prob_banana || 0) * 100).toFixed(1)}%</span>
+        </div>
+        <div className="prob-row">
+          <span className="prob-crop-name" style={{ color: '#94a3b8' }}>Other</span>
+          <div className="prob-track">
+            <div className="prob-fill" style={{ width: `${(props.prob_other || 0) * 100}%`, background: '#64748b' }} />
+          </div>
+          <span>{((props.prob_other || 0) * 100).toFixed(1)}%</span>
+        </div>
       </div>
     </div>
   );

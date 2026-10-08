@@ -3,10 +3,10 @@ import React from 'react';
 export default function FilterPanel({
   visibleCrops,
   onToggleCrop,
+  selectedTaluk,
+  onSelectTaluk,
   minConfidence,
   onChangeConfidence,
-  activeBasemap,
-  onChangeBasemap,
   statistics,
   displayedCount,
   totalCount,
@@ -17,35 +17,41 @@ export default function FilterPanel({
   return (
     <div className="panel-card">
       <div className="panel-card-title">
-        <span>🗺️ Layer & Crop Filters</span>
+        <span>⚙️ Crop & Spatial Filters</span>
       </div>
 
-      {/* Basemap Selection */}
+      {/* Taluk Filter Tabs */}
       <div style={{ marginBottom: '1.25rem' }}>
-        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem' }}>
-          Basemap Imagery:
+        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontWeight: 600 }}>
+          Study Area Taluk:
         </div>
-        <div className="basemap-switch">
+        <div className="taluk-tabs-row">
           <button
-            className={`basemap-btn ${activeBasemap === 'satellite' ? 'active' : ''}`}
-            onClick={() => onChangeBasemap('satellite')}
+            className={`taluk-tab-btn ${selectedTaluk === 'all' ? 'active' : ''}`}
+            onClick={() => onSelectTaluk('all')}
           >
-            🛰️ Satellite (Esri)
+            Both Taluks
           </button>
           <button
-            className={`basemap-btn ${activeBasemap === 'street' ? 'active' : ''}`}
-            onClick={() => onChangeBasemap('street')}
+            className={`taluk-tab-btn ${selectedTaluk === 'Ambasamudram Taluk' ? 'active' : ''}`}
+            onClick={() => onSelectTaluk('Ambasamudram Taluk')}
           >
-            🗺️ Street (OSM)
+            Ambasamudram
+          </button>
+          <button
+            className={`taluk-tab-btn ${selectedTaluk === 'Cheranmahadevi Taluk' ? 'active' : ''}`}
+            onClick={() => onSelectTaluk('Cheranmahadevi Taluk')}
+          >
+            Cheranmahadevi
           </button>
         </div>
       </div>
 
       {/* Crop Checkboxes */}
       <div style={{ marginBottom: '1.25rem' }}>
-        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between' }}>
-          <span>Crop Layers:</span>
-          <span>{displayedCount} / {totalCount} Parcels</span>
+        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontWeight: 600 }}>Crop Categories:</span>
+          <span className="count-pill">{displayedCount} / {totalCount} Parcels</span>
         </div>
 
         <div className="crop-filters-list">
@@ -53,8 +59,8 @@ export default function FilterPanel({
           <div
             className="crop-filter-row"
             style={{
-              borderColor: visibleCrops.Paddy ? '#2e7d32' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Paddy ? 'rgba(46, 125, 50, 0.15)' : 'rgba(15, 23, 42, 0.4)'
+              borderColor: visibleCrops.Paddy ? '#16a34a' : 'rgba(255, 255, 255, 0.08)',
+              background: visibleCrops.Paddy ? 'rgba(22, 163, 74, 0.15)' : 'rgba(15, 23, 42, 0.4)'
             }}
             onClick={() => onToggleCrop('Paddy')}
           >
@@ -64,13 +70,17 @@ export default function FilterPanel({
                 checked={visibleCrops.Paddy}
                 onChange={() => onToggleCrop('Paddy')}
                 onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#2e7d32', cursor: 'pointer' }}
+                style={{ accentColor: '#16a34a', cursor: 'pointer' }}
               />
-              <span className="crop-color-pill" style={{ background: '#2e7d32' }} />
-              <span className="crop-name" style={{ color: '#4caf50' }}>Paddy</span>
+              <span className="crop-color-pill" style={{ background: '#16a34a' }} />
+              <div>
+                <span className="crop-name" style={{ color: '#22c55e' }}>Paddy (நெல்)</span>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>River floodplains & canal tracts</div>
+              </div>
             </div>
             <div className="crop-stats-mini">
-              {cropDist.Paddy?.parcel_count || 0} parcels ({cropDist.Paddy?.area_hectares || 0} ha)
+              {cropDist.Paddy?.parcel_count || 0} parcels
+              <div style={{ color: '#22c55e' }}>{cropDist.Paddy?.area_hectares || 0} ha</div>
             </div>
           </div>
 
@@ -78,8 +88,8 @@ export default function FilterPanel({
           <div
             className="crop-filter-row"
             style={{
-              borderColor: visibleCrops.Banana ? '#fbc02d' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Banana ? 'rgba(251, 192, 45, 0.15)' : 'rgba(15, 23, 42, 0.4)'
+              borderColor: visibleCrops.Banana ? '#eab308' : 'rgba(255, 255, 255, 0.08)',
+              background: visibleCrops.Banana ? 'rgba(234, 179, 8, 0.15)' : 'rgba(15, 23, 42, 0.4)'
             }}
             onClick={() => onToggleCrop('Banana')}
           >
@@ -89,13 +99,17 @@ export default function FilterPanel({
                 checked={visibleCrops.Banana}
                 onChange={() => onToggleCrop('Banana')}
                 onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#fbc02d', cursor: 'pointer' }}
+                style={{ accentColor: '#eab308', cursor: 'pointer' }}
               />
-              <span className="crop-color-pill" style={{ background: '#fbc02d' }} />
-              <span className="crop-name" style={{ color: '#fbc02d' }}>Banana</span>
+              <span className="crop-color-pill" style={{ background: '#eab308' }} />
+              <div>
+                <span className="crop-name" style={{ color: '#facc15' }}>Banana (வாழை)</span>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Perennial horticulture tracts</div>
+              </div>
             </div>
             <div className="crop-stats-mini">
-              {cropDist.Banana?.parcel_count || 0} parcels ({cropDist.Banana?.area_hectares || 0} ha)
+              {cropDist.Banana?.parcel_count || 0} parcels
+              <div style={{ color: '#facc15' }}>{cropDist.Banana?.area_hectares || 0} ha</div>
             </div>
           </div>
 
@@ -103,8 +117,8 @@ export default function FilterPanel({
           <div
             className="crop-filter-row"
             style={{
-              borderColor: visibleCrops.Other ? '#78909c' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Other ? 'rgba(120, 144, 156, 0.15)' : 'rgba(15, 23, 42, 0.4)'
+              borderColor: visibleCrops.Other ? '#64748b' : 'rgba(255, 255, 255, 0.08)',
+              background: visibleCrops.Other ? 'rgba(100, 116, 139, 0.15)' : 'rgba(15, 23, 42, 0.4)'
             }}
             onClick={() => onToggleCrop('Other')}
           >
@@ -114,22 +128,26 @@ export default function FilterPanel({
                 checked={visibleCrops.Other}
                 onChange={() => onToggleCrop('Other')}
                 onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#78909c', cursor: 'pointer' }}
+                style={{ accentColor: '#64748b', cursor: 'pointer' }}
               />
-              <span className="crop-color-pill" style={{ background: '#78909c' }} />
-              <span className="crop-name" style={{ color: '#90a4ae' }}>Other</span>
+              <span className="crop-color-pill" style={{ background: '#64748b' }} />
+              <div>
+                <span className="crop-name" style={{ color: '#94a3b8' }}>Other Crops / Fallow</span>
+                <div style={{ fontSize: '0.65rem', color: '#64748b' }}>Dry crops, scrub, borders</div>
+              </div>
             </div>
             <div className="crop-stats-mini">
-              {cropDist.Other?.parcel_count || 0} parcels ({cropDist.Other?.area_hectares || 0} ha)
+              {cropDist.Other?.parcel_count || 0} parcels
+              <div style={{ color: '#94a3b8' }}>{cropDist.Other?.area_hectares || 0} ha</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Confidence Slider */}
-      <div className="slider-container" style={{ marginBottom: '1rem' }}>
+      <div className="slider-container" style={{ marginBottom: '1.25rem' }}>
         <div className="slider-header">
-          <span>Minimum Confidence:</span>
+          <span style={{ fontWeight: 600 }}>Minimum Confidence Threshold:</span>
           <strong style={{ color: '#38bdf8' }}>{Math.round(minConfidence * 100)}%</strong>
         </div>
         <input
@@ -142,27 +160,18 @@ export default function FilterPanel({
           className="slider-input"
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', color: '#64748b' }}>
-          <span>0% (All)</span>
+          <span>0% (All Parcels)</span>
           <span>50%</span>
-          <span>100% (Strict)</span>
+          <span>95% (High Precision)</span>
         </div>
       </div>
 
-      {/* Reset Button */}
+      {/* Reset Action */}
       <button
         onClick={onResetFilters}
-        style={{
-          width: '100%',
-          padding: '0.45rem',
-          background: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '6px',
-          color: '#cbd5e1',
-          fontSize: '0.75rem',
-          cursor: 'pointer'
-        }}
+        className="reset-btn"
       >
-        🔄 Reset All Filters
+        🔄 Reset All Filters to Default
       </button>
     </div>
   );

@@ -17,7 +17,7 @@ if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
 from database import init_db_connection, is_db_connected, resolve_artifact_path
-from routers import parcels, statistics
+from routers import parcels, statistics, layers
 
 from contextlib import asynccontextmanager
 
@@ -50,6 +50,7 @@ app.add_middleware(
 # Mount Routers
 app.include_router(parcels.router)
 app.include_router(statistics.router)
+app.include_router(layers.router)
 
 
 @app.get("/", include_in_schema=False)
