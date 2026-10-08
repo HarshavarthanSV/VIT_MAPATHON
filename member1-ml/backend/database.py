@@ -97,6 +97,8 @@ def resolve_artifact_path(filename: str) -> Optional[str]:
     repo_root = os.path.dirname(member1_dir)
 
     candidates = [
+        os.path.join(backend_dir, "data", filename),
+        os.path.join(backend_dir, "outputs", filename),
         os.path.join(member1_dir, "outputs", filename),
         os.path.join(repo_root, "member2-gis", "inputs", filename),
         os.path.join(repo_root, "results", filename),
