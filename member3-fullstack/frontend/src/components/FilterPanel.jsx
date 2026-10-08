@@ -7,6 +7,14 @@ export default function FilterPanel({
   onSelectTaluk,
   minConfidence,
   onChangeConfidence,
+  activeBasemap,
+  onChangeBasemap,
+  showPlaces,
+  onChangeShowPlaces,
+  showInfra,
+  onChangeShowInfra,
+  showLabels,
+  onChangeShowLabels,
   statistics,
   displayedCount,
   totalCount,
@@ -33,17 +41,89 @@ export default function FilterPanel({
             Both Taluks
           </button>
           <button
-            className={`taluk-tab-btn ${selectedTaluk.toLowerCase().includes('ambasamudram') ? 'active' : ''}`}
+            className={`taluk-tab-btn ${selectedTaluk.startsWith('Ambasamudram') ? 'active' : ''}`}
             onClick={() => onSelectTaluk('Ambasamudram')}
           >
             Ambasamudram
           </button>
           <button
-            className={`taluk-tab-btn ${selectedTaluk.toLowerCase().includes('cheranmahadevi') ? 'active' : ''}`}
+            className={`taluk-tab-btn ${selectedTaluk.startsWith('Cheranmahadevi') ? 'active' : ''}`}
             onClick={() => onSelectTaluk('Cheranmahadevi')}
           >
             Cheranmahadevi
           </button>
+        </div>
+      </div>
+
+      {/* Basemap Selection in Sidebar */}
+      <div style={{ marginBottom: '1.25rem' }}>
+        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontWeight: 600 }}>
+          🗺️ Satellite & Basemap Layers:
+        </div>
+        <div className="basemap-pills-row">
+          <button
+            className={`map-pill-btn ${activeBasemap === 'satellite' ? 'active' : ''}`}
+            onClick={() => onChangeBasemap('satellite')}
+            title="Esri Satellite Imagery"
+          >
+            🛰️ Satellite
+          </button>
+          <button
+            className={`map-pill-btn ${activeBasemap === 'voyager' ? 'active' : ''}`}
+            onClick={() => onChangeBasemap('voyager')}
+            title="CartoDB Street Map"
+          >
+            🗺️ Street
+          </button>
+          <button
+            className={`map-pill-btn ${activeBasemap === 'dark' ? 'active' : ''}`}
+            onClick={() => onChangeBasemap('dark')}
+            title="Dark Theme GIS"
+          >
+            🌙 Dark
+          </button>
+          <button
+            className={`map-pill-btn ${activeBasemap === 'topo' ? 'active' : ''}`}
+            onClick={() => onChangeBasemap('topo')}
+            title="Topographic Elevation"
+          >
+            ⛰️ Topo
+          </button>
+        </div>
+      </div>
+
+      {/* Overlays Toggles in Sidebar */}
+      <div style={{ marginBottom: '1.25rem' }}>
+        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '0.4rem', fontWeight: 600 }}>
+          GIS Feature Overlays:
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+          <label className="toggle-chk-label" style={{ fontSize: '0.75rem' }}>
+            <input
+              type="checkbox"
+              checked={showInfra}
+              onChange={(e) => onChangeShowInfra(e.target.checked)}
+            />
+            <span>🌊 Thamirabarani River & Highways</span>
+          </label>
+          <label className="toggle-chk-label" style={{ fontSize: '0.75rem' }}>
+            <input
+              type="checkbox"
+              checked={showPlaces}
+              onChange={(e) => onChangeShowPlaces(e.target.checked)}
+            />
+            <span>📍 Town & Village Markers</span>
+          </label>
+          {activeBasemap === 'satellite' && (
+            <label className="toggle-chk-label" style={{ fontSize: '0.75rem' }}>
+              <input
+                type="checkbox"
+                checked={showLabels}
+                onChange={(e) => onChangeShowLabels(e.target.checked)}
+              />
+              <span>🏷️ Place & Street Labels</span>
+            </label>
+          )}
         </div>
       </div>
 
@@ -74,13 +154,13 @@ export default function FilterPanel({
               />
               <span className="crop-color-pill" style={{ background: '#16a34a' }} />
               <div>
-                <span className="crop-name" style={{ color: '#22c55e' }}>Paddy (நெல்)</span>
-                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>River floodplains & canal tracts</div>
+                <span className="crop-name" style={{ color: '#4ade80' }}>Paddy (நெல்)</span>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Irrigated wetland crop</div>
               </div>
             </div>
             <div className="crop-stats-mini">
               {cropDist.Paddy?.parcel_count || 0} parcels
-              <div style={{ color: '#22c55e' }}>{cropDist.Paddy?.area_hectares || 0} ha</div>
+              <div style={{ color: '#4ade80' }}>{cropDist.Paddy?.area_hectares || 0} ha</div>
             </div>
           </div>
 

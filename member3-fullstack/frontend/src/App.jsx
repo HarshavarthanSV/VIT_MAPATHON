@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import MapView from './components/MapView';
 import FilterPanel from './components/FilterPanel';
 import StatisticsCard from './components/StatisticsCard';
@@ -13,6 +13,7 @@ export default function App() {
   const [featureImportance, setFeatureImportance] = useState(null);
   const [healthInfo, setHealthInfo] = useState(null);
 
+  // Filter States
   const [visibleCrops, setVisibleCrops] = useState({
     Paddy: true,
     Banana: true,
@@ -20,9 +21,14 @@ export default function App() {
   });
   const [selectedTaluk, setSelectedTaluk] = useState('all');
   const [minConfidence, setMinConfidence] = useState(0.0);
-  const [activeBasemap, setActiveBasemap] = useState('satellite');
   const [selectedParcel, setSelectedParcel] = useState(null);
   const [isMetricsOpen, setIsMetricsOpen] = useState(false);
+
+  // Basemap & Overlay Layers State (controlled from sidebar)
+  const [activeBasemap, setActiveBasemap] = useState('satellite');
+  const [showPlaces, setShowPlaces] = useState(false);
+  const [showInfra, setShowInfra] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -85,26 +91,105 @@ export default function App() {
 
   // Filter features based on crop, confidence, and taluk
   const allFeatures = geojsonData?.features || [];
-  const filteredFeatures = allFeatures.filter((f) => {
-    const crop = f.properties?.predicted_crop;
-    const conf = f.properties?.confidence || 0;
-    const taluk = f.properties?.taluk;
+  const filteredFeatures = useMemo(() => {
+    return allFeatures.filter((f) => {
+      const p = f.properties || {};
+      const crop = p.predicted_crop;
+      const conf = p.confidence ?? 0;
+      const taluk = (p.taluk || '').toLowerCase();
 
-    if (!visibleCrops[crop]) return false;
-    if (conf < minConfidence) return false;
-    if (selectedTaluk !== 'all') {
-      const normTaluk = (taluk || '').toLowerCase();
-      const normSelected = selectedTaluk.toLowerCase();
-      if (!normTaluk.includes(normSelected) && !normSelected.includes(normTaluk)) {
-        return false;
+      if (!visibleCrops[crop]) return false;
+      if (conf < minConfidence) return false;
+
+      if (selectedTaluk !== 'all') {
+        const sel = selectedTaluk.toLowerCase();
+        if (!taluk.includes(sel) && !sel.includes(taluk)) {
+          return false;
+        }
       }
-    }
-    return true;
-  });
+      return true;
+    });
+  }, [allFeatures, visibleCrops, minConfidence, selectedTaluk]);
 
-  const displayedGeojson = geojsonData
-    ? { ...geojsonData, features: filteredFeatures }
-    : null;
+  // Dynamically compute statistics reflecting active filters and taluk selection
+  const dynamicStatistics = useMemo(() => {
+    if (!geojsonData || allFeatures.length === 0) {
+      return statistics;
+    }
+
+    let totalAreaHa = 0;
+    let sumConf = 0;
+    const cropMap = {
+      Paddy: { count: 0, areaHa: 0, sumConf: 0 },
+      Banana: { count: 0, areaHa: 0, sumConf: 0 },
+      Other: { count: 0, areaHa: 0, sumConf: 0 }
+    };
+
+    filteredFeatures.forEach((f) => {
+      const p = f.properties || {};
+      const crop = p.predicted_crop || 'Other';
+      const ha = Number(p.area_ha || (p.area_m2 ? p.area_m2 / 10000 : 0)) || 0;
+      const conf = Number(p.confidence) || 0;
+
+      totalAreaHa += ha;
+      sumConf += conf;
+
+      if (!cropMap[crop]) {
+        cropMap[crop] = { count: 0, areaHa: 0, sumConf: 0 };
+      }
+      cropMap[crop].count += 1;
+      cropMap[crop].areaHa += ha;
+      cropMap[crop].sumConf += conf;
+    });
+
+    const totalCount = filteredFeatures.length;
+    const meanConf = totalCount > 0 ? (sumConf / totalCount) : 0;
+    const totalAreaAcres = totalAreaHa * 2.47105;
+    const totalAreaSqKm = totalAreaHa / 100;
+
+    let aoiKm2 = 240.64;
+    if (selectedTaluk.toLowerCase().includes('ambasamudram')) {
+      aoiKm2 = 122.14;
+    } else if (selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
+      aoiKm2 = 118.51;
+    }
+
+    const cropDist = {};
+    ['Paddy', 'Banana', 'Other'].forEach((crop) => {
+      const item = cropMap[crop] || { count: 0, areaHa: 0, sumConf: 0 };
+      const pctArea = totalAreaHa > 0 ? ((item.areaHa / totalAreaHa) * 100) : 0;
+      const cMeanConf = item.count > 0 ? (item.sumConf / item.count) : 0;
+      cropDist[crop] = {
+        parcel_count: item.count,
+        area_hectares: Number(item.areaHa.toFixed(2)),
+        area_acres: Number((item.areaHa * 2.47105).toFixed(2)),
+        area_sq_km: Number((item.areaHa / 100).toFixed(4)),
+        percentage_of_total_area: Number(pctArea.toFixed(2)),
+        mean_confidence: Number(cMeanConf.toFixed(4))
+      };
+    });
+
+    return {
+      study_area_summary: {
+        total_study_area_sq_km: aoiKm2,
+        total_study_area_hectares: aoiKm2 * 100,
+        total_parcels: totalCount,
+        total_parcels_area_hectares: Number(totalAreaHa.toFixed(2)),
+        total_parcels_area_acres: Number(totalAreaAcres.toFixed(2)),
+        total_parcels_area_sq_km: Number(totalAreaSqKm.toFixed(4)),
+        overall_mean_confidence: Number(meanConf.toFixed(4)),
+        selected_taluk: selectedTaluk,
+        meets_min_area_requirement: aoiKm2 >= 20.0
+      },
+      crop_distribution: cropDist
+    };
+  }, [geojsonData, allFeatures, filteredFeatures, selectedTaluk, statistics]);
+
+  const displayedGeojson = useMemo(() => {
+    return geojsonData
+      ? { ...geojsonData, features: filteredFeatures }
+      : null;
+  }, [geojsonData, filteredFeatures]);
 
   return (
     <div className="app-layout">
@@ -160,10 +245,11 @@ export default function App() {
               </div>
             )}
 
-            {/* Study Area Statistics */}
+            {/* Dynamic Study Area Statistics */}
             <StatisticsCard
-              statistics={statistics}
+              statistics={dynamicStatistics}
               metrics={metrics}
+              selectedTaluk={selectedTaluk}
             />
 
             {/* Spatial & Crop Filters */}
@@ -174,7 +260,15 @@ export default function App() {
               onSelectTaluk={setSelectedTaluk}
               minConfidence={minConfidence}
               onChangeConfidence={setMinConfidence}
-              statistics={statistics}
+              activeBasemap={activeBasemap}
+              onChangeBasemap={setActiveBasemap}
+              showPlaces={showPlaces}
+              onChangeShowPlaces={setShowPlaces}
+              showInfra={showInfra}
+              onChangeShowInfra={setShowInfra}
+              showLabels={showLabels}
+              onChangeShowLabels={setShowLabels}
+              statistics={dynamicStatistics}
               displayedCount={filteredFeatures.length}
               totalCount={allFeatures.length}
               onResetFilters={handleResetFilters}
@@ -207,7 +301,10 @@ export default function App() {
               geojsonData={displayedGeojson}
               infrastructureData={infrastructureData}
               activeBasemap={activeBasemap}
-              onChangeBasemap={setActiveBasemap}
+              showPlaces={showPlaces}
+              showInfra={showInfra}
+              showLabels={showLabels}
+              selectedTaluk={selectedTaluk}
               selectedParcel={selectedParcel}
               onSelectParcel={setSelectedParcel}
               visibleCrops={visibleCrops}

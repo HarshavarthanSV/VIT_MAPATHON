@@ -427,107 +427,40 @@ body {
   height: 100%;
 }
 
-/* Floating Breadcrumbs on Map */
-.map-floating-breadcrumbs {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 800;
+.map-recenter-pill-btn {
   background: rgba(9, 13, 22, 0.88);
   backdrop-filter: blur(14px);
   border: 1px solid var(--border-color);
+  color: #f8fafc;
   padding: 0.45rem 0.85rem;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-}
-
-.crumb-badge {
-  color: #94a3b8;
-}
-
-.crumb-arrow {
-  color: #475569;
-}
-
-.crumb-badge.highlighted {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  padding: 0.1rem 0.45rem;
-  border-radius: 12px;
-}
-
-/* Quick Jump Bar */
-.map-quick-jump-bar {
-  position: absolute;
-  top: 3.5rem;
-  left: 1rem;
-  z-index: 800;
-  background: rgba(9, 13, 22, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  padding: 0.35rem 0.65rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  overflow-x: auto;
-  max-width: calc(100% - 2rem);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.jump-title {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.jump-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
-  padding: 0.25rem 0.55rem;
-  border-radius: 12px;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
 }
 
-.jump-pill:hover {
-  background: #0284c7;
-  color: #fff;
-  border-color: #38bdf8;
-}
-
-.jump-pill.active {
+.map-recenter-pill-btn:hover {
   background: rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
   border-color: #38bdf8;
+  color: #38bdf8;
+  transform: translateY(-1px);
 }
 
-/* Floating Layer Controls Box */
+/* Floating Breadcrumbs on Map (Hidden) */
+.map-floating-breadcrumbs {
+  display: none !important;
+}
+
+/* Quick Jump Bar (Hidden) */
+.map-quick-jump-bar {
+  display: none !important;
+}
+
+/* Floating Layer Controls Box (Hidden) */
 .map-layer-controls-box {
-  position: absolute;
-  top: 6.5rem;
-  left: 1rem;
-  z-index: 800;
-  background: rgba(9, 13, 22, 0.9);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-color);
-  padding: 0.65rem 0.85rem;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: none !important;
 }
 
 .ctrl-title {
