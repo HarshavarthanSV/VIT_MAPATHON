@@ -1,0 +1,35 @@
+{
+  "study_area_summary": {
+    "total_parcels": 850,
+    "total_study_area_sq_km": 26.5799,
+    "total_study_area_hectares": 2657.99,
+    "overall_mean_confidence": 0.8844,
+    "meets_min_area_requirement": true
+  },
+  "crop_distribution": {
+    "Paddy": {
+      "parcel_count": 447,
+      "percentage_of_parcels": 52.59,
+      "area_sq_km": 13.9896,
+      "area_hectares": 1398.96,
+      "percentage_of_total_area": 52.63,
+      "mean_confidence": 0.9133
+    },
+    "Banana": {
+      "parcel_count": 254,
+      "percentage_of_parcels": 29.88,
+      "area_sq_km": 7.9298,
+      "area_hectares": 792.98,
+      "percentage_of_total_area": 29.83,
+      "mean_confidence": 0.8746
+    },
+    "Other": {
+      "parcel_count": 149,
+      "percentage_of_parcels": 17.53,
+      "area_sq_km": 4.6605,
+      "area_hectares": 466.05,
+      "percentage_of_total_area": 17.53,
+      "mean_confidence": 0.8141
+    }
+  }
+}
