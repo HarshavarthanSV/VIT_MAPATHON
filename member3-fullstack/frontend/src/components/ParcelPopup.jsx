@@ -3,11 +3,11 @@ import React from 'react';
 export const getCropColor = (crop) => {
   switch (crop?.toLowerCase()) {
     case 'paddy':
-      return { fill: '#22c55e', stroke: '#14532d', text: '#4ade80', bg: 'rgba(34, 197, 94, 0.25)' };
+      return { fill: '#16a34a', stroke: '#14532d', text: '#15803d', badgeText: '#ffffff', bg: 'rgba(22, 163, 74, 0.12)' };
     case 'banana':
-      return { fill: '#facc15', stroke: '#854d0e', text: '#fde047', bg: 'rgba(250, 204, 21, 0.25)' };
+      return { fill: '#eab308', stroke: '#854d0e', text: '#854d0e', badgeText: '#ffffff', bg: 'rgba(234, 179, 8, 0.15)' };
     default:
-      return { fill: '#c084fc', stroke: '#581c87', text: '#e9d5ff', bg: 'rgba(192, 132, 252, 0.25)' };
+      return { fill: '#9333ea', stroke: '#581c87', text: '#6b21a8', badgeText: '#ffffff', bg: 'rgba(147, 51, 234, 0.12)' };
   }
 };
 
@@ -32,12 +32,12 @@ export const createParcelPopupContent = (props) => {
     <div class="parcel-popup-card">
       <div class="popup-location-tag">
         📍 <strong>${village}</strong>, ${taluk}
-        <div style="font-size: 0.65rem; color: #94a3b8;">${district}, ${state}</div>
+        <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">${district}, ${state}</div>
       </div>
 
       <div class="popup-header">
         <span class="popup-id">${props.parcel_id || 'Parcel'}</span>
-        <span class="popup-crop-badge" style="background: ${colors.fill}; color: #ffffff; box-shadow: 0 0 10px ${colors.fill}66;">
+        <span class="popup-crop-badge" style="background: ${colors.fill}; color: ${colors.badgeText};">
           ${crop}
         </span>
       </div>
@@ -49,7 +49,7 @@ export const createParcelPopupContent = (props) => {
       
       <div class="popup-metric-row">
         <span class="popup-metric-label">Parcel Area:</span>
-        <span class="popup-metric-value">${ha} ha <span style="font-size: 0.65rem; color: #94a3b8;">(${acres} acres)</span></span>
+        <span class="popup-metric-value">${ha} ha <span style="font-size: 0.7rem; color: #64748b;">(${acres} acres)</span></span>
       </div>
 
       <div class="popup-metric-row">
@@ -57,30 +57,30 @@ export const createParcelPopupContent = (props) => {
         <span class="popup-metric-value">${sqkm} km²</span>
       </div>
       
-      <div class="prob-container">
-        <div style="font-size: 0.65rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-bottom: 3px;">
-          S-2 Random Forest Probabilities:
+      <div class="prob-container" style="margin-top: 8px;">
+        <div style="font-size: 0.68rem; color: #475569; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+          Sentinel-2 RF Probabilities:
         </div>
         <div class="prob-row">
-          <span class="prob-crop-name" style="color: #22c55e;">Paddy</span>
+          <span class="prob-crop-name" style="color: #15803d; font-weight: 600;">Paddy</span>
           <div class="prob-track">
             <div class="prob-fill" style="width: ${pPaddy}%; background: #16a34a;"></div>
           </div>
-          <span style="font-family: var(--font-mono);">${pPaddy}%</span>
+          <span style="font-family: var(--font-mono); font-weight: 600; color: #0f172a;">${pPaddy}%</span>
         </div>
         <div class="prob-row">
-          <span class="prob-crop-name" style="color: #facc15;">Banana</span>
+          <span class="prob-crop-name" style="color: #854d0e; font-weight: 600;">Banana</span>
           <div class="prob-track">
             <div class="prob-fill" style="width: ${pBanana}%; background: #eab308;"></div>
           </div>
-          <span style="font-family: var(--font-mono);">${pBanana}%</span>
+          <span style="font-family: var(--font-mono); font-weight: 600; color: #0f172a;">${pBanana}%</span>
         </div>
         <div class="prob-row">
-          <span class="prob-crop-name" style="color: #94a3b8;">Other</span>
+          <span class="prob-crop-name" style="color: #6b21a8; font-weight: 600;">Other</span>
           <div class="prob-track">
-            <div class="prob-fill" style="width: ${pOther}%; background: #64748b;"></div>
+            <div class="prob-fill" style="width: ${pOther}%; background: #9333ea;"></div>
           </div>
-          <span style="font-family: var(--font-mono);">${pOther}%</span>
+          <span style="font-family: var(--font-mono); font-weight: 600; color: #0f172a;">${pOther}%</span>
         </div>
       </div>
     </div>
@@ -134,29 +134,29 @@ export default function ParcelPopup({ parcel }) {
       </div>
 
       <div className="prob-container" style={{ marginTop: '0.75rem' }}>
-        <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600, marginBottom: '4px' }}>
+        <div style={{ fontSize: '0.7rem', color: '#475569', fontWeight: 700, marginBottom: '4px' }}>
           Random Forest Class Probabilities
         </div>
         <div className="prob-row">
-          <span className="prob-crop-name" style={{ color: '#22c55e' }}>Paddy</span>
+          <span className="prob-crop-name" style={{ color: '#15803d' }}>Paddy</span>
           <div className="prob-track">
             <div className="prob-fill" style={{ width: `${(props.prob_paddy || 0) * 100}%`, background: '#16a34a' }} />
           </div>
-          <span>{((props.prob_paddy || 0) * 100).toFixed(1)}%</span>
+          <span style={{ fontWeight: 600, color: '#0f172a' }}>{((props.prob_paddy || 0) * 100).toFixed(1)}%</span>
         </div>
         <div className="prob-row">
-          <span className="prob-crop-name" style={{ color: '#facc15' }}>Banana</span>
+          <span className="prob-crop-name" style={{ color: '#854d0e' }}>Banana</span>
           <div className="prob-track">
             <div className="prob-fill" style={{ width: `${(props.prob_banana || 0) * 100}%`, background: '#eab308' }} />
           </div>
-          <span>{((props.prob_banana || 0) * 100).toFixed(1)}%</span>
+          <span style={{ fontWeight: 600, color: '#0f172a' }}>{((props.prob_banana || 0) * 100).toFixed(1)}%</span>
         </div>
         <div className="prob-row">
-          <span className="prob-crop-name" style={{ color: '#94a3b8' }}>Other</span>
+          <span className="prob-crop-name" style={{ color: '#6b21a8' }}>Other</span>
           <div className="prob-track">
-            <div className="prob-fill" style={{ width: `${(props.prob_other || 0) * 100}%`, background: '#64748b' }} />
+            <div className="prob-fill" style={{ width: `${(props.prob_other || 0) * 100}%`, background: '#9333ea' }} />
           </div>
-          <span>{((props.prob_other || 0) * 100).toFixed(1)}%</span>
+          <span style={{ fontWeight: 600, color: '#0f172a' }}>{((props.prob_other || 0) * 100).toFixed(1)}%</span>
         </div>
       </div>
     </div>
