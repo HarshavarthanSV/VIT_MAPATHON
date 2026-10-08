@@ -1,0 +1,15 @@
+# VIT MAPATHON — Tree / Plant Counting YOLOv8 Dataset Configuration
+path: D:/VIT/data/tree_counting
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: banana
+  1: coconut
+  2: other_tree
+
+# Dataset Metadata
+kpi_target: "Individual Tree & Plant Counting in Ambasamudram & Cheranmahadevi"
+spatial_resolution_m: 0.25
+tile_size: 640

@@ -1,0 +1,36 @@
+{
+  "spatial_resolution_m": 0.25,
+  "crs": "EPSG:32643",
+  "total_plants": 8151,
+  "class_breakdown": {
+    "coconut": 482,
+    "other_tree": 487,
+    "banana": 7182
+  },
+  "survey_blocks": [
+    {
+      "name": "block_1",
+      "path": "data/imagery/high_resolution\\orthomosaic_block1_ambasamudram.tif",
+      "bounds": [
+        768219.3891844264,
+        962271.7752945918,
+        770527.6919279059,
+        964348.8991687436
+      ],
+      "parcels": 19,
+      "plants": 7364
+    },
+    {
+      "name": "block_2",
+      "path": "data/imagery/high_resolution\\orthomosaic_block2_cheranmahadevi.tif",
+      "bounds": [
+        763725.1560432289,
+        964560.8576899803,
+        765171.3814004131,
+        966371.5054090896
+      ],
+      "parcels": 5,
+      "plants": 787
+    }
+  ]
+}

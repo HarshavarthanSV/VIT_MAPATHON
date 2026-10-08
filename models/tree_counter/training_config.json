@@ -1,0 +1,14 @@
+{
+  "architecture": "YOLOv8-Nano (Object Detection)",
+  "base_model": "yolov8n.pt",
+  "epochs": 25,
+  "imgsz": 640,
+  "batch_size": 8,
+  "device": "0",
+  "classes": {
+    "0": "banana",
+    "1": "coconut",
+    "2": "other_tree"
+  },
+  "target_model_path": "models/tree_counter\\training_run\\weights\\best.pt"
+}

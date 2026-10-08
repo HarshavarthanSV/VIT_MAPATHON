@@ -111,3 +111,11 @@ ehthumbs.db
 *.pem
 *.key
 *.secret
+
+# YOLO Training Cache & Intermediate Weights
+runs/
+weights/
+yolov8n.pt
+data/tree_counting/images/
+data/tree_counting/labels/
+data/tree_counting/*.cache

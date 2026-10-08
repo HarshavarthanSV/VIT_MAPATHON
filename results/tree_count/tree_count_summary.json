@@ -1,0 +1,84 @@
+{
+  "title": "VIT MAPATHON \u2014 Individual Tree & Plant Counting Assessment",
+  "module": "Member 1 \u2014 AI / Computer Vision Engineer",
+  "study_area": "Ambasamudram & Cheranmahadevi Taluks, Tirunelveli District",
+  "imagery_specifications": {
+    "source": "Simulated High-Resolution Orthomosaic (UAV/Aerial Analogue)",
+    "spatial_resolution": "0.25 meters / pixel GSD",
+    "spectral_bands": [
+      "Red",
+      "Green",
+      "Blue"
+    ],
+    "projected_crs": "EPSG:32643 (WGS 84 / UTM Zone 43N)",
+    "geographic_crs": "EPSG:4326 (WGS 84 Lat/Lon)"
+  },
+  "training_specifications": {
+    "model_architecture": "YOLOv8-Nano (Deep Convolutional Object Detector)",
+    "classes": [
+      "banana",
+      "coconut",
+      "other_tree"
+    ],
+    "total_training_tiles": 49,
+    "total_training_annotations": 11965,
+    "spatial_leakage_prevention": "Strict GroupSplit by cadastral parcel boundary (zero visually adjacent field overlap)"
+  },
+  "model_detection_performance": {
+    "precision": 0.6396,
+    "recall": 0.39,
+    "f1_score": 0.4845,
+    "mAP50": 0.3272,
+    "mAP50_95": 0.2823
+  },
+  "counting_accuracy_metrics": {
+    "total_actual_count": 41,
+    "total_predicted_count": 26,
+    "absolute_count_error": 15,
+    "percentage_count_error": 36.59,
+    "overall_count_accuracy_pct": 63.41,
+    "test_patches_evaluated": 10,
+    "per_class_counting": {
+      "banana": {
+        "actual_count": 0,
+        "predicted_count": 0,
+        "absolute_error": 0,
+        "percentage_error": 0.0,
+        "accuracy_pct": 100.0
+      },
+      "coconut": {
+        "actual_count": 22,
+        "predicted_count": 26,
+        "absolute_error": 4,
+        "percentage_error": 18.18,
+        "accuracy_pct": 81.82
+      },
+      "other_tree": {
+        "actual_count": 19,
+        "predicted_count": 0,
+        "absolute_error": 19,
+        "percentage_error": 100.0,
+        "accuracy_pct": 0.0
+      }
+    }
+  },
+  "parcel_fusion_results": {
+    "total_parcels_evaluated": 293,
+    "parcels_with_detections": 23,
+    "total_plants_detected": 3139,
+    "banana_count": 2401,
+    "coconut_count": 543,
+    "other_tree_count": 195,
+    "mean_plant_density_banana_parcels": 838.4,
+    "mean_detection_confidence": 0.4857
+  },
+  "methodology_and_limitations": {
+    "macro_vs_micro_fusion": "Sentinel-2 10m surface reflectance is used exclusively for macro parcel-level crop classification (Paddy, Banana, Other). High-resolution sub-meter imagery (0.25m GSD) and YOLO computer vision are used for individual plant/tree detection and counting.",
+    "counting_factors": [
+      "Spatial resolution (requires <= 0.5m GSD to visually distinguish crowns)",
+      "Plant canopy overlap in dense mature plantations",
+      "Lighting conditions, cast shadow orientation, and phenological stage",
+      "Field boundary weed / windbreak vegetation discrimination"
+    ]
+  }
+}

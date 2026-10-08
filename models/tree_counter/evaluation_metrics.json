@@ -1,0 +1,40 @@
+{
+  "detection_metrics": {
+    "precision": 0.6396,
+    "recall": 0.39,
+    "f1_score": 0.4845,
+    "mAP50": 0.3272,
+    "mAP50_95": 0.2823
+  },
+  "counting_metrics": {
+    "total_actual_count": 41,
+    "total_predicted_count": 26,
+    "absolute_count_error": 15,
+    "percentage_count_error": 36.59,
+    "overall_count_accuracy_pct": 63.41,
+    "test_patches_evaluated": 10,
+    "per_class_counting": {
+      "banana": {
+        "actual_count": 0,
+        "predicted_count": 0,
+        "absolute_error": 0,
+        "percentage_error": 0.0,
+        "accuracy_pct": 100.0
+      },
+      "coconut": {
+        "actual_count": 22,
+        "predicted_count": 26,
+        "absolute_error": 4,
+        "percentage_error": 18.18,
+        "accuracy_pct": 81.82
+      },
+      "other_tree": {
+        "actual_count": 19,
+        "predicted_count": 0,
+        "absolute_error": 19,
+        "percentage_error": 100.0,
+        "accuracy_pct": 0.0
+      }
+    }
+  }
+}

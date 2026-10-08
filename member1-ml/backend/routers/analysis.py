@@ -3,6 +3,8 @@ VIT MAPATHON — Member 1 (AI / ML & Backend Systems)
 Analysis Router: Multi-Temporal Comparison, AI Agronomic Chatbot, and PDF Report Export.
 """
 
+import os
+import csv
 import json
 import logging
 from typing import Dict, Any, List, Optional
@@ -272,3 +274,59 @@ def agronomic_chat_assistant(payload: ChatRequest):
         "reply": reply,
         "timestamp": "2026-10-08T16:55:00Z"
     }
+
+
+@router.get("/tree-counts")
+def get_tree_counts(limit: Optional[int] = None):
+    """
+    Returns parcel-level individual plant and tree counts (fusing Sentinel-2 + High-Res CV).
+    """
+    routers_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(routers_dir)))
+    csv_path = os.path.join(repo_root, "results", "tree_count", "parcel_tree_counts.csv")
+
+    if not os.path.exists(csv_path):
+        raise HTTPException(status_code=404, detail="Tree counts dataset not found.")
+
+    records = []
+    with open(csv_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            records.append({
+                "parcel_id": row["parcel_id"],
+                "taluk": row["taluk"],
+                "crop_type": row["crop_type"],
+                "crop_confidence": float(row["crop_confidence"]),
+                "area_ha": float(row["area_ha"]),
+                "banana_count": int(row["banana_count"]),
+                "coconut_count": int(row["coconut_count"]),
+                "other_tree_count": int(row["other_tree_count"]),
+                "total_tree_count": int(row["total_tree_count"]),
+                "plant_density": float(row["plant_density"]),
+                "object_classes": row["object_classes"],
+                "object_detection_confidence": float(row["object_detection_confidence"]),
+            })
+            if limit and len(records) >= limit:
+                break
+
+    return {
+        "total_parcels": len(records),
+        "data": records
+    }
+
+
+@router.get("/tree-counts/summary")
+def get_tree_counts_summary():
+    """
+    Returns computer-vision model evaluation, imagery resolution, and counting accuracy summary.
+    """
+    routers_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(routers_dir)))
+    summary_path = os.path.join(repo_root, "results", "tree_count", "tree_count_summary.json")
+
+    if not os.path.exists(summary_path):
+        raise HTTPException(status_code=404, detail="Tree count summary not found.")
+
+    with open(summary_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
