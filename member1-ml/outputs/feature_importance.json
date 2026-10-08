@@ -1,0 +1,1205 @@
+{
+  "top_features": [
+    {
+      "rank": 1,
+      "feature": "2026-09-09_B11_mean",
+      "importance": 0.039687
+    },
+    {
+      "rank": 2,
+      "feature": "2026-09-09_B11_min",
+      "importance": 0.029136
+    },
+    {
+      "rank": 3,
+      "feature": "2026-09-09_B12_min",
+      "importance": 0.027873
+    },
+    {
+      "rank": 4,
+      "feature": "2026-09-09_EVI_mean",
+      "importance": 0.026824
+    },
+    {
+      "rank": 5,
+      "feature": "2026-09-09_B12_mean",
+      "importance": 0.026263
+    },
+    {
+      "rank": 6,
+      "feature": "2026-09-09_B04_mean",
+      "importance": 0.024189
+    },
+    {
+      "rank": 7,
+      "feature": "2026-09-09_B11_max",
+      "importance": 0.023823
+    },
+    {
+      "rank": 8,
+      "feature": "2026-09-09_EVI_max",
+      "importance": 0.023536
+    },
+    {
+      "rank": 9,
+      "feature": "2026-09-09_B03_max",
+      "importance": 0.021863
+    },
+    {
+      "rank": 10,
+      "feature": "2026-09-09_B04_min",
+      "importance": 0.019339
+    },
+    {
+      "rank": 11,
+      "feature": "2026-09-09_B08_mean",
+      "importance": 0.017616
+    },
+    {
+      "rank": 12,
+      "feature": "2026-09-09_B02_mean",
+      "importance": 0.017533
+    },
+    {
+      "rank": 13,
+      "feature": "2026-09-09_NDWI_min",
+      "importance": 0.017112
+    },
+    {
+      "rank": 14,
+      "feature": "2026-09-09_B03_mean",
+      "importance": 0.016969
+    },
+    {
+      "rank": 15,
+      "feature": "2026-09-09_B12_max",
+      "importance": 0.016514
+    },
+    {
+      "rank": 16,
+      "feature": "2026-09-09_NDVI_max",
+      "importance": 0.01617
+    },
+    {
+      "rank": 17,
+      "feature": "2026-09-09_B02_max",
+      "importance": 0.014556
+    },
+    {
+      "rank": 18,
+      "feature": "2026-09-09_SAVI_max",
+      "importance": 0.013395
+    },
+    {
+      "rank": 19,
+      "feature": "2026-09-09_NDWI_mean",
+      "importance": 0.013363
+    },
+    {
+      "rank": 20,
+      "feature": "2026-09-09_B08_max",
+      "importance": 0.012555
+    },
+    {
+      "rank": 21,
+      "feature": "2026-09-09_B04_max",
+      "importance": 0.01201
+    },
+    {
+      "rank": 22,
+      "feature": "2026-09-09_SAVI_mean",
+      "importance": 0.011031
+    },
+    {
+      "rank": 23,
+      "feature": "2026-04-02_NDWI_max",
+      "importance": 0.010105
+    },
+    {
+      "rank": 24,
+      "feature": "2026-09-09_EVI_min",
+      "importance": 0.010049
+    },
+    {
+      "rank": 25,
+      "feature": "2026-09-09_NDVI_min",
+      "importance": 0.01004
+    },
+    {
+      "rank": 26,
+      "feature": "2026-09-09_B03_min",
+      "importance": 0.009809
+    },
+    {
+      "rank": 27,
+      "feature": "2026-03-20_B08_min",
+      "importance": 0.009666
+    },
+    {
+      "rank": 28,
+      "feature": "2026-09-09_NDVI_mean",
+      "importance": 0.009602
+    },
+    {
+      "rank": 29,
+      "feature": "2026-04-02_SAVI_min",
+      "importance": 0.00884
+    },
+    {
+      "rank": 30,
+      "feature": "2026-04-02_B03_std",
+      "importance": 0.008375
+    },
+    {
+      "rank": 31,
+      "feature": "2026-03-20_B08_std",
+      "importance": 0.008047
+    },
+    {
+      "rank": 32,
+      "feature": "2026-09-09_B03_std",
+      "importance": 0.008045
+    },
+    {
+      "rank": 33,
+      "feature": "2026-09-09_SAVI_std",
+      "importance": 0.007959
+    },
+    {
+      "rank": 34,
+      "feature": "2026-04-02_NDVI_min",
+      "importance": 0.007928
+    },
+    {
+      "rank": 35,
+      "feature": "2026-09-09_NDWI_max",
+      "importance": 0.007866
+    },
+    {
+      "rank": 36,
+      "feature": "2026-09-09_B02_min",
+      "importance": 0.007848
+    },
+    {
+      "rank": 37,
+      "feature": "2026-09-09_B08_std",
+      "importance": 0.007655
+    },
+    {
+      "rank": 38,
+      "feature": "2026-04-02_B08_min",
+      "importance": 0.007542
+    },
+    {
+      "rank": 39,
+      "feature": "2026-09-09_B08_min",
+      "importance": 0.007455
+    },
+    {
+      "rank": 40,
+      "feature": "2026-09-09_B04_std",
+      "importance": 0.007355
+    },
+    {
+      "rank": 41,
+      "feature": "2026-09-09_NDWI_std",
+      "importance": 0.007325
+    },
+    {
+      "rank": 42,
+      "feature": "2026-09-09_B02_std",
+      "importance": 0.007277
+    },
+    {
+      "rank": 43,
+      "feature": "2026-03-20_NDVI_min",
+      "importance": 0.007235
+    },
+    {
+      "rank": 44,
+      "feature": "2026-04-02_NDWI_mean",
+      "importance": 0.006697
+    },
+    {
+      "rank": 45,
+      "feature": "2026-04-02_B08_max",
+      "importance": 0.006626
+    },
+    {
+      "rank": 46,
+      "feature": "2026-04-02_B12_max",
+      "importance": 0.006562
+    },
+    {
+      "rank": 47,
+      "feature": "2026-03-20_EVI_min",
+      "importance": 0.006484
+    },
+    {
+      "rank": 48,
+      "feature": "2026-03-20_B12_max",
+      "importance": 0.005957
+    },
+    {
+      "rank": 49,
+      "feature": "2026-03-20_B02_std",
+      "importance": 0.005783
+    },
+    {
+      "rank": 50,
+      "feature": "2026-09-09_B12_std",
+      "importance": 0.005628
+    },
+    {
+      "rank": 51,
+      "feature": "2026-09-09_SAVI_min",
+      "importance": 0.005541
+    },
+    {
+      "rank": 52,
+      "feature": "2026-04-02_B02_max",
+      "importance": 0.005536
+    },
+    {
+      "rank": 53,
+      "feature": "2026-04-02_B12_std",
+      "importance": 0.005516
+    },
+    {
+      "rank": 54,
+      "feature": "2026-03-20_NDWI_max",
+      "importance": 0.00539
+    },
+    {
+      "rank": 55,
+      "feature": "2026-04-02_B03_max",
+      "importance": 0.005355
+    },
+    {
+      "rank": 56,
+      "feature": "2026-04-02_B08_std",
+      "importance": 0.005242
+    },
+    {
+      "rank": 57,
+      "feature": "2026-03-20_B03_std",
+      "importance": 0.005
+    },
+    {
+      "rank": 58,
+      "feature": "2026-04-02_B02_std",
+      "importance": 0.004923
+    },
+    {
+      "rank": 59,
+      "feature": "2026-04-02_EVI_min",
+      "importance": 0.004905
+    },
+    {
+      "rank": 60,
+      "feature": "2026-03-20_B03_mean",
+      "importance": 0.004866
+    },
+    {
+      "rank": 61,
+      "feature": "2026-04-02_EVI_mean",
+      "importance": 0.004707
+    },
+    {
+      "rank": 62,
+      "feature": "2026-03-20_B11_mean",
+      "importance": 0.004195
+    },
+    {
+      "rank": 63,
+      "feature": "2026-03-20_B11_max",
+      "importance": 0.004063
+    },
+    {
+      "rank": 64,
+      "feature": "NDVI_temporal_std_mean",
+      "importance": 0.004028
+    },
+    {
+      "rank": 65,
+      "feature": "2026-09-09_EVI_std",
+      "importance": 0.003989
+    },
+    {
+      "rank": 66,
+      "feature": "2026-03-20_B08_mean",
+      "importance": 0.003893
+    },
+    {
+      "rank": 67,
+      "feature": "SAVI_temporal_range_min",
+      "importance": 0.003799
+    },
+    {
+      "rank": 68,
+      "feature": "2026-03-20_NDWI_std",
+      "importance": 0.003716
+    },
+    {
+      "rank": 69,
+      "feature": "2026-04-02_B04_min",
+      "importance": 0.00365
+    },
+    {
+      "rank": 70,
+      "feature": "2026-03-20_NDWI_min",
+      "importance": 0.0036
+    },
+    {
+      "rank": 71,
+      "feature": "2026-03-20_SAVI_max",
+      "importance": 0.003577
+    },
+    {
+      "rank": 72,
+      "feature": "2026-03-20_B12_min",
+      "importance": 0.003567
+    },
+    {
+      "rank": 73,
+      "feature": "2026-03-20_B02_max",
+      "importance": 0.003503
+    },
+    {
+      "rank": 74,
+      "feature": "2026-04-02_NDVI_max",
+      "importance": 0.003491
+    },
+    {
+      "rank": 75,
+      "feature": "2026-09-09_NDVI_std",
+      "importance": 0.003446
+    },
+    {
+      "rank": 76,
+      "feature": "2026-03-20_B04_min",
+      "importance": 0.003406
+    },
+    {
+      "rank": 77,
+      "feature": "2026-04-02_NDVI_mean",
+      "importance": 0.003401
+    },
+    {
+      "rank": 78,
+      "feature": "2026-03-20_NDVI_mean",
+      "importance": 0.003389
+    },
+    {
+      "rank": 79,
+      "feature": "SAVI_temporal_range_mean",
+      "importance": 0.003388
+    },
+    {
+      "rank": 80,
+      "feature": "2026-09-09_B11_std",
+      "importance": 0.003369
+    },
+    {
+      "rank": 81,
+      "feature": "2026-03-20_NDVI_max",
+      "importance": 0.003297
+    },
+    {
+      "rank": 82,
+      "feature": "2026-04-02_B08_mean",
+      "importance": 0.003263
+    },
+    {
+      "rank": 83,
+      "feature": "NDVI_temporal_range_mean",
+      "importance": 0.003237
+    },
+    {
+      "rank": 84,
+      "feature": "2026-03-20_EVI_std",
+      "importance": 0.003209
+    },
+    {
+      "rank": 85,
+      "feature": "EVI_temporal_range_mean",
+      "importance": 0.003196
+    },
+    {
+      "rank": 86,
+      "feature": "2026-03-20_NDVI_std",
+      "importance": 0.003177
+    },
+    {
+      "rank": 87,
+      "feature": "2026-03-20_EVI_mean",
+      "importance": 0.003165
+    },
+    {
+      "rank": 88,
+      "feature": "2026-03-20_B04_std",
+      "importance": 0.003164
+    },
+    {
+      "rank": 89,
+      "feature": "2026-03-20_EVI_max",
+      "importance": 0.003159
+    },
+    {
+      "rank": 90,
+      "feature": "2026-04-02_B12_mean",
+      "importance": 0.003095
+    },
+    {
+      "rank": 91,
+      "feature": "2026-04-02_B12_min",
+      "importance": 0.003076
+    },
+    {
+      "rank": 92,
+      "feature": "2026-04-02_SAVI_max",
+      "importance": 0.003061
+    },
+    {
+      "rank": 93,
+      "feature": "NDVI_temporal_range_min",
+      "importance": 0.002986
+    },
+    {
+      "rank": 94,
+      "feature": "2026-03-20_SAVI_std",
+      "importance": 0.002972
+    },
+    {
+      "rank": 95,
+      "feature": "NDVI_temporal_std_max",
+      "importance": 0.002897
+    },
+    {
+      "rank": 96,
+      "feature": "2026-04-02_B04_max",
+      "importance": 0.002866
+    },
+    {
+      "rank": 97,
+      "feature": "2026-03-20_SAVI_mean",
+      "importance": 0.002854
+    },
+    {
+      "rank": 98,
+      "feature": "2026-03-20_B11_std",
+      "importance": 0.002814
+    },
+    {
+      "rank": 99,
+      "feature": "2026-03-20_B04_max",
+      "importance": 0.002813
+    },
+    {
+      "rank": 100,
+      "feature": "2026-03-20_NDWI_mean",
+      "importance": 0.002804
+    },
+    {
+      "rank": 101,
+      "feature": "2026-04-02_SAVI_mean",
+      "importance": 0.002802
+    },
+    {
+      "rank": 102,
+      "feature": "2026-03-20_SAVI_min",
+      "importance": 0.002752
+    },
+    {
+      "rank": 103,
+      "feature": "SAVI_temporal_std_max",
+      "importance": 0.002748
+    },
+    {
+      "rank": 104,
+      "feature": "SAVI_temporal_range_max",
+      "importance": 0.002703
+    },
+    {
+      "rank": 105,
+      "feature": "2026-04-02_SAVI_std",
+      "importance": 0.00257
+    },
+    {
+      "rank": 106,
+      "feature": "SAVI_temporal_std_min",
+      "importance": 0.002507
+    },
+    {
+      "rank": 107,
+      "feature": "NDVI_temporal_range_max",
+      "importance": 0.002507
+    },
+    {
+      "rank": 108,
+      "feature": "2026-03-20_B11_min",
+      "importance": 0.002497
+    },
+    {
+      "rank": 109,
+      "feature": "SAVI_temporal_std_mean",
+      "importance": 0.002486
+    },
+    {
+      "rank": 110,
+      "feature": "2026-04-02_B11_max",
+      "importance": 0.002468
+    },
+    {
+      "rank": 111,
+      "feature": "2026-04-02_B02_mean",
+      "importance": 0.002434
+    },
+    {
+      "rank": 112,
+      "feature": "EVI_temporal_std_mean",
+      "importance": 0.002384
+    },
+    {
+      "rank": 113,
+      "feature": "2026-03-20_B04_mean",
+      "importance": 0.00233
+    },
+    {
+      "rank": 114,
+      "feature": "2026-03-20_B12_std",
+      "importance": 0.002324
+    },
+    {
+      "rank": 115,
+      "feature": "2026-03-20_B02_min",
+      "importance": 0.002274
+    },
+    {
+      "rank": 116,
+      "feature": "NDWI_temporal_std_min",
+      "importance": 0.002263
+    },
+    {
+      "rank": 117,
+      "feature": "SAVI_temporal_mean_min",
+      "importance": 0.002187
+    },
+    {
+      "rank": 118,
+      "feature": "NDWI_temporal_std_std",
+      "importance": 0.002172
+    },
+    {
+      "rank": 119,
+      "feature": "EVI_temporal_max_mean",
+      "importance": 0.002169
+    },
+    {
+      "rank": 120,
+      "feature": "EVI_temporal_std_min",
+      "importance": 0.002046
+    },
+    {
+      "rank": 121,
+      "feature": "NDWI_temporal_std_mean",
+      "importance": 0.002007
+    },
+    {
+      "rank": 122,
+      "feature": "NDWI_temporal_min_min",
+      "importance": 0.001998
+    },
+    {
+      "rank": 123,
+      "feature": "EVI_temporal_range_std",
+      "importance": 0.001983
+    },
+    {
+      "rank": 124,
+      "feature": "2026-03-20_B03_min",
+      "importance": 0.001968
+    },
+    {
+      "rank": 125,
+      "feature": "EVI_temporal_std_max",
+      "importance": 0.001858
+    },
+    {
+      "rank": 126,
+      "feature": "EVI_temporal_range_min",
+      "importance": 0.001821
+    },
+    {
+      "rank": 127,
+      "feature": "2026-04-02_B11_std",
+      "importance": 0.001809
+    },
+    {
+      "rank": 128,
+      "feature": "2026-04-02_NDWI_min",
+      "importance": 0.001804
+    },
+    {
+      "rank": 129,
+      "feature": "NDWI_temporal_range_min",
+      "importance": 0.001782
+    },
+    {
+      "rank": 130,
+      "feature": "SAVI_temporal_max_max",
+      "importance": 0.001782
+    },
+    {
+      "rank": 131,
+      "feature": "2026-03-20_B02_mean",
+      "importance": 0.001727
+    },
+    {
+      "rank": 132,
+      "feature": "2026-04-02_B11_mean",
+      "importance": 0.001701
+    },
+    {
+      "rank": 133,
+      "feature": "2026-04-02_EVI_max",
+      "importance": 0.001692
+    },
+    {
+      "rank": 134,
+      "feature": "2026-04-02_B04_mean",
+      "importance": 0.001676
+    },
+    {
+      "rank": 135,
+      "feature": "SAVI_temporal_std_std",
+      "importance": 0.00166
+    },
+    {
+      "rank": 136,
+      "feature": "NDVI_temporal_max_max",
+      "importance": 0.001625
+    },
+    {
+      "rank": 137,
+      "feature": "NDWI_temporal_mean_max",
+      "importance": 0.001594
+    },
+    {
+      "rank": 138,
+      "feature": "2026-04-02_B04_std",
+      "importance": 0.001566
+    },
+    {
+      "rank": 139,
+      "feature": "2026-04-02_B02_min",
+      "importance": 0.001553
+    },
+    {
+      "rank": 140,
+      "feature": "NDVI_temporal_std_std",
+      "importance": 0.001523
+    },
+    {
+      "rank": 141,
+      "feature": "2026-04-22_NDWI_max",
+      "importance": 0.001499
+    },
+    {
+      "rank": 142,
+      "feature": "NDWI_temporal_range_std",
+      "importance": 0.001468
+    },
+    {
+      "rank": 143,
+      "feature": "NDWI_temporal_range_max",
+      "importance": 0.001466
+    },
+    {
+      "rank": 144,
+      "feature": "SAVI_temporal_max_min",
+      "importance": 0.001443
+    },
+    {
+      "rank": 145,
+      "feature": "EVI_temporal_range_max",
+      "importance": 0.001423
+    },
+    {
+      "rank": 146,
+      "feature": "NDWI_temporal_range_mean",
+      "importance": 0.001411
+    },
+    {
+      "rank": 147,
+      "feature": "NDVI_temporal_max_mean",
+      "importance": 0.00131
+    },
+    {
+      "rank": 148,
+      "feature": "NDWI_temporal_min_max",
+      "importance": 0.001296
+    },
+    {
+      "rank": 149,
+      "feature": "SAVI_temporal_range_std",
+      "importance": 0.001291
+    },
+    {
+      "rank": 150,
+      "feature": "NDWI_temporal_min_mean",
+      "importance": 0.001262
+    },
+    {
+      "rank": 151,
+      "feature": "NDVI_temporal_range_std",
+      "importance": 0.001262
+    },
+    {
+      "rank": 152,
+      "feature": "2026-04-02_EVI_std",
+      "importance": 0.001252
+    },
+    {
+      "rank": 153,
+      "feature": "2026-04-22_B03_min",
+      "importance": 0.001235
+    },
+    {
+      "rank": 154,
+      "feature": "2026-04-02_B03_mean",
+      "importance": 0.001208
+    },
+    {
+      "rank": 155,
+      "feature": "2026-03-20_B03_max",
+      "importance": 0.001185
+    },
+    {
+      "rank": 156,
+      "feature": "NDVI_temporal_std_min",
+      "importance": 0.001184
+    },
+    {
+      "rank": 157,
+      "feature": "SAVI_temporal_mean_std",
+      "importance": 0.001103
+    },
+    {
+      "rank": 158,
+      "feature": "2026-03-20_B08_max",
+      "importance": 0.001084
+    },
+    {
+      "rank": 159,
+      "feature": "2026-04-22_NDWI_mean",
+      "importance": 0.001049
+    },
+    {
+      "rank": 160,
+      "feature": "2026-04-22_NDVI_std",
+      "importance": 0.001027
+    },
+    {
+      "rank": 161,
+      "feature": "NDVI_temporal_max_min",
+      "importance": 0.000992
+    },
+    {
+      "rank": 162,
+      "feature": "NDVI_temporal_min_min",
+      "importance": 0.000987
+    },
+    {
+      "rank": 163,
+      "feature": "2026-04-22_NDVI_min",
+      "importance": 0.000978
+    },
+    {
+      "rank": 164,
+      "feature": "2026-04-02_NDWI_std",
+      "importance": 0.000932
+    },
+    {
+      "rank": 165,
+      "feature": "2026-04-22_B11_min",
+      "importance": 0.000928
+    },
+    {
+      "rank": 166,
+      "feature": "2026-04-22_B11_max",
+      "importance": 0.000921
+    },
+    {
+      "rank": 167,
+      "feature": "2026-04-22_B12_mean",
+      "importance": 0.000891
+    },
+    {
+      "rank": 168,
+      "feature": "EVI_temporal_max_max",
+      "importance": 0.00089
+    },
+    {
+      "rank": 169,
+      "feature": "2026-04-22_B11_mean",
+      "importance": 0.000885
+    },
+    {
+      "rank": 170,
+      "feature": "2026-04-22_B08_mean",
+      "importance": 0.000873
+    },
+    {
+      "rank": 171,
+      "feature": "2026-04-22_NDWI_min",
+      "importance": 0.000845
+    },
+    {
+      "rank": 172,
+      "feature": "SAVI_temporal_max_mean",
+      "importance": 0.000822
+    },
+    {
+      "rank": 173,
+      "feature": "2026-04-02_B11_min",
+      "importance": 0.000819
+    },
+    {
+      "rank": 174,
+      "feature": "2026-04-02_B03_min",
+      "importance": 0.000812
+    },
+    {
+      "rank": 175,
+      "feature": "SAVI_temporal_min_mean",
+      "importance": 0.000805
+    },
+    {
+      "rank": 176,
+      "feature": "2026-04-22_B02_mean",
+      "importance": 0.000794
+    },
+    {
+      "rank": 177,
+      "feature": "EVI_temporal_max_min",
+      "importance": 0.000772
+    },
+    {
+      "rank": 178,
+      "feature": "2026-04-22_B08_min",
+      "importance": 0.000766
+    },
+    {
+      "rank": 179,
+      "feature": "2026-04-22_B02_min",
+      "importance": 0.000765
+    },
+    {
+      "rank": 180,
+      "feature": "SAVI_temporal_min_min",
+      "importance": 0.000763
+    },
+    {
+      "rank": 181,
+      "feature": "2026-04-22_B02_max",
+      "importance": 0.000754
+    },
+    {
+      "rank": 182,
+      "feature": "2026-04-22_NDWI_std",
+      "importance": 0.000754
+    },
+    {
+      "rank": 183,
+      "feature": "NDWI_temporal_mean_min",
+      "importance": 0.000747
+    },
+    {
+      "rank": 184,
+      "feature": "2026-04-22_SAVI_min",
+      "importance": 0.000743
+    },
+    {
+      "rank": 185,
+      "feature": "NDWI_temporal_mean_std",
+      "importance": 0.000741
+    },
+    {
+      "rank": 186,
+      "feature": "NDWI_temporal_std_max",
+      "importance": 0.00072
+    },
+    {
+      "rank": 187,
+      "feature": "2026-04-22_B03_max",
+      "importance": 0.000667
+    },
+    {
+      "rank": 188,
+      "feature": "SAVI_temporal_mean_mean",
+      "importance": 0.00066
+    },
+    {
+      "rank": 189,
+      "feature": "SAVI_temporal_min_std",
+      "importance": 0.000657
+    },
+    {
+      "rank": 190,
+      "feature": "2026-04-22_B12_min",
+      "importance": 0.000643
+    },
+    {
+      "rank": 191,
+      "feature": "2026-04-22_B04_max",
+      "importance": 0.000642
+    },
+    {
+      "rank": 192,
+      "feature": "EVI_temporal_std_std",
+      "importance": 0.000625
+    },
+    {
+      "rank": 193,
+      "feature": "2026-04-22_B12_max",
+      "importance": 0.000608
+    },
+    {
+      "rank": 194,
+      "feature": "EVI_temporal_min_mean",
+      "importance": 0.000573
+    },
+    {
+      "rank": 195,
+      "feature": "2026-04-22_EVI_max",
+      "importance": 0.000557
+    },
+    {
+      "rank": 196,
+      "feature": "2026-04-22_B04_std",
+      "importance": 0.000533
+    },
+    {
+      "rank": 197,
+      "feature": "EVI_temporal_min_std",
+      "importance": 0.000523
+    },
+    {
+      "rank": 198,
+      "feature": "2026-04-22_EVI_min",
+      "importance": 0.000507
+    },
+    {
+      "rank": 199,
+      "feature": "2026-04-22_EVI_mean",
+      "importance": 0.000488
+    },
+    {
+      "rank": 200,
+      "feature": "NDWI_temporal_max_max",
+      "importance": 0.000485
+    },
+    {
+      "rank": 201,
+      "feature": "NDWI_temporal_min_std",
+      "importance": 0.000475
+    },
+    {
+      "rank": 202,
+      "feature": "NDWI_temporal_max_min",
+      "importance": 0.000454
+    },
+    {
+      "rank": 203,
+      "feature": "EVI_temporal_min_min",
+      "importance": 0.000447
+    },
+    {
+      "rank": 204,
+      "feature": "NDWI_temporal_mean_mean",
+      "importance": 0.00044
+    },
+    {
+      "rank": 205,
+      "feature": "2026-04-02_NDVI_std",
+      "importance": 0.000438
+    },
+    {
+      "rank": 206,
+      "feature": "EVI_temporal_mean_min",
+      "importance": 0.000417
+    },
+    {
+      "rank": 207,
+      "feature": "2026-04-22_NDVI_mean",
+      "importance": 0.000414
+    },
+    {
+      "rank": 208,
+      "feature": "2026-04-22_EVI_std",
+      "importance": 0.000409
+    },
+    {
+      "rank": 209,
+      "feature": "NDVI_temporal_min_max",
+      "importance": 0.000392
+    },
+    {
+      "rank": 210,
+      "feature": "SAVI_temporal_mean_max",
+      "importance": 0.000389
+    },
+    {
+      "rank": 211,
+      "feature": "2026-04-22_B08_std",
+      "importance": 0.000386
+    },
+    {
+      "rank": 212,
+      "feature": "SAVI_temporal_min_max",
+      "importance": 0.000382
+    },
+    {
+      "rank": 213,
+      "feature": "2026-04-22_B03_mean",
+      "importance": 0.000377
+    },
+    {
+      "rank": 214,
+      "feature": "NDWI_temporal_max_mean",
+      "importance": 0.000367
+    },
+    {
+      "rank": 215,
+      "feature": "2026-04-22_B04_min",
+      "importance": 0.000358
+    },
+    {
+      "rank": 216,
+      "feature": "EVI_temporal_mean_mean",
+      "importance": 0.000344
+    },
+    {
+      "rank": 217,
+      "feature": "2026-04-22_B02_std",
+      "importance": 0.000336
+    },
+    {
+      "rank": 218,
+      "feature": "2026-04-22_B12_std",
+      "importance": 0.000319
+    },
+    {
+      "rank": 219,
+      "feature": "2026-04-22_B04_mean",
+      "importance": 0.000319
+    },
+    {
+      "rank": 220,
+      "feature": "NDWI_temporal_max_std",
+      "importance": 0.000318
+    },
+    {
+      "rank": 221,
+      "feature": "NDVI_temporal_max_std",
+      "importance": 0.000317
+    },
+    {
+      "rank": 222,
+      "feature": "2026-04-22_B03_std",
+      "importance": 0.0003
+    },
+    {
+      "rank": 223,
+      "feature": "NDVI_temporal_min_mean",
+      "importance": 0.000295
+    },
+    {
+      "rank": 224,
+      "feature": "2026-04-22_NDVI_max",
+      "importance": 0.000294
+    },
+    {
+      "rank": 225,
+      "feature": "EVI_temporal_max_std",
+      "importance": 0.00029
+    },
+    {
+      "rank": 226,
+      "feature": "2026-04-22_SAVI_max",
+      "importance": 0.000285
+    },
+    {
+      "rank": 227,
+      "feature": "2026-04-22_B11_std",
+      "importance": 0.000268
+    },
+    {
+      "rank": 228,
+      "feature": "2026-04-22_SAVI_mean",
+      "importance": 0.000267
+    },
+    {
+      "rank": 229,
+      "feature": "NDVI_temporal_mean_mean",
+      "importance": 0.000259
+    },
+    {
+      "rank": 230,
+      "feature": "EVI_temporal_mean_max",
+      "importance": 0.000239
+    },
+    {
+      "rank": 231,
+      "feature": "EVI_temporal_min_max",
+      "importance": 0.000238
+    },
+    {
+      "rank": 232,
+      "feature": "2026-04-22_SAVI_std",
+      "importance": 0.000237
+    },
+    {
+      "rank": 233,
+      "feature": "2026-04-22_B08_max",
+      "importance": 0.000224
+    },
+    {
+      "rank": 234,
+      "feature": "NDVI_temporal_mean_min",
+      "importance": 0.000219
+    },
+    {
+      "rank": 235,
+      "feature": "NDVI_temporal_mean_std",
+      "importance": 0.000181
+    },
+    {
+      "rank": 236,
+      "feature": "2026-03-20_B12_mean",
+      "importance": 0.000166
+    },
+    {
+      "rank": 237,
+      "feature": "SAVI_temporal_max_std",
+      "importance": 0.000165
+    },
+    {
+      "rank": 238,
+      "feature": "NDVI_temporal_min_std",
+      "importance": 0.00015
+    },
+    {
+      "rank": 239,
+      "feature": "NDVI_temporal_mean_max",
+      "importance": 7.1e-05
+    },
+    {
+      "rank": 240,
+      "feature": "EVI_temporal_mean_std",
+      "importance": 0.0
+    }
+  ],
+  "n_features": 240
+}
