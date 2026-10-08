@@ -1,10 +1,10 @@
 Taluk,Crop,Parcel_Count,Area_Hectares,Area_Acres,Percentage_of_Taluk
-Ambasamudram,Banana,52,25.9173,64.043,31.25
-Ambasamudram,Other,28,18.241,45.0745,22.0
-Ambasamudram,Paddy,64,38.7742,95.813,46.75
+Ambasamudram,Banana,43,21.7666,53.7865,26.25
+Ambasamudram,Non-Crop,48,29.0866,71.8746,35.07
+Ambasamudram,Paddy,53,32.0792,79.2695,38.68
 Ambasamudram (Subtotal),ALL_CROPS,144,82.9325,204.9306,100.0
-Cheranmahadevi,Banana,57,28.4923,70.406,32.11
-Cheranmahadevi,Other,33,21.97,54.2891,24.76
-Cheranmahadevi,Paddy,59,38.2599,94.5423,43.12
+Cheranmahadevi,Banana,36,17.5461,43.3574,19.78
+Cheranmahadevi,Non-Crop,83,51.7976,127.9948,58.38
+Cheranmahadevi,Paddy,30,19.3784,47.8852,21.84
 Cheranmahadevi (Subtotal),ALL_CROPS,149,88.7222,219.2374,100.0
 GRAND_TOTAL,ALL_CROPS,293,171.6547,424.168,100.0

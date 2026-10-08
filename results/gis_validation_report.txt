@@ -21,9 +21,9 @@ Target Processing CRS : EPSG:32643 (WGS 84 / UTM Zone 43N)
    - Classification Field Used  : 'predicted_crop'
    - Total Classified Area (ha) : 171.6547 ha (424.1680 acres)
 
-   * Banana    :  109 parcels |     54.41 ha (   134.45 acres) |  31.70% of area | Mean Conf: 0.8879
-   * Other     :   61 parcels |     40.21 ha (    99.36 acres) |  23.43% of area | Mean Conf: 0.8571
-   * Paddy     :  123 parcels |     77.03 ha (   190.36 acres) |  44.88% of area | Mean Conf: 0.8498
+   * Banana    :   79 parcels |     39.31 ha (    97.14 acres) |  22.90% of area | Mean Conf: 0.8563
+   * Non-Crop  :  131 parcels |     80.88 ha (   199.87 acres) |  47.12% of area | Mean Conf: 0.8961
+   * Paddy     :   83 parcels |     51.46 ha (   127.15 acres) |  29.98% of area | Mean Conf: 0.8259
 --------------------------------------------------------------------------------
 3. PREDICTION CONFIDENCE DISTRIBUTION
    - Overall Mean Confidence    : 0.8655 (86.55%)

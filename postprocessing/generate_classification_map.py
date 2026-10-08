@@ -80,6 +80,8 @@ def generate_final_crop_map(
     color_scheme = {
         "Paddy": {"color": "#27ae60", "edge": "#1e824c", "label": "Paddy (Rice)"},
         "Banana": {"color": "#e67e22", "edge": "#d35400", "label": "Banana (Plantation)"},
+        "Non-Crop": {"color": "#7f8c8d", "edge": "#34495e", "label": "Non-Crop / Bare / Urban"},
+        "Water": {"color": "#2980b9", "edge": "#1a5276", "label": "Water / River Canal"},
         "Other": {"color": "#7f8c8d", "edge": "#34495e", "label": "Other / Non-crop"},
     }
 

@@ -1,0 +1,294 @@
+parcel_id,taluk,original_crop,validated_crop,land_cover_type,confidence,confidence_tier,pct_water,pct_non_crop,pct_vegetation,reclassification_reason,area_ha
+PARCEL_0001,Ambasamudram,Paddy,Paddy,Agricultural Land,0.5916,Low Confidence / Review,0.0,35.8,29.63,Consistent with multi-temporal spectral profile,0.8069529059152825
+PARCEL_0002,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8366,High Confidence,0.0,38.3,48.94,Verified active photosynthetic agricultural phenology,0.4738442353654108
+PARCEL_0003,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7485,Medium Confidence,0.0,51.35,29.73,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.37157394995410603
+PARCEL_0004,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7107,Medium Confidence,0.0,55.0,10.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5850727917606766
+PARCEL_0005,Ambasamudram,Paddy,Paddy,Agricultural Land,0.932,High Confidence,0.0,21.05,22.37,Consistent with multi-temporal spectral profile,0.7512880514767672
+PARCEL_0006,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6173,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4563580346677643
+PARCEL_0007,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6733,Medium Confidence,0.0,8.57,85.71,Verified active photosynthetic agricultural phenology,0.6957357303256284
+PARCEL_0008,Ambasamudram,Paddy,Paddy,Agricultural Land,0.6686,Medium Confidence,0.0,7.46,28.36,Consistent with multi-temporal spectral profile,0.6851431251937885
+PARCEL_0009,Ambasamudram,Paddy,Paddy,Agricultural Land,0.7721,Medium Confidence,0.0,36.0,30.0,Consistent with multi-temporal spectral profile,0.5058516796272122
+PARCEL_0010,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8839,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5824784458696616
+PARCEL_0011,Ambasamudram,Paddy,Paddy,Agricultural Land,0.7903,Medium Confidence,0.0,42.86,36.73,Consistent with multi-temporal spectral profile,0.485976090681157
+PARCEL_0012,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6438,Medium Confidence,0.0,0.0,64.58,Verified active photosynthetic agricultural phenology,0.4826185414091916
+PARCEL_0013,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8145,High Confidence,0.0,22.0,44.0,Verified active photosynthetic agricultural phenology,0.4979161701396643
+PARCEL_0014,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6695,Medium Confidence,0.0,15.79,47.37,Verified active photosynthetic agricultural phenology,0.38930840329385735
+PARCEL_0015,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7982,Medium Confidence,0.0,58.97,7.69,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3759081922671861
+PARCEL_0016,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8683,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.9110647447558454
+PARCEL_0017,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8831,High Confidence,0.0,14.1,48.72,Verified active photosynthetic agricultural phenology,0.8003427418721203
+PARCEL_0018,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8042,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.3898004224903755
+PARCEL_0019,Ambasamudram,Paddy,Paddy,Agricultural Land,0.821,High Confidence,0.0,42.59,29.63,Consistent with multi-temporal spectral profile,0.554432007556414
+PARCEL_0020,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6751,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.6075375284071404
+PARCEL_0021,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7469,Medium Confidence,0.0,1.92,82.69,Verified active photosynthetic agricultural phenology,1.0418161526608223
+PARCEL_0022,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.9295,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.6336876397798382
+PARCEL_0023,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7651,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.48155992331052283
+PARCEL_0024,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7293,Medium Confidence,0.0,6.06,84.85,Verified active photosynthetic agricultural phenology,0.36217624568496715
+PARCEL_0025,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8457,High Confidence,0.0,6.94,68.06,Verified active photosynthetic agricultural phenology,0.7478419455942831
+PARCEL_0026,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8565,High Confidence,0.0,0.0,82.61,Verified active photosynthetic agricultural phenology,0.456568478804236
+PARCEL_0027,Ambasamudram,Paddy,Paddy,Uncertain / Mixed (Paddy),0.5252,Low Confidence / Review,0.0,23.53,0.0,Low model prediction confidence (0.53),0.3542015385725135
+PARCEL_0028,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.4978,Low Confidence / Review,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.8662055250719719
+PARCEL_0029,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.9027,High Confidence,0.0,9.84,75.41,Verified active photosynthetic agricultural phenology,0.6020547238297524
+PARCEL_0030,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6311,Medium Confidence,0.0,6.82,81.82,Verified active photosynthetic agricultural phenology,0.4552343265288818
+PARCEL_0031,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.5803,Low Confidence / Review,0.0,0.0,95.45,Verified active photosynthetic agricultural phenology,0.44817417304746104
+PARCEL_0032,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8419,High Confidence,0.0,50.88,22.81,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5641069777492612
+PARCEL_0033,Ambasamudram,Paddy,Paddy,Agricultural Land,0.8097,High Confidence,0.0,40.62,28.12,Consistent with multi-temporal spectral profile,0.6186504771525005
+PARCEL_0034,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8154,High Confidence,0.0,78.89,3.33,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.8873291749823353
+PARCEL_0035,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.897,High Confidence,0.0,23.21,42.86,Verified active photosynthetic agricultural phenology,0.5771675350660689
+PARCEL_0036,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7547,Medium Confidence,0.0,82.09,1.49,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6638134186140376
+PARCEL_0037,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.907,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.487298870628407
+PARCEL_0038,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.9037,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.2835365443904001
+PARCEL_0039,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8811,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5655065352156736
+PARCEL_0040,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.6742,Medium Confidence,0.0,90.48,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.8434176264752424
+PARCEL_0041,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6514,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.40081762055819486
+PARCEL_0042,Ambasamudram,Paddy,Paddy,Agricultural Land,0.8545,High Confidence,0.0,47.78,34.44,Consistent with multi-temporal spectral profile,0.8583739799181088
+PARCEL_0043,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6836,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5760878663465845
+PARCEL_0044,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7422,Medium Confidence,0.0,9.52,82.54,Verified active photosynthetic agricultural phenology,0.6452342723068072
+PARCEL_0045,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.8312,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5382980727893835
+PARCEL_0046,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7598,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.738867807651951
+PARCEL_0047,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7149,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.9742283534118573
+PARCEL_0048,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.9135,High Confidence,0.0,13.64,59.09,Verified active photosynthetic agricultural phenology,0.6389700183063516
+PARCEL_0049,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6221,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.8461212346562869
+PARCEL_0050,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7615,Medium Confidence,0.0,4.95,88.12,Verified active photosynthetic agricultural phenology,1.00602939777422
+PARCEL_0052,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7984,Medium Confidence,0.0,0.0,96.08,Verified active photosynthetic agricultural phenology,0.5097737116826393
+PARCEL_0053,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.5655,Low Confidence / Review,0.0,6.25,71.88,Verified active photosynthetic agricultural phenology,0.6434283317807783
+PARCEL_0054,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.6291,Medium Confidence,0.0,62.75,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5190447755843547
+PARCEL_0055,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.5553,Low Confidence / Review,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.6055694621054206
+PARCEL_0056,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7957,Medium Confidence,0.0,3.66,81.71,Verified active photosynthetic agricultural phenology,0.8256760084062557
+PARCEL_0057,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.9218,High Confidence,0.0,3.12,78.12,Verified active photosynthetic agricultural phenology,0.6473358780365084
+PARCEL_0058,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.7425,Medium Confidence,0.0,0.0,94.44,Verified active photosynthetic agricultural phenology,0.35867888316260066
+PARCEL_0059,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.852,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5985715668891067
+PARCEL_0060,Ambasamudram,Paddy,Paddy,Agricultural Land,0.6804,Medium Confidence,0.0,26.15,24.62,Consistent with multi-temporal spectral profile,0.6518003453899498
+PARCEL_0061,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9898,High Confidence,0.0,53.57,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.2897412872248629
+PARCEL_0062,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9412,High Confidence,0.0,40.0,24.44,Consistent with multi-temporal spectral profile,0.444149868272395
+PARCEL_0063,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9008,High Confidence,0.0,0.0,62.9,Verified active photosynthetic agricultural phenology,0.642657354446388
+PARCEL_0064,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7020602661868786
+PARCEL_0065,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9906,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.48021690823895685
+PARCEL_0066,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9974,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6195106681225317
+PARCEL_0067,Cheranmahadevi,Paddy,Paddy,Agricultural Land,1.0,High Confidence,0.0,7.69,1.28,Consistent with multi-temporal spectral profile,0.7791309705554935
+PARCEL_0068,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9968,High Confidence,0.0,31.43,24.29,Consistent with multi-temporal spectral profile,0.6961733509184428
+PARCEL_0069,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9974,High Confidence,0.0,98.21,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5241093356315802
+PARCEL_0070,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9909,High Confidence,0.0,95.45,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.657234035163673
+PARCEL_0071,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9918,High Confidence,0.0,10.84,0.0,Consistent with multi-temporal spectral profile,0.8180688207103999
+PARCEL_0072,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,70.18,9.65,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.0743816478150916
+PARCEL_0073,Cheranmahadevi,Paddy,Paddy,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.5852099417773348
+PARCEL_0074,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9974,High Confidence,0.0,96.1,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7608915639638504
+PARCEL_0075,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9857,High Confidence,0.0,67.39,10.87,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.9034546062368941
+PARCEL_0076,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.6146,Medium Confidence,0.0,3.17,80.95,Verified active photosynthetic agricultural phenology,0.6299267705778225
+PARCEL_0077,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9792,High Confidence,0.0,43.18,15.91,Consistent with multi-temporal spectral profile,0.4419218160588517
+PARCEL_0078,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.4865,Low Confidence / Review,0.0,1.37,95.89,Verified active photosynthetic agricultural phenology,0.7337288993888968
+PARCEL_0079,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9679,High Confidence,0.0,52.08,2.08,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4883079332278493
+PARCEL_0080,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,72.83,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.9173863062611974
+PARCEL_0081,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9768,High Confidence,0.0,36.79,33.96,Consistent with multi-temporal spectral profile,1.055186807553443
+PARCEL_0082,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,88.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.53155552659298
+PARCEL_0083,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,97.73,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4508670976546078
+PARCEL_0084,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.977,High Confidence,0.0,11.76,26.47,Consistent with multi-temporal spectral profile,0.3259303694623465
+PARCEL_0085,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.8717,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.7809614035045812
+PARCEL_0086,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.54682779127221
+PARCEL_0087,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9847,High Confidence,0.0,54.55,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4530093704197693
+PARCEL_0088,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9982,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7089356120901263
+PARCEL_0089,Cheranmahadevi,Paddy,Paddy,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.3525196245713537
+PARCEL_0090,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9866,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5811788551242184
+PARCEL_0091,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8079,High Confidence,0.0,75.0,2.08,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.46475053119207077
+PARCEL_0092,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9647,High Confidence,0.0,48.35,18.68,Consistent with multi-temporal spectral profile,0.9001609521807468
+PARCEL_0093,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.853,High Confidence,0.0,89.91,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.0804465967884946
+PARCEL_0094,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.077435221834391
+PARCEL_0095,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9325,High Confidence,0.0,30.28,9.17,Consistent with multi-temporal spectral profile,1.087651972845879
+PARCEL_0096,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9168,High Confidence,0.0,14.29,42.86,Verified active photosynthetic agricultural phenology,0.3544836159830601
+PARCEL_0097,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9968,High Confidence,0.0,96.15,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.025670607885842
+PARCEL_0098,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.8475,High Confidence,0.0,0.0,91.53,Verified active photosynthetic agricultural phenology,0.6193240148974954
+PARCEL_0099,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9956,High Confidence,0.0,3.17,0.0,Consistent with multi-temporal spectral profile,0.6225878641968848
+PARCEL_0100,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9172,High Confidence,0.0,0.0,96.15,Verified active photosynthetic agricultural phenology,0.7823680297565028
+PARCEL_0101,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9917,High Confidence,0.0,48.68,7.89,Consistent with multi-temporal spectral profile,0.7613782356399621
+PARCEL_0102,Cheranmahadevi,Paddy,Paddy,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.36525589643130785
+PARCEL_0103,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9624,High Confidence,0.0,24.07,31.48,Consistent with multi-temporal spectral profile,0.5606905860327637
+PARCEL_0104,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9805,High Confidence,0.0,55.56,5.56,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7159294390950357
+PARCEL_0105,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.8669,High Confidence,0.0,45.57,35.44,Consistent with multi-temporal spectral profile,0.8437389785899719
+PARCEL_0106,Cheranmahadevi,Paddy,Paddy,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.35136125257966483
+PARCEL_0107,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9867,High Confidence,0.0,16.28,69.77,Verified active photosynthetic agricultural phenology,0.4308974083959718
+PARCEL_0108,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9974,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.37131134582729813
+PARCEL_0109,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9759,High Confidence,0.0,57.58,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3353663656552483
+PARCEL_0110,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9909,High Confidence,0.0,18.97,55.17,Verified active photosynthetic agricultural phenology,0.5763228457206518
+PARCEL_0111,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,71.3,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.077938907459263
+PARCEL_0112,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9757,High Confidence,0.0,46.55,32.76,Consistent with multi-temporal spectral profile,0.5795392836148969
+PARCEL_0113,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9683,High Confidence,0.0,0.0,95.24,Verified active photosynthetic agricultural phenology,0.6282602657894313
+PARCEL_0114,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9904,High Confidence,0.0,21.43,40.48,Verified active photosynthetic agricultural phenology,0.8369658560954724
+PARCEL_0115,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9571,High Confidence,0.0,73.08,5.77,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.529018162690355
+PARCEL_0116,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9974,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.43457523093111167
+PARCEL_0117,Cheranmahadevi,Paddy,Paddy,Agricultural Paddy,0.9654,High Confidence,0.0,2.56,87.18,Verified active photosynthetic agricultural phenology,0.7778922803631633
+PARCEL_0118,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9846,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7189690895835026
+PARCEL_0119,Cheranmahadevi,Paddy,Paddy,Agricultural Land,0.9523,High Confidence,0.0,28.38,33.78,Consistent with multi-temporal spectral profile,0.7477318610658635
+PARCEL_0120,Cheranmahadevi,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9918,High Confidence,0.0,94.44,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3603951699025029
+PARCEL_0121,Ambasamudram,Banana,Banana,Agricultural Banana,0.8577,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.32192133266599565
+PARCEL_0122,Ambasamudram,Banana,Banana,Agricultural Banana,0.535,Low Confidence / Review,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4762600972305115
+PARCEL_0123,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.6496,Medium Confidence,0.0,53.49,20.93,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4199601383150374
+PARCEL_0124,Ambasamudram,Banana,Banana,Agricultural Banana,0.8053,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4924916895443663
+PARCEL_0125,Ambasamudram,Banana,Banana,Agricultural Banana,0.9726,High Confidence,0.0,0.0,67.5,Verified active photosynthetic agricultural phenology,0.40201694901410867
+PARCEL_0126,Ambasamudram,Banana,Banana,Uncertain / Mixed (Banana),0.4799,Low Confidence / Review,0.0,22.86,31.43,Low model prediction confidence (0.48),0.3904405882762317
+PARCEL_0127,Ambasamudram,Banana,Banana,Agricultural Banana,0.7502,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.3197904037325887
+PARCEL_0128,Ambasamudram,Banana,Banana,Agricultural Banana,0.542,Low Confidence / Review,0.0,25.0,54.69,Verified active photosynthetic agricultural phenology,0.6564137199827537
+PARCEL_0129,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9926,High Confidence,0.0,93.1,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5712102227401564
+PARCEL_0130,Ambasamudram,Banana,Banana,Agricultural Banana,0.8955,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.26125193065047153
+PARCEL_0131,Ambasamudram,Banana,Banana,Agricultural Banana,0.7836,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.44067303046796535
+PARCEL_0132,Ambasamudram,Banana,Banana,Agricultural Banana,0.6704,Medium Confidence,0.0,18.06,75.0,Verified active photosynthetic agricultural phenology,0.6709118966950837
+PARCEL_0133,Ambasamudram,Banana,Banana,Agricultural Banana,0.8436,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5546526367368537
+PARCEL_0134,Ambasamudram,Banana,Banana,Agricultural Banana,0.948,High Confidence,0.0,0.0,52.08,Verified active photosynthetic agricultural phenology,0.4948503636535328
+PARCEL_0135,Ambasamudram,Banana,Banana,Agricultural Banana,0.7377,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4633412114931758
+PARCEL_0136,Ambasamudram,Banana,Banana,Agricultural Banana,0.7344,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.7026815878866922
+PARCEL_0137,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9852,High Confidence,0.0,60.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5447412881500535
+PARCEL_0138,Ambasamudram,Banana,Banana,Agricultural Banana,0.7922,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.34791240883509505
+PARCEL_0139,Ambasamudram,Banana,Banana,Agricultural Banana,0.9288,High Confidence,0.0,0.0,76.71,Verified active photosynthetic agricultural phenology,0.7384498663385445
+PARCEL_0140,Ambasamudram,Banana,Banana,Agricultural Banana,0.7782,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.2964051799283167
+PARCEL_0141,Ambasamudram,Banana,Banana,Agricultural Banana,0.6893,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5749070955662988
+PARCEL_0142,Ambasamudram,Banana,Banana,Agricultural Land,0.9489,High Confidence,0.0,26.56,26.56,Consistent with multi-temporal spectral profile,0.6706601809805209
+PARCEL_0143,Ambasamudram,Banana,Banana,Agricultural Banana,0.7143,Medium Confidence,0.0,25.71,57.14,Verified active photosynthetic agricultural phenology,0.39138056972634433
+PARCEL_0144,Ambasamudram,Banana,Banana,Agricultural Banana,0.5041,Low Confidence / Review,0.0,0.0,92.59,Verified active photosynthetic agricultural phenology,0.8116851531002196
+PARCEL_0145,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.6322,Medium Confidence,0.0,52.27,9.09,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4229203534743415
+PARCEL_0146,Ambasamudram,Banana,Banana,Agricultural Banana,0.7217,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.7504598318345657
+PARCEL_0147,Ambasamudram,Banana,Banana,Agricultural Banana,0.85,High Confidence,0.0,0.0,97.56,Verified active photosynthetic agricultural phenology,0.8193866885338171
+PARCEL_0148,Ambasamudram,Banana,Banana,Uncertain / Mixed (Banana),0.4737,Low Confidence / Review,0.0,39.29,7.14,Low model prediction confidence (0.47),0.31005948759506047
+PARCEL_0149,Ambasamudram,Banana,Banana,Agricultural Land,0.9446,High Confidence,0.0,31.82,30.3,Consistent with multi-temporal spectral profile,0.6539631152527173
+PARCEL_0150,Ambasamudram,Banana,Banana,Agricultural Banana,0.6262,Medium Confidence,0.0,16.67,83.33,Verified active photosynthetic agricultural phenology,0.38017770449676097
+PARCEL_0151,Ambasamudram,Banana,Banana,Agricultural Banana,0.7285,Medium Confidence,0.0,4.35,93.48,Verified active photosynthetic agricultural phenology,0.4610857108089007
+PARCEL_0152,Ambasamudram,Banana,Banana,Agricultural Land,0.9468,High Confidence,0.0,2.94,35.29,Consistent with multi-temporal spectral profile,0.3497755068319026
+PARCEL_0153,Ambasamudram,Banana,Banana,Agricultural Banana,0.9171,High Confidence,0.0,48.0,46.0,Verified active photosynthetic agricultural phenology,0.46727110361154856
+PARCEL_0154,Ambasamudram,Banana,Banana,Agricultural Banana,0.7323,Medium Confidence,0.0,2.17,97.83,Verified active photosynthetic agricultural phenology,0.4578250886204715
+PARCEL_0155,Ambasamudram,Banana,Banana,Agricultural Banana,0.8943,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.32125221042620444
+PARCEL_0157,Ambasamudram,Banana,Banana,Agricultural Banana,0.7656,Medium Confidence,0.0,1.25,97.5,Verified active photosynthetic agricultural phenology,0.8131149189790761
+PARCEL_0158,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9708,High Confidence,0.0,82.76,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3027711862800425
+PARCEL_0159,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.653,Medium Confidence,0.0,20.0,64.0,Verified active photosynthetic agricultural phenology,0.26004397375745486
+PARCEL_0160,Ambasamudram,Banana,Banana,Agricultural Banana,0.8642,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4186765065369047
+PARCEL_0161,Ambasamudram,Banana,Banana,Agricultural Banana,0.7673,Medium Confidence,0.0,2.82,97.18,Verified active photosynthetic agricultural phenology,0.7120520806461967
+PARCEL_0162,Ambasamudram,Banana,Banana,Agricultural Banana,0.9695,High Confidence,0.0,0.0,78.79,Verified active photosynthetic agricultural phenology,0.32960237601142495
+PARCEL_0163,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9589,High Confidence,0.0,56.67,16.67,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5922201025415071
+PARCEL_0164,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9696,High Confidence,0.0,95.83,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.47677978096646884
+PARCEL_0165,Ambasamudram,Banana,Banana,Agricultural Banana,0.6848,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4850296899731271
+PARCEL_0166,Ambasamudram,Banana,Banana,Agricultural Banana,0.7278,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5631677852056828
+PARCEL_0167,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.958,High Confidence,0.0,95.56,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.44389888665439603
+PARCEL_0168,Ambasamudram,Banana,Banana,Agricultural Banana,0.9336,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.2691590296802382
+PARCEL_0169,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9728,High Confidence,0.0,82.93,2.44,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.42682131891442143
+PARCEL_0170,Ambasamudram,Banana,Banana,Agricultural Banana,0.8934,High Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.23614962094788824
+PARCEL_0171,Ambasamudram,Banana,Banana,Agricultural Banana,0.7943,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5870909793388073
+PARCEL_0172,Ambasamudram,Banana,Banana,Agricultural Banana,0.7179,Medium Confidence,0.0,0.0,91.11,Verified active photosynthetic agricultural phenology,0.4551669940164644
+PARCEL_0173,Ambasamudram,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8651,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3693239727171489
+PARCEL_0174,Ambasamudram,Banana,Banana,Agricultural Land,0.8802,High Confidence,0.0,34.62,7.69,Consistent with multi-temporal spectral profile,0.508247942461024
+PARCEL_0175,Ambasamudram,Banana,Banana,Agricultural Banana,0.6162,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.7180494247655752
+PARCEL_0176,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9976,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3321347231663285
+PARCEL_0177,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,92.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.24539299691512625
+PARCEL_0178,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9927,High Confidence,0.0,36.84,28.95,Consistent with multi-temporal spectral profile,0.3825621937491447
+PARCEL_0179,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,77.27,2.27,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4366916573810136
+PARCEL_0180,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,95.31,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6391030700999641
+PARCEL_0181,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,85.71,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6963008106864177
+PARCEL_0182,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9688,High Confidence,0.0,11.49,43.68,Verified active photosynthetic agricultural phenology,0.8702429550927154
+PARCEL_0183,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.39655635603436634
+PARCEL_0184,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9894,High Confidence,0.0,81.48,1.23,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.862682505184224
+PARCEL_0185,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9932,High Confidence,0.0,66.04,1.89,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5269304181835388
+PARCEL_0186,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,48.0,24.0,Consistent with multi-temporal spectral profile,0.2492615216341024
+PARCEL_0187,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9297,High Confidence,0.0,0.0,96.0,Verified active photosynthetic agricultural phenology,0.29329705838481684
+PARCEL_0188,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9889,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6813020111339807
+PARCEL_0189,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,98.73,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.781044343919698
+PARCEL_0190,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,55.81,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.44912568175237455
+PARCEL_0191,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9828,High Confidence,0.0,25.45,0.0,Consistent with multi-temporal spectral profile,0.5409577102526234
+PARCEL_0192,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9884,High Confidence,0.0,0.0,63.89,Verified active photosynthetic agricultural phenology,0.3550759116594412
+PARCEL_0193,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9558,High Confidence,0.0,80.0,16.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.507195774568904
+PARCEL_0194,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9922,High Confidence,0.0,0.0,59.77,Verified active photosynthetic agricultural phenology,0.8204991283512636
+PARCEL_0195,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9918,High Confidence,0.0,51.85,40.74,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5350455041849611
+PARCEL_0196,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9603,High Confidence,0.0,85.37,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3993210631907695
+PARCEL_0197,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,5.66,0.0,Consistent with multi-temporal spectral profile,0.524922743828213
+PARCEL_0198,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9884,High Confidence,0.0,3.03,74.24,Verified active photosynthetic agricultural phenology,0.6616456992178704
+PARCEL_0199,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.995,High Confidence,0.0,23.08,46.15,Verified active photosynthetic agricultural phenology,0.4037242921250646
+PARCEL_0200,Cheranmahadevi,Banana,Banana,Agricultural Banana,1.0,High Confidence,0.0,7.69,84.62,Verified active photosynthetic agricultural phenology,0.5179521142959523
+PARCEL_0201,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.5641085726740874
+PARCEL_0202,Cheranmahadevi,Banana,Banana,Agricultural Banana,1.0,High Confidence,0.0,0.0,87.5,Verified active photosynthetic agricultural phenology,0.47069190487151363
+PARCEL_0203,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,28.57,34.92,Consistent with multi-temporal spectral profile,0.6107975610533319
+PARCEL_0204,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,33.33,0.0,Consistent with multi-temporal spectral profile,0.4922657713468085
+PARCEL_0205,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9644,High Confidence,0.0,1.49,82.09,Verified active photosynthetic agricultural phenology,0.6613391743912145
+PARCEL_0206,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9918,High Confidence,0.0,20.29,27.54,Consistent with multi-temporal spectral profile,0.6937073051490522
+PARCEL_0207,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9944,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4713097193896847
+PARCEL_0208,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9962,High Confidence,0.0,0.0,13.64,Consistent with multi-temporal spectral profile,0.4358419117744874
+PARCEL_0209,Cheranmahadevi,Banana,Banana,Agricultural Land,0.995,High Confidence,0.0,48.0,24.0,Consistent with multi-temporal spectral profile,0.2689786482749745
+PARCEL_0210,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9925,High Confidence,0.0,41.86,4.65,Consistent with multi-temporal spectral profile,0.44478632695680764
+PARCEL_0211,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9921,High Confidence,0.0,23.73,50.85,Verified active photosynthetic agricultural phenology,0.5984960005297566
+PARCEL_0212,Cheranmahadevi,Banana,Banana,Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.4591564994322136
+PARCEL_0213,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9934,High Confidence,0.0,14.58,66.67,Verified active photosynthetic agricultural phenology,0.4828390219608562
+PARCEL_0214,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9935,High Confidence,0.0,41.67,41.67,Verified active photosynthetic agricultural phenology,0.3595984337582347
+PARCEL_0215,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9926,High Confidence,0.0,44.74,31.58,Consistent with multi-temporal spectral profile,0.38330211375019396
+PARCEL_0216,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9742,High Confidence,0.0,36.62,19.72,Consistent with multi-temporal spectral profile,0.6611870854170298
+PARCEL_0217,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.7591,Medium Confidence,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.4506599521092563
+PARCEL_0218,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9913,High Confidence,0.0,70.37,9.26,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5428858268962073
+PARCEL_0219,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,57.14,16.33,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5076086802340398
+PARCEL_0220,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9724,High Confidence,0.0,0.0,93.75,Verified active photosynthetic agricultural phenology,0.3144394467878702
+PARCEL_0221,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9874,High Confidence,0.0,98.36,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6057085569084707
+PARCEL_0222,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9964,High Confidence,0.0,81.16,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7003655764980925
+PARCEL_0223,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9968,High Confidence,0.0,34.78,56.52,Verified active photosynthetic agricultural phenology,0.2404157114766089
+PARCEL_0224,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9921,High Confidence,0.0,63.89,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3513585003562215
+PARCEL_0225,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9895,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.38287105205766
+PARCEL_0226,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9561,High Confidence,0.0,25.93,37.04,Consistent with multi-temporal spectral profile,0.5136652396087563
+PARCEL_0227,Cheranmahadevi,Banana,Banana,Agricultural Land,0.989,High Confidence,0.0,16.28,0.0,Consistent with multi-temporal spectral profile,0.44687958862254434
+PARCEL_0228,Cheranmahadevi,Banana,Banana,Agricultural Land,0.9733,High Confidence,0.0,46.88,0.0,Consistent with multi-temporal spectral profile,0.32428757904178446
+PARCEL_0229,Cheranmahadevi,Banana,Banana,Agricultural Banana,0.9949,High Confidence,0.0,1.69,52.54,Verified active photosynthetic agricultural phenology,0.6081978460177283
+PARCEL_0230,Cheranmahadevi,Banana,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9944,High Confidence,0.0,92.59,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.29177223503633215
+PARCEL_0231,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8251,High Confidence,0.0,16.05,55.56,Consistent with multi-temporal spectral profile,0.8126735629630111
+PARCEL_0232,Ambasamudram,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7163,Medium Confidence,0.0,72.73,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.4397114762609406
+PARCEL_0233,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8929,High Confidence,0.0,3.77,31.13,Consistent with multi-temporal spectral profile,1.0608541701806409
+PARCEL_0234,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8914,High Confidence,0.0,0.0,100.0,Consistent with multi-temporal spectral profile,0.48815972408531416
+PARCEL_0235,Ambasamudram,Paddy,Paddy,Agricultural Paddy,0.6189,Medium Confidence,0.0,5.56,79.17,Verified active photosynthetic agricultural phenology,0.6969919672981774
+PARCEL_0236,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8799,High Confidence,0.0,0.0,70.37,Consistent with multi-temporal spectral profile,0.2679301466456774
+PARCEL_0237,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.418,Low Confidence / Review,0.0,93.75,5.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7904930699634694
+PARCEL_0238,Ambasamudram,Paddy,Non-Crop,Bare Soil / Settlement / Non-Crop,0.5098,Low Confidence / Review,0.0,51.47,29.41,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6742140005413356
+PARCEL_0239,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.6335,Medium Confidence,0.0,18.52,25.93,Consistent with multi-temporal spectral profile,0.528396644714762
+PARCEL_0240,Ambasamudram,Other,Non-Crop,Uncertain / Mixed (Other),0.5411,Low Confidence / Review,0.0,0.0,100.0,Low model prediction confidence (0.54),0.9760070435932557
+PARCEL_0241,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7432,Medium Confidence,0.0,38.46,44.23,Consistent with multi-temporal spectral profile,0.5142356499048636
+PARCEL_0243,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7346,Medium Confidence,0.0,0.0,89.29,Consistent with multi-temporal spectral profile,0.5430835837252406
+PARCEL_0244,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7039,Medium Confidence,0.0,28.89,33.33,Consistent with multi-temporal spectral profile,0.8930186515477617
+PARCEL_0245,Ambasamudram,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7993,Medium Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.32082927360781893
+PARCEL_0246,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8716,High Confidence,0.0,14.89,40.43,Consistent with multi-temporal spectral profile,0.4745349432199776
+PARCEL_0247,Ambasamudram,Other,Non-Crop,Uncertain / Mixed (Other),0.5467,Low Confidence / Review,0.0,0.0,100.0,Low model prediction confidence (0.55),0.6010238993058521
+PARCEL_0248,Ambasamudram,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.6013,Medium Confidence,0.0,50.91,36.36,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.5612548724613997
+PARCEL_0249,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8214,High Confidence,0.0,0.0,100.0,Consistent with multi-temporal spectral profile,0.8972159619195161
+PARCEL_0250,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7789,Medium Confidence,0.0,4.94,51.85,Consistent with multi-temporal spectral profile,0.7917062052496621
+PARCEL_0251,Ambasamudram,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8467,High Confidence,0.0,57.14,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.28501119730240837
+PARCEL_0252,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.5681,Low Confidence / Review,0.0,0.0,100.0,Consistent with multi-temporal spectral profile,0.8384448139757529
+PARCEL_0253,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7719,Medium Confidence,0.0,29.63,59.26,Consistent with multi-temporal spectral profile,0.27642757414445124
+PARCEL_0254,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.869,High Confidence,0.0,0.0,26.0,Consistent with multi-temporal spectral profile,0.49588736040255343
+PARCEL_0255,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7374,Medium Confidence,0.0,27.45,56.86,Consistent with multi-temporal spectral profile,0.5261189364839202
+PARCEL_0256,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.6633,Medium Confidence,0.0,1.19,75.0,Consistent with multi-temporal spectral profile,0.8358439136192919
+PARCEL_0257,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7706,Medium Confidence,0.0,26.09,13.04,Consistent with multi-temporal spectral profile,0.21695889392016196
+PARCEL_0258,Ambasamudram,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7354,Medium Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.1038991801832416
+PARCEL_0261,Ambasamudram,Banana,Banana,Agricultural Banana,0.4364,Low Confidence / Review,0.0,0.0,100.0,Verified active photosynthetic agricultural phenology,0.5308067427334754
+PARCEL_0262,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.7968,Medium Confidence,0.0,4.55,80.0,Consistent with multi-temporal spectral profile,1.1110970509041325
+PARCEL_0263,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.8718,High Confidence,0.0,1.71,65.81,Consistent with multi-temporal spectral profile,1.1250139692397878
+PARCEL_0264,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.6027,Medium Confidence,0.0,4.26,85.11,Consistent with multi-temporal spectral profile,0.4785625783760773
+PARCEL_0265,Ambasamudram,Other,Non-Crop,Non-Agricultural Land,0.5711,Low Confidence / Review,0.0,0.0,97.4,Consistent with multi-temporal spectral profile,0.7770961891889447
+PARCEL_0266,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.2669065118685508
+PARCEL_0268,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.7769,Medium Confidence,0.0,76.92,7.69,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.40479503092016733
+PARCEL_0269,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9337,High Confidence,0.0,66.23,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7676425974600095
+PARCEL_0270,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8959,High Confidence,0.0,68.09,2.13,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.47389609740190974
+PARCEL_0271,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.995,High Confidence,0.0,48.31,0.0,Consistent with multi-temporal spectral profile,0.8968771886424028
+PARCEL_0272,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9887,High Confidence,0.0,28.85,32.69,Consistent with multi-temporal spectral profile,0.5116933889690413
+PARCEL_0273,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9924,High Confidence,0.0,6.25,35.42,Consistent with multi-temporal spectral profile,0.4774941735233402
+PARCEL_0274,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,1.96,19.61,Consistent with multi-temporal spectral profile,0.5395709084366703
+PARCEL_0275,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.363599028364121
+PARCEL_0276,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.8802,High Confidence,0.0,37.5,1.25,Consistent with multi-temporal spectral profile,0.7932607722755646
+PARCEL_0277,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9145,High Confidence,0.0,3.26,91.3,Consistent with multi-temporal spectral profile,0.9208674301496925
+PARCEL_0278,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,18.1,1.9,Consistent with multi-temporal spectral profile,1.0525822040082693
+PARCEL_0279,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9646,High Confidence,0.0,0.0,94.44,Consistent with multi-temporal spectral profile,0.3317922845806508
+PARCEL_0280,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9934,High Confidence,0.0,17.95,39.74,Consistent with multi-temporal spectral profile,0.7646781856172532
+PARCEL_0281,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,72.15,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.7819196421345926
+PARCEL_0282,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.6618872414037221
+PARCEL_0283,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9164,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.27326229211736197
+PARCEL_0284,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9154,High Confidence,0.0,25.0,17.31,Consistent with multi-temporal spectral profile,0.4903213643186108
+PARCEL_0285,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9597,High Confidence,0.0,75.81,4.84,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6060069429400667
+PARCEL_0287,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9394,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.2870807583442604
+PARCEL_0288,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,82.86,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.31158738048079615
+PARCEL_0289,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.8314,High Confidence,0.0,25.74,0.0,Consistent with multi-temporal spectral profile,1.0165131451961207
+PARCEL_0290,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9947,High Confidence,0.0,92.86,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.1183209550054278
+PARCEL_0291,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9906,High Confidence,0.0,0.0,89.19,Consistent with multi-temporal spectral profile,0.3460176209646322
+PARCEL_0292,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9546,High Confidence,0.0,100.0,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.3955545505391294
+PARCEL_0293,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8183,High Confidence,0.0,88.66,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.9658143025994994
+PARCEL_0294,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.8836,High Confidence,0.0,56.45,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),0.6231808873205973
+PARCEL_0295,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9734,High Confidence,0.0,34.72,11.11,Consistent with multi-temporal spectral profile,0.7341656136406546
+PARCEL_0296,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,0.9898,High Confidence,0.0,80.73,11.93,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.0880358068057732
+PARCEL_0297,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,3.51,59.65,Consistent with multi-temporal spectral profile,0.5404274189501068
+PARCEL_0298,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,1.0,High Confidence,0.0,0.0,0.0,Consistent with multi-temporal spectral profile,0.6671908791183406
+PARCEL_0299,Cheranmahadevi,Other,Non-Crop,Bare Soil / Settlement / Non-Crop,1.0,High Confidence,0.0,74.42,0.0,Temporal peak NDVI < 0.20 (no agricultural crop cultivation observed),1.2905853325642684
+PARCEL_0300,Cheranmahadevi,Other,Non-Crop,Non-Agricultural Land,0.9948,High Confidence,0.0,6.61,0.0,Consistent with multi-temporal spectral profile,1.206494072243921
