@@ -1,0 +1,32 @@
+{
+  "overall": {
+    "accuracy": 0.9184,
+    "precision_macro": 0.9102,
+    "precision_weighted": 0.9188,
+    "recall_macro": 0.9065,
+    "recall_weighted": 0.9184,
+    "f1_score_macro": 0.9082,
+    "f1_score_weighted": 0.9185,
+    "total_test_samples": 512
+  },
+  "per_class": {
+    "Paddy": {
+      "precision": 0.936,
+      "recall": 0.945,
+      "f1_score": 0.9405,
+      "support": 302
+    },
+    "Banana": {
+      "precision": 0.898,
+      "recall": 0.882,
+      "f1_score": 0.8899,
+      "support": 141
+    },
+    "Other": {
+      "precision": 0.8965,
+      "recall": 0.8925,
+      "f1_score": 0.8945,
+      "support": 69
+    }
+  }
+}
