@@ -1,0 +1,36 @@
+================================================================================
+VIT MAPATHON — MEMBER 2 GIS VALIDATION & SPATIAL INTEGRITY REPORT
+================================================================================
+Input Classified File : D:\VIT_MAPATHON\data\parcels\cleaned\classified_parcels.geojson
+Study Area AOI File   : D:\VIT_MAPATHON\data\aoi\study_area.geojson
+Target Processing CRS : EPSG:32643 (WGS 84 / UTM Zone 43N)
+--------------------------------------------------------------------------------
+1. GEOMETRY & TOPOLOGY INTEGRITY AUDIT
+   - Total Input Features       : 293
+   - Source CRS                 : EPSG:4326
+   - Standardized Working CRS   : EPSG:32643
+   - Null / Missing Geometries  : 0 (Filtered: 0)
+   - Empty Geometries           : 0 (Filtered: 0)
+   - Invalid Geometries (Raw)   : 0
+   - Invalid Geometries (Repaired): 0 (Status: PASSED)
+   - Zero/Negative Area Polygons: 0 (Status: PASSED)
+   - Overlapping Parcel Pairs   : 14 (Max overlap area: 3014.33 m²)
+   - AOI Containment Check      : 293/293 parcels inside study area
+--------------------------------------------------------------------------------
+2. CROP CLASSIFICATION & ACREAGE BREAKDOWN
+   - Classification Field Used  : 'predicted_crop'
+   - Total Classified Area (ha) : 171.6547 ha (424.1680 acres)
+
+   * Banana    :  109 parcels |     54.41 ha (   134.45 acres) |  31.70% of area | Mean Conf: 0.8879
+   * Other     :   61 parcels |     40.21 ha (    99.36 acres) |  23.43% of area | Mean Conf: 0.8571
+   * Paddy     :  123 parcels |     77.03 ha (   190.36 acres) |  44.88% of area | Mean Conf: 0.8498
+--------------------------------------------------------------------------------
+3. PREDICTION CONFIDENCE DISTRIBUTION
+   - Overall Mean Confidence    : 0.8655 (86.55%)
+   - Median Confidence (p50)    : 0.9172
+   - Interquartile Range (IQR)  : [0.7656 - 0.9918]
+   - Min / Max Confidence       : [0.4180 - 1.0000]
+   - High Confidence (>= 80%)   : 69.28% of parcels
+================================================================================
+OVERALL GIS VALIDATION STATUS: PASSED
+================================================================================

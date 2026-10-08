@@ -91,10 +91,11 @@ member1-ml/data/*
 *.sublime-project
 *.sublime-workspace
 
-# Operating System
+# Operating System & Presentation Drafts
 .DS_Store
 Thumbs.db
 ehthumbs.db
+*.pptx
 
 # Jupyter Checkpoints & Logs
 .ipynb_checkpoints/

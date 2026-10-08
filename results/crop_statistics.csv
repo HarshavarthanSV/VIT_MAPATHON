@@ -1,0 +1,4 @@
+Crop_Class,Parcel_Count,Total_Hectares,Total_Acres,Percentage_of_Classified_Area,Mean_Parcel_Area_Ha,Median_Parcel_Area_Ha,Mean_Confidence,Min_Confidence,Max_Confidence
+Paddy,123,77.0341,190.3554,44.88,0.6263,0.6056,0.8498,0.418,1.0
+Banana,109,54.4096,134.449,31.7,0.4992,0.4763,0.8879,0.4364,1.0
+Other,61,40.211,99.3636,23.43,0.6592,0.601,0.8571,0.5411,1.0
