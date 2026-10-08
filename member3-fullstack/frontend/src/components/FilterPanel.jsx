@@ -1,4 +1,5 @@
 import React from 'react';
+import { getCropColor } from './ParcelPopup';
 
 export default function FilterPanel({
   visibleCrops,
@@ -13,6 +14,9 @@ export default function FilterPanel({
   onResetFilters
 }) {
   const cropDist = statistics?.crop_distribution || {};
+  const cropKeys = Object.keys(cropDist).length > 0
+    ? Object.keys(cropDist)
+    : Object.keys(visibleCrops || {});
 
   return (
     <div className="panel-card">
@@ -55,92 +59,53 @@ export default function FilterPanel({
         </div>
 
         <div className="crop-filters-list">
-          {/* Paddy */}
-          <div
-            className="crop-filter-row"
-            style={{
-              borderColor: visibleCrops.Paddy ? '#16a34a' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Paddy ? 'rgba(22, 163, 74, 0.15)' : 'rgba(15, 23, 42, 0.4)'
-            }}
-            onClick={() => onToggleCrop('Paddy')}
-          >
-            <div className="crop-filter-left">
-              <input
-                type="checkbox"
-                checked={visibleCrops.Paddy}
-                onChange={() => onToggleCrop('Paddy')}
-                onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#16a34a', cursor: 'pointer' }}
-              />
-              <span className="crop-color-pill" style={{ background: '#16a34a' }} />
-              <div>
-                <span className="crop-name" style={{ color: '#22c55e' }}>Paddy (நெல்)</span>
-                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>River floodplains & canal tracts</div>
-              </div>
-            </div>
-            <div className="crop-stats-mini">
-              {cropDist.Paddy?.parcel_count || 0} parcels
-              <div style={{ color: '#22c55e' }}>{cropDist.Paddy?.area_hectares || 0} ha</div>
-            </div>
-          </div>
+          {cropKeys.map((cropName) => {
+            const isVisible = visibleCrops[cropName] !== false;
+            const colors = getCropColor(cropName);
+            const distInfo = cropDist[cropName] || {};
+            const subtitle = cropName === 'Paddy'
+              ? 'River floodplains & canal tracts'
+              : cropName === 'Banana'
+              ? 'Perennial horticulture tracts'
+              : cropName === 'Non-Crop'
+              ? 'Bare soil, settlements, waterbodies'
+              : 'Agricultural / Other land cover';
 
-          {/* Banana */}
-          <div
-            className="crop-filter-row"
-            style={{
-              borderColor: visibleCrops.Banana ? '#eab308' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Banana ? 'rgba(234, 179, 8, 0.15)' : 'rgba(15, 23, 42, 0.4)'
-            }}
-            onClick={() => onToggleCrop('Banana')}
-          >
-            <div className="crop-filter-left">
-              <input
-                type="checkbox"
-                checked={visibleCrops.Banana}
-                onChange={() => onToggleCrop('Banana')}
-                onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#eab308', cursor: 'pointer' }}
-              />
-              <span className="crop-color-pill" style={{ background: '#eab308' }} />
-              <div>
-                <span className="crop-name" style={{ color: '#facc15' }}>Banana (வாழை)</span>
-                <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Perennial horticulture tracts</div>
+            return (
+              <div
+                key={cropName}
+                className="crop-filter-row"
+                style={{
+                  borderColor: isVisible ? colors.stroke : 'rgba(255, 255, 255, 0.08)',
+                  background: isVisible ? colors.bg : 'rgba(15, 23, 42, 0.4)'
+                }}
+                onClick={() => onToggleCrop(cropName)}
+              >
+                <div className="crop-filter-left">
+                  <input
+                    type="checkbox"
+                    checked={isVisible}
+                    onChange={() => onToggleCrop(cropName)}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ accentColor: colors.fill, cursor: 'pointer' }}
+                  />
+                  <span className="crop-color-pill" style={{ background: colors.fill }} />
+                  <div>
+                    <span className="crop-name" style={{ color: colors.text }}>
+                      {cropName === 'Paddy' ? 'Paddy (நெல்)' : cropName === 'Banana' ? 'Banana (வாழை)' : cropName}
+                    </span>
+                    <div style={{ fontSize: '0.65rem', color: '#94a3b8' }}>{subtitle}</div>
+                  </div>
+                </div>
+                <div className="crop-stats-mini">
+                  {distInfo.parcel_count != null ? `${distInfo.parcel_count} parcels` : ''}
+                  <div style={{ color: colors.text }}>
+                    {distInfo.area_hectares != null ? `${distInfo.area_hectares} ha` : ''}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="crop-stats-mini">
-              {cropDist.Banana?.parcel_count || 0} parcels
-              <div style={{ color: '#facc15' }}>{cropDist.Banana?.area_hectares || 0} ha</div>
-            </div>
-          </div>
-
-          {/* Other */}
-          <div
-            className="crop-filter-row"
-            style={{
-              borderColor: visibleCrops.Other ? '#64748b' : 'rgba(255, 255, 255, 0.08)',
-              background: visibleCrops.Other ? 'rgba(100, 116, 139, 0.15)' : 'rgba(15, 23, 42, 0.4)'
-            }}
-            onClick={() => onToggleCrop('Other')}
-          >
-            <div className="crop-filter-left">
-              <input
-                type="checkbox"
-                checked={visibleCrops.Other}
-                onChange={() => onToggleCrop('Other')}
-                onClick={(e) => e.stopPropagation()}
-                style={{ accentColor: '#64748b', cursor: 'pointer' }}
-              />
-              <span className="crop-color-pill" style={{ background: '#64748b' }} />
-              <div>
-                <span className="crop-name" style={{ color: '#94a3b8' }}>Other Crops / Fallow</span>
-                <div style={{ fontSize: '0.65rem', color: '#64748b' }}>Dry crops, scrub, borders</div>
-              </div>
-            </div>
-            <div className="crop-stats-mini">
-              {cropDist.Other?.parcel_count || 0} parcels
-              <div style={{ color: '#94a3b8' }}>{cropDist.Other?.area_hectares || 0} ha</div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
 
@@ -176,3 +141,4 @@ export default function FilterPanel({
     </div>
   );
 }
+

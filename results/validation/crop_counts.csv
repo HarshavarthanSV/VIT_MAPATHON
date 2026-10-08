@@ -1,0 +1,4 @@
+crop_class,parcel_count,percentage_of_parcels,mean_confidence,min_confidence,max_confidence
+Banana,79,26.96,0.8563,0.4364,1.0
+Non-Crop,131,44.71,0.8961,0.418,1.0
+Paddy,83,28.33,0.8259,0.4978,1.0

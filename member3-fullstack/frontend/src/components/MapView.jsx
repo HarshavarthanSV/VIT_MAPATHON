@@ -476,7 +476,7 @@ export default function MapView({
           </div>
           <div className="legend-item">
             <span style={{ width: 14, height: 14, background: '#64748b', border: '1.5px solid #475569', borderRadius: 3 }} />
-            <span>Other / Fallow</span>
+            <span>Non-Crop / Bare Soil / Water</span>
           </div>
           <div className="legend-item">
             <span style={{ width: 20, height: 3, background: '#00e5ff', display: 'inline-block' }} />

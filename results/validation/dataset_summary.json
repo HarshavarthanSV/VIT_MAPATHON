@@ -1,0 +1,31 @@
+{
+  "dataset_name": "Ambasamudram & Cheranmahadevi Classified Agricultural Cadastral Parcels",
+  "crs_source": "EPSG:4326",
+  "projected_crs_metric": "EPSG:32643 (UTM Zone 43N)",
+  "total_features": 293,
+  "geometry_validity": {
+    "valid_geometries": 293,
+    "invalid_geometries": 0,
+    "all_valid": true
+  },
+  "data_integrity": {
+    "duplicate_parcel_ids": 0,
+    "missing_crop_labels": 0,
+    "missing_confidence_scores": 0
+  },
+  "total_area_metrics": {
+    "total_area_hectares": 171.6547,
+    "total_area_acres": 424.1673,
+    "total_area_sq_km": 1.7165
+  },
+  "mean_confidence": 0.8655,
+  "detected_crop_classes": [
+    "Banana",
+    "Non-Crop",
+    "Paddy"
+  ],
+  "taluks": [
+    "Ambasamudram",
+    "Cheranmahadevi"
+  ]
+}

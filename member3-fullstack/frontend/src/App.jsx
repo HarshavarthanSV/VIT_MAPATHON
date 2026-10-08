@@ -25,8 +25,7 @@ export default function App() {
   const [visibleCrops, setVisibleCrops] = useState({
     Paddy: true,
     Banana: true,
-    'Non-Crop': true,
-    Other: true
+    'Non-Crop': true
   });
   const [selectedTaluk, setSelectedTaluk] = useState('all');
   const [minConfidence, setMinConfidence] = useState(0.0);
@@ -45,7 +44,7 @@ export default function App() {
         setError(null);
 
         const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes, hazardRes, dmgSummaryRes, fundRes] = await Promise.all([
-          fetch('/api/parcels'),
+          fetch('/api/parcels/geojson').catch(() => fetch('/api/parcels')),
           fetch('/api/statistics'),
           fetch('/api/metrics'),
           fetch('/api/feature-importance').catch(() => null),
@@ -56,8 +55,12 @@ export default function App() {
           fetch('/api/fund-priority').catch(() => null)
         ]);
 
-        if (!parcelsRes.ok) throw new Error(`Parcels fetch failed: ${parcelsRes.statusText}`);
-        if (!statsRes.ok) throw new Error(`Statistics fetch failed: ${statsRes.statusText}`);
+        if (!parcelsRes.ok) {
+          throw new Error('Unable to load classification data.');
+        }
+        if (!statsRes.ok) {
+          throw new Error('Classification results are not available yet.');
+        }
 
         const parcels = await parcelsRes.json();
         const stats = await statsRes.json();
@@ -78,9 +81,25 @@ export default function App() {
         setHazardData(hazard);
         setDamageSummary(dmgSum);
         setFundPriority(fund);
+
+        // Dynamically initialize visible crops from returned data
+        const detectedCrops = {};
+        if (stats?.crop_distribution) {
+          Object.keys(stats.crop_distribution).forEach((c) => {
+            detectedCrops[c] = true;
+          });
+        } else if (parcels?.features) {
+          parcels.features.forEach((f) => {
+            const c = f.properties?.predicted_crop || f.properties?.crop;
+            if (c) detectedCrops[c] = true;
+          });
+        }
+        if (Object.keys(detectedCrops).length > 0) {
+          setVisibleCrops(detectedCrops);
+        }
       } catch (err) {
         console.error('Error fetching GIS data:', err);
-        setError(err.message || 'Error connecting to backend API');
+        setError(err.message || 'Unable to load classification data.');
       } finally {
         setLoading(false);
       }
@@ -97,10 +116,21 @@ export default function App() {
   };
 
   const handleResetFilters = () => {
-    setVisibleCrops({ Paddy: true, Banana: true, 'Non-Crop': true, Other: true });
+    const resetCrops = {};
+    if (statistics?.crop_distribution) {
+      Object.keys(statistics.crop_distribution).forEach((c) => {
+        resetCrops[c] = true;
+      });
+    } else {
+      resetCrops.Paddy = true;
+      resetCrops.Banana = true;
+      resetCrops['Non-Crop'] = true;
+    }
+    setVisibleCrops(resetCrops);
     setSelectedTaluk('all');
     setMinConfidence(0.0);
   };
+
 
   // Filter features based on crop, confidence, and taluk
   const allFeatures = geojsonData?.features || [];

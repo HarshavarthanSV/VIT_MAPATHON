@@ -1,0 +1,4 @@
+crop_class,parcel_count,area_hectares,area_acres,area_sq_km,percentage_of_total_area
+Banana,79,39.3127,97.1437,0.3931,22.9
+Non-Crop,131,80.8843,199.8691,0.8088,47.12
+Paddy,83,51.4577,127.1545,0.5146,29.98

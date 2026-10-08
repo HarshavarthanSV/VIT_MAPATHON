@@ -27,28 +27,29 @@ export default function MetricsModal({ isOpen, onClose, metrics, featureImportan
             <div className="stat-item">
               <div className="stat-label">Overall Accuracy</div>
               <div className="stat-value" style={{ color: '#22c55e' }}>
-                {((overall.accuracy || 0.918) * 100).toFixed(1)}%
+                {overall.accuracy != null ? `${(overall.accuracy * 100).toFixed(1)}%` : '—'}
               </div>
             </div>
             <div className="stat-item">
               <div className="stat-label">Precision (Weighted)</div>
               <div className="stat-value" style={{ color: '#38bdf8' }}>
-                {((overall.precision_weighted || 0.919) * 100).toFixed(1)}%
+                {overall.precision_weighted != null ? `${(overall.precision_weighted * 100).toFixed(1)}%` : '—'}
               </div>
             </div>
             <div className="stat-item">
               <div className="stat-label">Recall (Weighted)</div>
               <div className="stat-value" style={{ color: '#f59e0b' }}>
-                {((overall.recall_weighted || 0.918) * 100).toFixed(1)}%
+                {overall.recall_weighted != null ? `${(overall.recall_weighted * 100).toFixed(1)}%` : '—'}
               </div>
             </div>
             <div className="stat-item">
               <div className="stat-label">F1-Score (Weighted)</div>
               <div className="stat-value" style={{ color: '#ec4899' }}>
-                {((overall.f1_score_weighted || 0.919) * 100).toFixed(1)}%
+                {overall.f1_score_weighted != null ? `${(overall.f1_score_weighted * 100).toFixed(1)}%` : '—'}
               </div>
             </div>
           </div>
+
 
           {/* Per-class Metrics Table */}
           <div>

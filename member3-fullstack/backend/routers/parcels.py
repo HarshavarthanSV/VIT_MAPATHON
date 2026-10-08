@@ -124,6 +124,20 @@ def get_parcels(
     }
 
 
+@router.get("/geojson", response_model=Dict[str, Any])
+def get_parcels_geojson(
+    crop: Optional[str] = Query(None, description="Filter by crop name: Paddy, Banana, Non-Crop"),
+    min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0, description="Minimum confidence threshold"),
+    limit: Optional[int] = Query(None, ge=1, description="Optional maximum parcel count"),
+    db: Optional[Session] = Depends(get_db)
+):
+    """
+    Direct alias endpoint returning GeoJSON FeatureCollection of classified parcels.
+    Follows: React -> /api/parcels/geojson -> FastAPI -> GeoJSON/PostGIS.
+    """
+    return get_parcels(crop=crop, min_confidence=min_confidence, limit=limit, db=db)
+
+
 @router.get("/{parcel_id}", response_model=Dict[str, Any])
 def get_parcel_detail(
     parcel_id: str,
@@ -187,3 +201,4 @@ def get_parcel_detail(
             }
 
     raise HTTPException(status_code=404, detail=f"Parcel '{parcel_id}' not found.")
+

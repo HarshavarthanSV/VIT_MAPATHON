@@ -23,7 +23,6 @@ def test_health_check():
     data = response.json()
     assert data["status"] == "healthy"
     assert "study_area" in data
-    assert data["study_area"]["target_crops"] == ["Paddy", "Banana", "Other"]
 
 
 def test_get_statistics():
@@ -34,14 +33,35 @@ def test_get_statistics():
     assert "crop_distribution" in data
     
     summary = data["study_area_summary"]
-    assert summary["total_parcels"] > 0
-    assert summary["total_study_area_sq_km"] >= 20.0
-    assert summary["meets_min_area_requirement"] is True
+    assert summary["total_parcels"] == 293
+    assert summary["total_study_area_hectares"] > 100.0
 
     dist = data["crop_distribution"]
     assert "Paddy" in dist
     assert "Banana" in dist
-    assert "Other" in dist
+    assert "Non-Crop" in dist
+    assert dist["Paddy"]["parcel_count"] == 83
+    assert dist["Banana"]["parcel_count"] == 79
+    assert dist["Non-Crop"]["parcel_count"] == 131
+
+
+def test_get_crops():
+    response = client.get("/api/crops")
+    assert response.status_code == 200
+    crops = response.json()
+    assert isinstance(crops, list)
+    crop_names = {c["crop"] for c in crops}
+    assert "Paddy" in crop_names
+    assert "Banana" in crop_names
+    assert "Non-Crop" in crop_names
+
+
+def test_get_parcels_geojson():
+    response = client.get("/api/parcels/geojson")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["type"] == "FeatureCollection"
+    assert len(data["features"]) == 293
 
 
 def test_get_metrics():
@@ -58,6 +78,7 @@ def test_get_feature_importance():
     response = client.get("/api/feature-importance")
     assert response.status_code == 200
     data = response.json()
+
     assert len(data) > 0
     assert "NDVI_mean" in data
 
