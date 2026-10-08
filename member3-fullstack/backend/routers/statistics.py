@@ -6,8 +6,12 @@ Statistics Router: Serves dynamic study area aggregations and ML model metrics.
 import logging
 from typing import Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import text
-from sqlalchemy.orm import Session
+try:
+    from sqlalchemy import text
+    from sqlalchemy.orm import Session
+except (ImportError, Exception):
+    text = None
+    Session = None
 
 from database import is_db_connected, get_db, load_json_artifact
 
