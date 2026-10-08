@@ -2,25 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import { getCropColor, createParcelPopupContent } from './ParcelPopup';
 
-const STUDY_CENTER = [8.695, 77.502];
-const DEFAULT_ZOOM = 12;
-
-// Settlement coordinates across Ambasamudram and Cheranmahadevi Taluks
-const SETTLEMENTS = [
-  { name: "Ambasamudram", role: "Taluk Headquarters", lat: 8.7082, lon: 77.4383, taluk: "Ambasamudram", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Cheranmahadevi", role: "Taluk Headquarters", lat: 8.6793, lon: 77.5617, taluk: "Cheranmahadevi", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Kallidaikurichi", role: "Agricultural Town", lat: 8.6809, lon: 77.4651, taluk: "Ambasamudram", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Veeravanallur", role: "Major Weaving & Agrarian Center", lat: 8.6895, lon: 77.5222, taluk: "Cheranmahadevi", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Pattamadai", role: "Famous Korai Mat Heritage Hub", lat: 8.6674, lon: 77.5844, taluk: "Cheranmahadevi", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Brahmadesam", role: "Heritage Village & Farmlands", lat: 8.7307, lon: 77.4468, taluk: "Ambasamudram", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Mannarkovil", role: "Temple Town & Irrigated Tracts", lat: 8.7281, lon: 77.4344, taluk: "Ambasamudram", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Ariyanayakipuram", role: "River Basin Farmlands", lat: 8.7211, lon: 77.5448, taluk: "Cheranmahadevi", district: "Tirunelveli", state: "Tamil Nadu" },
-  { name: "Thiruppudaimaruthur", role: "Bird Sanctuary & Paddy Fields", lat: 8.7273, lon: 77.4994, taluk: "Ambasamudram", district: "Tirunelveli", state: "Tamil Nadu" }
-];
-
 export default function MapView({
   geojsonData,
   infrastructureData,
+  placesData,
   activeBasemap = 'satellite',
   showPlaces = false,
   showInfra = true,
@@ -45,8 +30,8 @@ export default function MapView({
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
     const map = L.map(mapContainerRef.current, {
-      center: STUDY_CENTER,
-      zoom: DEFAULT_ZOOM,
+      center: [8.695, 77.502],
+      zoom: 12,
       zoomControl: false,
       preferCanvas: false // SVG renderer ensures path elements always draw
     });
@@ -149,7 +134,7 @@ export default function MapView({
     }
   }, [activeBasemap, showLabels]);
 
-  // Settlements / Town Markers Layer
+  // Settlements / Town Markers Layer (from placesData or fallback)
   useEffect(() => {
     if (!mapInstanceRef.current) return;
     const map = mapInstanceRef.current;
@@ -159,31 +144,31 @@ export default function MapView({
       settlementsLayerRef.current = null;
     }
 
-    if (!showPlaces) return;
+    if (!showPlaces || !placesData || placesData.length === 0) return;
 
-    const markers = SETTLEMENTS.map(settlement => {
-      const isHQ = settlement.role.includes("Headquarters");
-      const pinColor = isHQ ? "#38bdf8" : "#f59e0b";
+    const markers = placesData.map(place => {
+      const isHQ = place.name === "Ambasamudram" || place.name === "Cheranmahadevi";
+      const pinColor = isHQ ? "#0284c7" : "#d97706";
 
       const icon = L.divIcon({
         className: 'settlement-map-marker',
         html: `
           <div class="settlement-pin-wrapper">
-            <div class="settlement-pin-dot" style="background: ${pinColor}; box-shadow: 0 0 10px ${pinColor};"></div>
-            <div class="settlement-pin-label">${settlement.name}</div>
+            <div class="settlement-pin-dot" style="background: ${pinColor}; box-shadow: 0 0 8px ${pinColor};"></div>
+            <div class="settlement-pin-label">${place.name}</div>
           </div>
         `,
         iconSize: [120, 36],
         iconAnchor: [60, 18]
       });
 
-      const marker = L.marker([settlement.lat, settlement.lon], { icon });
+      const marker = L.marker([place.lat, place.lon], { icon });
       marker.bindPopup(`
-        <div style="font-family: var(--font-family); color: #f8fafc; padding: 4px;">
-          <div style="font-size: 0.95rem; font-weight: 700; color: ${pinColor};">${settlement.name}</div>
-          <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 2px;">${settlement.role}</div>
-          <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4px;">
-            ${settlement.taluk} Taluk • ${settlement.district} • ${settlement.state}
+        <div style="font-family: inherit; color: #0f172a; padding: 4px;">
+          <div style="font-size: 0.95rem; font-weight: 700; color: ${pinColor};">${place.name}</div>
+          <div style="font-size: 0.75rem; color: #475569; margin-top: 2px;">${place.display_name || place.taluk}</div>
+          <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px; border-top: 1px solid #e2e8f0; padding-top: 4px;">
+            ${place.taluk} Taluk • ${place.district} • ${place.state}
           </div>
         </div>
       `, { maxWidth: 280 });
@@ -193,7 +178,7 @@ export default function MapView({
 
     const group = L.layerGroup(markers).addTo(map);
     settlementsLayerRef.current = group;
-  }, [showPlaces]);
+  }, [showPlaces, placesData]);
 
   // Infrastructure (Waterways & Roads) Layer
   useEffect(() => {
@@ -212,14 +197,14 @@ export default function MapView({
         const cat = feature.properties?.category;
         if (cat === "waterway") {
           return {
-            color: "#00e5ff",
+            color: "#0284c7",
             weight: 3.5,
             opacity: 0.85,
             dashArray: "1, 2"
           };
         } else {
           return {
-            color: "#fb923c",
+            color: "#ea580c",
             weight: 2.2,
             opacity: 0.8
           };
@@ -245,7 +230,6 @@ export default function MapView({
       geojsonLayerRef.current = null;
     }
 
-    // Force map size re-calculation
     map.invalidateSize();
 
     const parcelStyle = (feature) => {
@@ -258,7 +242,7 @@ export default function MapView({
         weight: 2.2,
         opacity: 1.0,
         color: colors.stroke || '#ffffff',
-        fillOpacity: 0.72
+        fillOpacity: 0.75
       };
     };
 
@@ -310,7 +294,7 @@ export default function MapView({
     if (!hasFitInitialBoundsRef.current && parcelLayer.getLayers().length > 0) {
       const bounds = parcelLayer.getBounds();
       if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [40, 40] });
+        map.fitBounds(bounds, { padding: [50, 50] });
         hasFitInitialBoundsRef.current = true;
       }
     }
@@ -324,17 +308,17 @@ export default function MapView({
     if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
       const bounds = geojsonLayerRef.current.getBounds();
       if (bounds.isValid()) {
-        map.flyToBounds(bounds, { padding: [40, 40], duration: 1.2 });
+        map.flyToBounds(bounds, { padding: [50, 50], duration: 1.0 });
         return;
       }
     }
 
     if (selectedTaluk && selectedTaluk.toLowerCase().includes('ambasamudram')) {
-      map.flyTo([8.712, 77.445], 13, { duration: 1.2 });
+      map.flyTo([8.712, 77.445], 13, { duration: 1.0 });
     } else if (selectedTaluk && selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
-      map.flyTo([8.685, 77.55], 13, { duration: 1.2 });
+      map.flyTo([8.685, 77.55], 13, { duration: 1.0 });
     } else {
-      map.flyTo(STUDY_CENTER, DEFAULT_ZOOM, { duration: 1.2 });
+      map.flyTo([8.695, 77.502], 12, { duration: 1.0 });
     }
   }, [selectedTaluk, geojsonData]);
 
@@ -343,10 +327,8 @@ export default function MapView({
     if (mapInstanceRef.current && geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
       const bounds = geojsonLayerRef.current.getBounds();
       if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [40, 40] });
+        map.fitBounds(bounds, { padding: [50, 50] });
       }
-    } else if (mapInstanceRef.current) {
-      mapInstanceRef.current.setView(STUDY_CENTER, DEFAULT_ZOOM);
     }
   };
 
@@ -362,7 +344,7 @@ export default function MapView({
           rel="noreferrer"
           className="map-recenter-pill-btn"
           title="Open Standalone Folium Fullscreen Map"
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}
         >
           🌐 Standalone Folium Map
         </a>
@@ -375,30 +357,30 @@ export default function MapView({
         </button>
       </div>
 
-      {/* Map Legend (Bottom Right) */}
+      {/* Clean White Professional Map Legend (Bottom Right) */}
       <div className="map-legend">
         <div className="legend-title">Classification Legend</div>
         <div className="legend-items">
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#22c55e', border: '1.5px solid #14532d', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#16a34a', border: '1.5px solid #14532d', borderRadius: 3 }} />
             <span>Paddy (நெல்)</span>
           </div>
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#facc15', border: '1.5px solid #854d0e', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#eab308', border: '1.5px solid #854d0e', borderRadius: 3 }} />
             <span>Banana (வாழை)</span>
           </div>
           <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#c084fc', border: '1.5px solid #581c87', borderRadius: 3 }} />
+            <span style={{ width: 14, height: 14, background: '#9333ea', border: '1.5px solid #581c87', borderRadius: 3 }} />
             <span>Other / Fallow</span>
           </div>
           {showInfra && (
             <>
               <div className="legend-item">
-                <span style={{ width: 20, height: 3, background: '#00e5ff', display: 'inline-block' }} />
+                <span style={{ width: 20, height: 3, background: '#0284c7', display: 'inline-block' }} />
                 <span>Thamirabarani River</span>
               </div>
               <div className="legend-item">
-                <span style={{ width: 20, height: 3, background: '#fb923c', display: 'inline-block' }} />
+                <span style={{ width: 20, height: 3, background: '#ea580c', display: 'inline-block' }} />
                 <span>Major Highways</span>
               </div>
             </>

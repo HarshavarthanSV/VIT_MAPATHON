@@ -8,6 +8,8 @@ import MetricsModal from './components/MetricsModal';
 export default function App() {
   const [geojsonData, setGeojsonData] = useState(null);
   const [infrastructureData, setInfrastructureData] = useState(null);
+  const [placesData, setPlacesData] = useState(null);
+  const [talukAcreage, setTalukAcreage] = useState(null);
   const [statistics, setStatistics] = useState(null);
   const [metrics, setMetrics] = useState(null);
   const [featureImportance, setFeatureImportance] = useState(null);
@@ -24,7 +26,7 @@ export default function App() {
   const [selectedParcel, setSelectedParcel] = useState(null);
   const [isMetricsOpen, setIsMetricsOpen] = useState(false);
 
-  // Basemap & Overlay Layers State (controlled from sidebar)
+  // Basemap & Overlays
   const [activeBasemap, setActiveBasemap] = useState('satellite');
   const [showPlaces, setShowPlaces] = useState(false);
   const [showInfra, setShowInfra] = useState(true);
@@ -40,13 +42,15 @@ export default function App() {
         setLoading(true);
         setError(null);
 
-        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes] = await Promise.all([
+        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes, placesRes, talukRes] = await Promise.all([
           fetch('/api/parcels'),
           fetch('/api/statistics'),
           fetch('/api/metrics'),
           fetch('/api/feature-importance').catch(() => null),
           fetch('/api/health').catch(() => null),
-          fetch('/api/infrastructure').catch(() => null)
+          fetch('/api/infrastructure').catch(() => null),
+          fetch('/api/places').catch(() => null),
+          fetch('/api/taluk-acreage').catch(() => null)
         ]);
 
         if (!parcelsRes.ok) throw new Error(`Parcels fetch failed: ${parcelsRes.statusText}`);
@@ -58,6 +62,8 @@ export default function App() {
         const fiData = fiRes && fiRes.ok ? await fiRes.json() : null;
         const health = healthRes && healthRes.ok ? await healthRes.json() : null;
         const infra = infraRes && infraRes.ok ? await infraRes.json() : null;
+        const places = placesRes && placesRes.ok ? await placesRes.json() : [];
+        const taluks = talukRes && talukRes.ok ? await talukRes.json() : [];
 
         setGeojsonData(parcels);
         setStatistics(stats);
@@ -65,6 +71,8 @@ export default function App() {
         setFeatureImportance(fiData);
         setHealthInfo(health);
         setInfrastructureData(infra);
+        setPlacesData(places);
+        setTalukAcreage(taluks);
       } catch (err) {
         console.error('Error fetching GIS data:', err);
         setError(err.message || 'Error connecting to backend API');
@@ -111,7 +119,7 @@ export default function App() {
     });
   }, [allFeatures, visibleCrops, minConfidence, selectedTaluk]);
 
-  // Dynamically compute statistics reflecting active filters and taluk selection
+  // Dynamically compute real statistics reflecting active filters and taluk selection
   const dynamicStatistics = useMemo(() => {
     if (!geojsonData || allFeatures.length === 0) {
       return statistics;
@@ -147,7 +155,8 @@ export default function App() {
     const totalAreaAcres = totalAreaHa * 2.47105;
     const totalAreaSqKm = totalAreaHa / 100;
 
-    let aoiKm2 = 240.64;
+    // Study area geographic boundary from official AOI: Ambasamudram (122.14 km²), Cheranmahadevi (118.51 km²), Total (240.65 km²)
+    let aoiKm2 = 240.65;
     if (selectedTaluk.toLowerCase().includes('ambasamudram')) {
       aoiKm2 = 122.14;
     } else if (selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
@@ -193,20 +202,20 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      {/* Top Header Navigation */}
+      {/* Top Header Navigation — White Professional Theme */}
       <header className="top-nav">
         <div className="brand-section">
-          <div className="brand-badge">VIT MAPATHON</div>
+          <div className="brand-badge">VIT MAPATHON 2026</div>
           <div>
             <h1 className="brand-title">Agricultural Land Parcel & Crop Identification</h1>
             <div className="brand-breadcrumb">
               <span>🇮🇳 India</span>
               <span className="dot">•</span>
-              <span style={{ color: '#38bdf8' }}>Tamil Nadu</span>
+              <span style={{ color: '#0284c7' }}>Tamil Nadu</span>
               <span className="dot">•</span>
-              <span style={{ color: '#22c55e' }}>Tirunelveli District</span>
+              <span style={{ color: '#16a34a' }}>Tirunelveli District</span>
               <span className="dot">•</span>
-              <span style={{ color: '#facc15' }}>Ambasamudram & Cheranmahadevi Taluks</span>
+              <span style={{ color: '#b45309', fontWeight: 600 }}>Ambasamudram & Cheranmahadevi Taluks</span>
             </div>
           </div>
         </div>
@@ -216,8 +225,8 @@ export default function App() {
             <span
               className="status-dot"
               style={{
-                backgroundColor: healthInfo?.database?.postgis_connected ? '#22c55e' : '#38bdf8',
-                boxShadow: `0 0 8px ${healthInfo?.database?.postgis_connected ? '#22c55e' : '#38bdf8'}`
+                backgroundColor: healthInfo?.database?.postgis_connected ? '#16a34a' : '#0284c7',
+                boxShadow: `0 0 6px ${healthInfo?.database?.postgis_connected ? '#16a34a' : '#0284c7'}`
               }}
             />
             <span>
@@ -240,8 +249,8 @@ export default function App() {
         <aside className="sidebar-panel">
           <div className="sidebar-scrollable">
             {error && (
-              <div style={{ padding: '0.75rem', background: 'rgba(239, 68, 68, 0.2)', border: '1px solid #ef4444', borderRadius: '8px', fontSize: '0.75rem', color: '#fca5a5' }}>
-                ⚠️ <strong>API Warning:</strong> {error}
+              <div style={{ padding: '0.75rem', background: '#fee2e2', border: '1px solid #ef4444', borderRadius: '8px', fontSize: '0.75rem', color: '#b91c1c' }}>
+                ⚠️ <strong>API Error:</strong> {error}
               </div>
             )}
 
@@ -250,6 +259,7 @@ export default function App() {
               statistics={dynamicStatistics}
               metrics={metrics}
               selectedTaluk={selectedTaluk}
+              talukAcreage={talukAcreage}
             />
 
             {/* Spatial & Crop Filters */}
@@ -278,7 +288,7 @@ export default function App() {
             {selectedParcel && (
               <div className="panel-card">
                 <div className="panel-card-title">
-                  <span>🔍 Cadastral Parcel Inspector</span>
+                  <span className="panel-title-text">🔍 Cadastral Parcel Inspector</span>
                 </div>
                 <ParcelPopup parcel={selectedParcel} />
               </div>
@@ -289,17 +299,18 @@ export default function App() {
         {/* Center / Right Leaflet GIS Map */}
         <main className="map-viewport-wrapper">
           {loading ? (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#94a3b8' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#64748b' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem', animation: 'spin 2s infinite linear' }}>🛰️</div>
-                <div style={{ fontWeight: 600, color: '#f8fafc' }}>Loading Tirunelveli Sentinel-2 Classified Parcels...</div>
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '4px' }}>Ambasamudram & Cheranmahadevi Taluks</div>
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem', animation: 'spin 2s infinite linear' }}>🛰️</div>
+                <div style={{ fontWeight: 600, color: '#0f172a' }}>Loading Tirunelveli Sentinel-2 Classified Parcels...</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px' }}>Ambasamudram & Cheranmahadevi Taluks</div>
               </div>
             </div>
           ) : (
             <MapView
               geojsonData={displayedGeojson}
               infrastructureData={infrastructureData}
+              placesData={placesData}
               activeBasemap={activeBasemap}
               showPlaces={showPlaces}
               showInfra={showInfra}
