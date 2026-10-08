@@ -21,6 +21,8 @@ __pycache__/
 *.vrt
 *.tar
 *.tar.gz
+*.SAFE/
+*.SAFE
 
 # Large Archives
 *.zip
@@ -29,10 +31,10 @@ __pycache__/
 *.gz
 
 # Large Dataset Directories (Kept local / Google Drive)
+data/sentinel2/
 data/raw/
 data/processed/
-data/features/
-data/training/
+data/features/raster_stack/
 data/cache/
 03_PROCESSED/
 04_FEATURES/
