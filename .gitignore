@@ -96,6 +96,7 @@ member1-ml/data/*
 Thumbs.db
 ehthumbs.db
 *.pptx
+*.pdf
 
 # Jupyter Checkpoints & Logs
 .ipynb_checkpoints/

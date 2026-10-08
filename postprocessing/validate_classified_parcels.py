@@ -107,7 +107,7 @@ def run_parcel_validation(
     # 7. AOI Containment Check
     contained_in_aoi_count = initial_count
     if aoi_utm is not None:
-        aoi_union = aoi_utm.unary_union
+        aoi_union = aoi_utm.union_all() if hasattr(aoi_utm, "union_all") else aoi_utm.unary_union
         contained_mask = gdf_utm.geometry.apply(lambda g: aoi_union.contains(g.centroid) or aoi_union.intersects(g))
         contained_in_aoi_count = int(contained_mask.sum())
 
