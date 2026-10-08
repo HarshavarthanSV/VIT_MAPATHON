@@ -14,8 +14,18 @@ export default function App() {
   const [talukAcreage, setTalukAcreage] = useState(null);
   const [statistics, setStatistics] = useState(null);
   const [metrics, setMetrics] = useState(null);
-  const [featureImportance, setFeatureImportance] = useState(null);
+  const [featureImportance] = useState(null);
   const [healthInfo, setHealthInfo] = useState(null);
+
+  // Phase 2 Production Monitoring & Time-Series States
+  const [dataStatus, setDataStatus] = useState(null);
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedObservationDate, setSelectedObservationDate] = useState('latest');
+  const [productionModel, setProductionModel] = useState(null);
+  const [cropHealthInfo, setCropHealthInfo] = useState(null);
+  const [hazardInfo, setHazardInfo] = useState(null);
+  const [healthFilter, setHealthFilter] = useState('all'); // 'all' | 'Healthy' | 'Moderate Stress' | 'Severe Stress'
+  const [hazardFilter, setHazardFilter] = useState('all'); // 'all' | 'hazard_only'
 
   // Filter States
   const [visibleCrops, setVisibleCrops] = useState({
@@ -39,22 +49,31 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all GIS and ML layers from backend
+  // Fetch all GIS, ML, and Operational Monitoring layers from backend
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
         setError(null);
 
-        const [parcelsRes, statsRes, metricsRes, fiRes, healthRes, infraRes, placesRes, talukRes] = await Promise.all([
-          fetch('/api/parcels'),
+        const [
+          parcelsRes, statsRes, metricsRes, fiRes, healthRes,
+          infraRes, placesRes, talukRes, statusRes, datesRes,
+          modelRes, hthRes, hzRes
+        ] = await Promise.all([
+          fetch('/api/crops/latest').then(r => r.ok ? r : fetch('/api/parcels')),
           fetch('/api/statistics'),
           fetch('/api/metrics'),
           fetch('/api/feature-importance').catch(() => null),
           fetch('/api/health').catch(() => null),
           fetch('/api/infrastructure').catch(() => null),
           fetch('/api/places').catch(() => null),
-          fetch('/api/taluk-acreage').catch(() => null)
+          fetch('/api/taluk-acreage').catch(() => null),
+          fetch('/api/data-status').catch(() => null),
+          fetch('/api/crops/history').catch(() => null),
+          fetch('/api/models/production').catch(() => null),
+          fetch('/api/health/latest').catch(() => null),
+          fetch('/api/hazards/latest').catch(() => null),
         ]);
 
         if (!parcelsRes.ok) throw new Error(`Parcels fetch failed: ${parcelsRes.statusText}`);
@@ -68,15 +87,24 @@ export default function App() {
         const infra = infraRes && infraRes.ok ? await infraRes.json() : null;
         const places = placesRes && placesRes.ok ? await placesRes.json() : [];
         const taluks = talukRes && talukRes.ok ? await talukRes.json() : [];
+        const statusData = statusRes && statusRes.ok ? await statusRes.json() : null;
+        const datesData = datesRes && datesRes.ok ? await datesRes.json() : [];
+        const prodModelData = modelRes && modelRes.ok ? await modelRes.json() : null;
+        const hthData = hthRes && hthRes.ok ? await hthRes.json() : null;
+        const hzData = hzRes && hzRes.ok ? await hzRes.json() : null;
 
         setGeojsonData(parcels);
         setStatistics(stats);
         setMetrics(metricsData);
-        setFeatureImportance(fiData);
         setHealthInfo(health);
         setInfrastructureData(infra);
         setPlacesData(places);
         setTalukAcreage(taluks);
+        setDataStatus(statusData);
+        setAvailableDates(datesData);
+        setProductionModel(prodModelData);
+        setCropHealthInfo(hthData);
+        setHazardInfo(hzData);
       } catch (err) {
         console.error('Error fetching GIS data:', err);
         setError(err.message || 'Error connecting to backend API');
@@ -87,6 +115,24 @@ export default function App() {
 
     fetchData();
   }, []);
+
+  // Handle observation date change in timeline
+  const handleDateChange = async (newDate) => {
+    setSelectedObservationDate(newDate);
+    try {
+      setLoading(true);
+      const url = newDate === 'latest' ? '/api/crops/latest' : `/api/crops/date/${newDate}`;
+      const res = await fetch(url);
+      if (res.ok) {
+        const json = await res.json();
+        setGeojsonData(json);
+      }
+    } catch (err) {
+      console.error('Error loading observation date:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleToggleCrop = (crop) => {
     setVisibleCrops((prev) => ({
@@ -113,6 +159,15 @@ export default function App() {
       if (!visibleCrops[crop]) return false;
       if (conf < minConfidence) return false;
 
+      if (healthFilter !== 'all') {
+        const h = p.crop_health || 'Unknown';
+        if (h.toLowerCase() !== healthFilter.toLowerCase()) return false;
+      }
+
+      if (hazardFilter === 'hazard_only') {
+        if (!p.hazard || p.hazard === 'None') return false;
+      }
+
       if (selectedTaluk !== 'all') {
         const sel = selectedTaluk.toLowerCase();
         if (!taluk.includes(sel) && !sel.includes(taluk)) {
@@ -121,7 +176,7 @@ export default function App() {
       }
       return true;
     });
-  }, [allFeatures, visibleCrops, minConfidence, selectedTaluk]);
+  }, [allFeatures, visibleCrops, minConfidence, selectedTaluk, healthFilter, hazardFilter]);
 
   // Dynamically compute real statistics reflecting active filters and taluk selection
   const dynamicStatistics = useMemo(() => {
@@ -274,6 +329,49 @@ export default function App() {
         </div>
       </header>
 
+      {/* Operational Production Monitoring Status Bar */}
+      <div className="operational-status-bar">
+        <div className="status-items-group">
+          <div className="op-status-item">
+            <span className="op-status-label">🛰️ Last Satellite Observation:</span>
+            <span className="op-status-val">{dataStatus?.last_observation_date || '2026-09-09'}</span>
+          </div>
+          <div className="op-status-item">
+            <span className="op-status-label">⚙️ Processed:</span>
+            <span className="op-status-val">
+              {dataStatus?.last_processing_date ? dataStatus.last_processing_date.split('T')[0] : '2026-10-08'}
+            </span>
+          </div>
+          <div className="op-status-item">
+            <span className="op-status-label">🤖 Production Model:</span>
+            <span className="status-badge-model">{productionModel?.model_version || 'v1.0'} (Production)</span>
+          </div>
+          <div className="op-status-item">
+            <span className={`freshness-badge ${dataStatus?.is_outdated ? 'badge-outdated' : 'badge-fresh'}`}>
+              {dataStatus?.status === 'Fresh' ? '🟢 Fresh' : (dataStatus?.status === 'Delayed' ? '🟡 Delayed' : '🔴 Data may be outdated')}
+            </span>
+          </div>
+        </div>
+
+        {/* Observation Timeline Dropdown */}
+        <div className="timeline-selector-wrapper">
+          <label htmlFor="obs-date-select" className="timeline-lbl">📅 Timeline:</label>
+          <select
+            id="obs-date-select"
+            value={selectedObservationDate}
+            onChange={(e) => handleDateChange(e.target.value)}
+            className="timeline-select"
+          >
+            <option value="latest">Latest Observation ({dataStatus?.last_observation_date || 'Latest'})</option>
+            {availableDates.map((d) => (
+              <option key={d.observation_date} value={d.observation_date}>
+                {d.observation_date} ({d.parcel_count} parcels)
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {/* Main Dashboard Layout */}
       <div className="dashboard-content">
         {/* Left Control Sidebar */}
@@ -291,6 +389,10 @@ export default function App() {
               metrics={metrics}
               selectedTaluk={selectedTaluk}
               talukAcreage={talukAcreage}
+              dataStatus={dataStatus}
+              productionModel={productionModel}
+              cropHealthInfo={cropHealthInfo}
+              hazardInfo={hazardInfo}
             />
 
             {/* Spatial & Crop Filters */}
@@ -313,6 +415,10 @@ export default function App() {
               displayedCount={filteredFeatures.length}
               totalCount={allFeatures.length}
               onResetFilters={handleResetFilters}
+              healthFilter={healthFilter}
+              onChangeHealthFilter={setHealthFilter}
+              hazardFilter={hazardFilter}
+              onChangeHazardFilter={setHazardFilter}
             />
 
             {/* Selected Parcel Inspector */}

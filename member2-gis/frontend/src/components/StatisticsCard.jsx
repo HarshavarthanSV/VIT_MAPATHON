@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StatisticsCard({ statistics, metrics, selectedTaluk, talukAcreage }) {
+export default function StatisticsCard({ statistics, metrics, selectedTaluk, talukAcreage, dataStatus, productionModel, cropHealthInfo, hazardInfo }) {
   const summary = statistics?.study_area_summary || null;
   const dist = statistics?.crop_distribution || {};
   const overallMetrics = metrics?.overall || null;
@@ -166,6 +166,51 @@ export default function StatisticsCard({ statistics, metrics, selectedTaluk, tal
             {other.area_hectares ? `${other.area_hectares} ha (${other.parcel_count} parcels)` : '0 ha'} • {otherPct}%
           </span>
         </div>
+      </div>
+
+      {/* Phase 2: Crop Health Condition Section */}
+      {cropHealthInfo && (
+        <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>🌱 Crop Health Condition</span>
+            <span style={{ fontSize: '0.7rem', color: '#64748b' }}>NDVI Calibrated</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.4rem', textAlign: 'center' }}>
+            <div style={{ background: '#dcfce7', padding: '0.4rem', borderRadius: '6px', border: '1px solid #bbf7d0' }}>
+              <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#166534' }}>Healthy</div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#15803d' }}>
+                {cropHealthInfo.health_distribution?.Healthy?.percentage_of_parcels || 0}%
+              </div>
+            </div>
+            <div style={{ background: '#fef3c7', padding: '0.4rem', borderRadius: '6px', border: '1px solid #fde68a' }}>
+              <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#854d0e' }}>Moderate</div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#b45309' }}>
+                {cropHealthInfo.health_distribution?.['Moderate Stress']?.percentage_of_parcels || 0}%
+              </div>
+            </div>
+            <div style={{ background: '#fee2e2', padding: '0.4rem', borderRadius: '6px', border: '1px solid #fecaca' }}>
+              <div style={{ fontSize: '0.68rem', fontWeight: 700, color: '#991b1b' }}>Severe</div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#b91c1c' }}>
+                {cropHealthInfo.health_distribution?.['Severe Stress']?.percentage_of_parcels || 0}%
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Phase 2: Hazard Monitoring Section */}
+      <div style={{ marginTop: '1rem', paddingTop: '0.85rem', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>⚠️ Hazard Assessment</span>
+          <span style={{ fontSize: '0.72rem', fontWeight: 600, color: hazardInfo?.total_parcels_affected > 0 ? '#b91c1c' : '#16a34a' }}>
+            {hazardInfo?.total_parcels_affected > 0 ? `${hazardInfo.total_parcels_affected} Parcels Impacted` : 'No Active Disasters'}
+          </span>
+        </div>
+        {hazardInfo?.total_parcels_affected > 0 && (
+          <div className="hazard-alert-box">
+            <strong>Impacted Area:</strong> {hazardInfo.total_damaged_area_ha} ha ({hazardInfo.hazard_breakdown?.Flood || 0} Flood, {hazardInfo.hazard_breakdown?.Drought || 0} Drought)
+          </div>
+        )}
       </div>
     </div>
   );

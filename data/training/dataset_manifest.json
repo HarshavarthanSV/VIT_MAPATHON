@@ -1,0 +1,38 @@
+{
+  "registry_title": "VIT_MAPATHON Training Dataset Registry",
+  "active_training_version": "v1",
+  "versions": {
+    "v1": {
+      "version": "v1",
+      "created_at": "2026-03-20",
+      "timeframe": "June 2025 \u2013 September 2026",
+      "sample_count": 293,
+      "features_count": 240,
+      "classes": [
+        "Banana",
+        "Other",
+        "Paddy"
+      ],
+      "dataset_path": "data/training/v1/ml_training_dataset.csv",
+      "labels_path": "data/training/v1/verified_labels.geojson",
+      "verification_authority": "TNAU & Dept of Agriculture Field Survey Validation",
+      "status": "verified_production"
+    },
+    "v2": {
+      "version": "v2",
+      "created_at": "Pending Ground Truth Collection",
+      "timeframe": "2026 Baseline + 2027 Ingested Observations",
+      "sample_count": 0,
+      "features_count": 240,
+      "classes": [
+        "Banana",
+        "Other",
+        "Paddy"
+      ],
+      "dataset_path": "data/training/v2/candidate_retraining_dataset.csv",
+      "labels_path": "data/training/v2/verified_labels_2027.geojson",
+      "verification_authority": "Pending agronomic ground verification",
+      "status": "candidate_staging"
+    }
+  }
+}

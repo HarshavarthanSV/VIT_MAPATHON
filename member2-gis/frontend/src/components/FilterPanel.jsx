@@ -18,7 +18,11 @@ export default function FilterPanel({
   statistics,
   displayedCount,
   totalCount,
-  onResetFilters
+  onResetFilters,
+  healthFilter = 'all',
+  onChangeHealthFilter,
+  hazardFilter = 'all',
+  onChangeHazardFilter
 }) {
   const cropDist = statistics?.crop_distribution || {};
 
@@ -233,6 +237,48 @@ export default function FilterPanel({
           <span>95% (High Precision)</span>
         </div>
       </div>
+
+      {/* Phase 2: Crop Health Filter */}
+      {onChangeHealthFilter && (
+        <div style={{ marginBottom: '1.25rem' }}>
+          <div className="filter-section-label">🌱 Crop Health Condition:</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.25rem' }}>
+            {['all', 'Healthy', 'Moderate Stress', 'Severe Stress'].map((h) => (
+              <button
+                key={h}
+                type="button"
+                onClick={() => onChangeHealthFilter(h)}
+                style={{
+                  padding: '0.3rem 0.2rem',
+                  fontSize: '0.68rem',
+                  fontWeight: 600,
+                  borderRadius: '4px',
+                  border: healthFilter.toLowerCase() === h.toLowerCase() ? '1.5px solid #2563eb' : '1px solid #cbd5e1',
+                  background: healthFilter.toLowerCase() === h.toLowerCase() ? '#eff6ff' : '#ffffff',
+                  color: healthFilter.toLowerCase() === h.toLowerCase() ? '#1d4ed8' : '#475569',
+                  cursor: 'pointer'
+                }}
+              >
+                {h === 'all' ? 'All' : h.replace(' Stress', '')}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Phase 2: Hazard Filter */}
+      {onChangeHazardFilter && (
+        <div style={{ marginBottom: '1.25rem' }}>
+          <label className="toggle-chk-label" style={{ fontWeight: 600, fontSize: '0.75rem', color: '#b91c1c' }}>
+            <input
+              type="checkbox"
+              checked={hazardFilter === 'hazard_only'}
+              onChange={(e) => onChangeHazardFilter(e.target.checked ? 'hazard_only' : 'all')}
+            />
+            <span>⚠️ Show Hazard-Impacted Only</span>
+          </label>
+        </div>
+      )}
 
       {/* Reset Action */}
       <button
