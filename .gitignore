@@ -1,0 +1,54 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Large Raster & Geospatial Files (Shared via Google Drive, not Git)
+*.tif
+*.tiff
+*.jp2
+*.img
+*.hdf
+*.nc
+*.vrt
+*.tar
+*.tar.gz
+
+# Large Archives
+*.zip
+*.7z
+*.rar
+*.gz
+
+# Large Dataset Directories (Kept local / Google Drive)
+data/raw/
+data/processed/
+data/features/
+data/training/
+data/cache/
+03_PROCESSED/
+04_FEATURES/
+05_TRAINING_DATA/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Jupyter Checkpoints & Run Logs
+.ipynb_checkpoints/
+*.log
