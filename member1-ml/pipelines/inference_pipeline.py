@@ -72,9 +72,9 @@ class SatelliteInferencePipeline:
         self.cloud_cover_max = cloud_cover_max
         if parcels_path is None:
             candidates = [
-                os.path.join(repo_root, "data", "parcels", "cleaned", "parcels.geojson"),
                 os.path.join(repo_root, "data", "parcels", "cleaned", "classified_parcels.geojson"),
                 os.path.join(repo_root, "member1-ml", "outputs", "classified_parcels.geojson"),
+                os.path.join(repo_root, "data", "parcels", "cleaned", "parcels.geojson"),
                 os.path.join(repo_root, "member2-gis", "inputs", "parcels_cleaned.geojson"),
             ]
             self.parcels_path = None
@@ -184,8 +184,13 @@ class SatelliteInferencePipeline:
             drift_reason = f"Potential model drift detected: Mean confidence ({mean_conf:.3f}) < 0.70 or low-confidence parcels ({pct_low_conf:.1f}%) > 30%."
             logger.warning(f"[DRIFT MONITOR ALERT] {drift_reason}")
 
-        # 6. Load Parcel Boundaries
+        # 6. Load Parcel Boundaries (Strictly WGS84 EPSG:4326 for Web GIS Leaflet display)
         parcels_gdf = gpd.read_file(self.parcels_path)
+        if parcels_gdf.crs is None:
+            parcels_gdf = parcels_gdf.set_crs("EPSG:4326")
+        elif str(parcels_gdf.crs).upper() != "EPSG:4326":
+            parcels_gdf = parcels_gdf.to_crs("EPSG:4326")
+
         geom_dict = {}
         area_ha_dict = {}
         area_sq_km_dict = {}

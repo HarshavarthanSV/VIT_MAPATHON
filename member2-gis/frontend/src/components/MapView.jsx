@@ -32,6 +32,8 @@ export default function MapView({
     const map = L.map(mapContainerRef.current, {
       center: [8.695, 77.502],
       zoom: 12,
+      minZoom: 9,
+      maxZoom: 19,
       zoomControl: false,
       preferCanvas: false // SVG renderer ensures path elements always draw
     });
@@ -292,11 +294,21 @@ export default function MapView({
 
     geojsonLayerRef.current = parcelLayer;
 
+    // Helper to verify bounds are valid WGS84 lat/lon coordinates
+    const isValidWgs84 = (b) => {
+      if (!b || !b.isValid()) return false;
+      const s = b.getSouth(), n = b.getNorth(), w = b.getWest(), e = b.getEast();
+      return s >= -90 && n <= 90 && w >= -180 && e <= 180 && (n - s) > 0.0001 && (e - w) > 0.0001;
+    };
+
     // Auto-fit bounds on initial load of parcels
     if (!hasFitInitialBoundsRef.current && parcelLayer.getLayers().length > 0) {
       const bounds = parcelLayer.getBounds();
-      if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [50, 50] });
+      if (isValidWgs84(bounds)) {
+        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+        hasFitInitialBoundsRef.current = true;
+      } else {
+        map.setView([8.695, 77.502], 12);
         hasFitInitialBoundsRef.current = true;
       }
     }
@@ -307,30 +319,41 @@ export default function MapView({
     if (!mapInstanceRef.current) return;
     const map = mapInstanceRef.current;
 
-    if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
-      const bounds = geojsonLayerRef.current.getBounds();
-      if (bounds.isValid()) {
-        map.flyToBounds(bounds, { padding: [50, 50], duration: 1.0 });
-        return;
-      }
-    }
+    const isValidWgs84 = (b) => {
+      if (!b || !b.isValid()) return false;
+      const s = b.getSouth(), n = b.getNorth(), w = b.getWest(), e = b.getEast();
+      return s >= -90 && n <= 90 && w >= -180 && e <= 180 && (n - s) > 0.0001 && (e - w) > 0.0001;
+    };
 
     if (selectedTaluk && selectedTaluk.toLowerCase().includes('ambasamudram')) {
-      map.flyTo([8.712, 77.445], 13, { duration: 1.0 });
+      map.flyTo([8.712, 77.445], 13, { duration: 0.8 });
     } else if (selectedTaluk && selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
-      map.flyTo([8.685, 77.55], 13, { duration: 1.0 });
+      map.flyTo([8.685, 77.55], 13, { duration: 0.8 });
     } else {
-      map.flyTo([8.695, 77.502], 12, { duration: 1.0 });
+      if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
+        const bounds = geojsonLayerRef.current.getBounds();
+        if (isValidWgs84(bounds)) {
+          map.flyToBounds(bounds, { padding: [50, 50], maxZoom: 15, duration: 0.8 });
+          return;
+        }
+      }
+      map.flyTo([8.695, 77.502], 12, { duration: 0.8 });
     }
-  }, [selectedTaluk, geojsonData]);
+  }, [selectedTaluk]);
 
   // Fit bounds button handler
   const handleFitParcels = () => {
-    if (mapInstanceRef.current && geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
-      const bounds = geojsonLayerRef.current.getBounds();
-      if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [50, 50] });
+    if (mapInstanceRef.current) {
+      const map = mapInstanceRef.current;
+      if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
+        const bounds = geojsonLayerRef.current.getBounds();
+        const s = bounds.getSouth(), n = bounds.getNorth(), w = bounds.getWest(), e = bounds.getEast();
+        if (bounds.isValid() && s >= -90 && n <= 90 && w >= -180 && e <= 180) {
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+          return;
+        }
       }
+      map.setView([8.695, 77.502], 12);
     }
   };
 
