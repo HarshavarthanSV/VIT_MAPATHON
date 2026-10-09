@@ -7,14 +7,15 @@ export default function MapView({
   infrastructureData,
   placesData,
   activeBasemap = 'satellite',
+  showParcelBoundaries = true,
   showPlaces = false,
   showInfra = true,
   showLabels = true,
   selectedTaluk = 'all',
   selectedParcel,
   onSelectParcel,
-  visibleCrops,
-  minConfidence
+  visibleCrops = { Paddy: true, Banana: true, Other: true, Water: true, NonAgri: true },
+  minConfidence = 0.0
 }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
@@ -23,6 +24,7 @@ export default function MapView({
   const geojsonLayerRef = useRef(null);
   const settlementsLayerRef = useRef(null);
   const infraLayerRef = useRef(null);
+  const cityPinsLayerRef = useRef(null);
   const hasFitInitialBoundsRef = useRef(false);
 
   // Initialize Leaflet Map (SVG Renderer for 100% vector reliability)
@@ -30,20 +32,23 @@ export default function MapView({
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
     const map = L.map(mapContainerRef.current, {
-      center: [8.695, 77.502],
-      zoom: 12,
+      center: [8.695, 77.492],
+      zoom: 13,
       minZoom: 9,
       maxZoom: 19,
       zoomControl: false,
-      preferCanvas: false // SVG renderer ensures path elements always draw
+      preferCanvas: false // SVG renderer ensures path elements always draw with crisp vector edges
     });
 
     // Custom high-priority pane for Agricultural Parcels
     const parcelsPane = map.createPane('parcelsPane');
     parcelsPane.style.zIndex = '500';
 
-    // Custom Zoom Control top-right
-    L.control.zoom({ position: 'topright' }).addTo(map);
+    // Zoom Control on top-left (matching reference UI)
+    L.control.zoom({ position: 'topleft' }).addTo(map);
+
+    // Leaflet Scale Control on bottom-left (0 2 4 km)
+    L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 120 }).addTo(map);
 
     // --- BASE TILE LAYERS ---
     const satImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -51,21 +56,19 @@ export default function MapView({
       attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics'
     });
 
-    // Esri World Street Map (100% Free, NO API KEY, Zero Watermarks)
     const streetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19,
-      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS'
+      attribution: 'Tiles &copy; Esri &mdash; DeLorme, NAVTEQ, USGS'
     });
 
-    // Esri Dark Gray Canvas (100% Free, NO API KEY, Zero Watermarks)
     const darkMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16,
-      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+      attribution: 'Tiles &copy; Esri'
     });
 
     const topoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19,
-      attribution: '&copy; Esri &mdash; National Geographic, DeLorme, NAVTEQ'
+      attribution: '&copy; Esri &mdash; National Geographic'
     });
 
     // Reference labels overlay for satellite hybrid
@@ -83,6 +86,8 @@ export default function MapView({
 
     baseLayersGroupRef.current = {
       satellite: satImagery,
+      hybrid: satImagery,
+      map: streetMap,
       voyager: streetMap,
       dark: darkMap,
       topo: topoMap
@@ -92,9 +97,48 @@ export default function MapView({
     satImagery.addTo(map);
     hybridLabelsGroup.addTo(map);
 
+    // Add City Pin markers on map (Neat Professional GIS Markers)
+    const pinGroup = L.layerGroup();
+    
+    const createProCityIcon = (name, prefix) => {
+      const isA = prefix === 'City A';
+      return L.divIcon({
+        className: 'leaflet-city-pin-marker',
+        html: `
+          <div class="pro-city-callout ${isA ? 'city-a-callout' : 'city-b-callout'}">
+            <div class="pro-city-pill">
+              <span class="pro-city-tag ${isA ? 'tag-a' : 'tag-b'}">${prefix}</span>
+              <span class="pro-city-name">${name}</span>
+            </div>
+            <div class="pro-city-pin">
+              <div class="pro-pin-stem"></div>
+              <div class="pro-pin-beacon">
+                <span class="beacon-pulse"></span>
+                <span class="beacon-dot"></span>
+              </div>
+            </div>
+          </div>
+        `,
+        iconSize: [130, 40],
+        iconAnchor: [65, 40]
+      });
+    };
+
+    // City A: Ambasamudram Taluk Center (West)
+    const markerA = L.marker([8.704, 77.448], { icon: createProCityIcon('Ambasamudram', 'City A') });
+    markerA.on('click', () => map.flyTo([8.704, 77.448], 14, { duration: 0.8 }));
+    pinGroup.addLayer(markerA);
+
+    // City B: Cheranmahadevi Taluk Center (East)
+    const markerB = L.marker([8.704, 77.525], { icon: createProCityIcon('Cheranmahadevi', 'City B') });
+    markerB.on('click', () => map.flyTo([8.704, 77.525], 14, { duration: 0.8 }));
+    pinGroup.addLayer(markerB);
+
+    pinGroup.addTo(map);
+    cityPinsLayerRef.current = pinGroup;
+
     mapInstanceRef.current = map;
 
-    // Invalidate size to guarantee correct container dimensions
     setTimeout(() => {
       map.invalidateSize();
     }, 150);
@@ -126,7 +170,7 @@ export default function MapView({
 
     // Satellite hybrid labels
     if (labelOverlayGroupRef.current) {
-      if (activeBasemap === 'satellite' && showLabels) {
+      if ((activeBasemap === 'satellite' || activeBasemap === 'hybrid') && showLabels) {
         if (!map.hasLayer(labelOverlayGroupRef.current)) {
           labelOverlayGroupRef.current.addTo(map);
         }
@@ -138,7 +182,7 @@ export default function MapView({
     }
   }, [activeBasemap, showLabels]);
 
-  // Settlements / Town Markers Layer (from placesData or fallback)
+  // Settlements / Town Markers Layer
   useEffect(() => {
     if (!mapInstanceRef.current) return;
     const map = mapInstanceRef.current;
@@ -196,33 +240,52 @@ export default function MapView({
 
     if (!showInfra) return;
 
-    const infraLayer = L.geoJSON(infrastructureData, {
-      style: (feature) => {
-        const cat = feature.properties?.category;
-        if (cat === "waterway") {
-          return {
-            color: "#0284c7",
-            weight: 3.5,
-            opacity: 0.85,
-            dashArray: "1, 2"
-          };
-        } else {
-          return {
-            color: "#ea580c",
-            weight: 2.2,
-            opacity: 0.8
-          };
-        }
-      },
-      onEachFeature: (feature, layer) => {
-        const name = feature.properties?.name || "Local Infrastructure";
-        const cat = feature.properties?.category === "waterway" ? "🌊 Waterway / Canal" : "🛣️ Road Corridor";
-        layer.bindTooltip(`<strong>${name}</strong><br><small>${cat}</small>`, { sticky: true });
-      }
-    }).addTo(map);
+    try {
+      const rawInfra = Array.isArray(infrastructureData?.features) ? infrastructureData.features : [];
+      const validInfra = rawInfra.filter(f => f && f.type === 'Feature' && f.geometry && typeof f.geometry.type === 'string' && Array.isArray(f.geometry.coordinates));
+      const safeInfra = { ...infrastructureData, type: 'FeatureCollection', features: validInfra };
 
-    infraLayerRef.current = infraLayer;
-  }, [infrastructureData, showInfra]);
+      const infraLayer = L.geoJSON(safeInfra, {
+        filter: (feature) => {
+          const cat = feature.properties?.category;
+          if (cat === "waterway" && !visibleCrops.Water) return false;
+          return true;
+        },
+        style: (feature) => {
+          const cat = feature.properties?.category;
+          const type = feature.properties?.type;
+          if (cat === "waterway") {
+            const isMain = type === "river";
+            return {
+              color: isMain ? "#0284c7" : "#38bdf8",
+              weight: isMain ? 1.8 : 1.15,
+              opacity: isMain ? 0.92 : 0.80,
+              lineCap: "round",
+              lineJoin: "round"
+            };
+          } else {
+            return {
+              color: "#ea580c",
+              weight: 1.4,
+              opacity: 0.70,
+              lineCap: "round",
+              lineJoin: "round"
+            };
+          }
+        },
+        onEachFeature: (feature, layer) => {
+          const name = feature.properties?.name || "Local Infrastructure";
+          const type = feature.properties?.type === "river" ? "Main River Channel" : (feature.properties?.type === "canal" ? "Irrigation Canal" : "Stream / Drainage");
+          const cat = feature.properties?.category === "waterway" ? `🌊 ${name} (${type})` : `🛣️ ${name} (Road Corridor)`;
+          layer.bindTooltip(`<strong>${cat}</strong>`, { sticky: true });
+        }
+      }).addTo(map);
+
+      infraLayerRef.current = infraLayer;
+    } catch (infraErr) {
+      console.error('Error creating infrastructure layer:', infraErr);
+    }
+  }, [infrastructureData, showInfra, visibleCrops.Water]);
 
   // Classified Agricultural Parcels Layer
   useEffect(() => {
@@ -243,56 +306,84 @@ export default function MapView({
       return {
         pane: 'parcelsPane',
         fillColor: colors.fill,
-        weight: 2.2,
-        opacity: 1.0,
-        color: colors.stroke || '#ffffff',
-        fillOpacity: 0.75
+        weight: showParcelBoundaries ? 1.25 : 0,
+        opacity: showParcelBoundaries ? 0.92 : 0,
+        color: '#ffffff', // Crisp white parcel boundary outline
+        fillOpacity: 0.72
       };
     };
 
     const highlightStyle = {
       pane: 'parcelsPane',
-      weight: 4.0,
+      weight: 3.5,
       color: '#ffffff',
       fillOpacity: 0.95
     };
 
-    const parcelLayer = L.geoJSON(geojsonData, {
-      style: parcelStyle,
-      onEachFeature: (feature, layer) => {
-        const props = feature.properties || {};
-        const confPct = Math.round((props.confidence || 0) * 100);
-        const areaHa = props.area_ha ? props.area_ha.toFixed(2) : (props.area_sq_km ? (props.area_sq_km * 100).toFixed(2) : '0.50');
+    // Sanitize features to ensure valid GeoJSON geometry with coordinates
+    const rawFeatures = Array.isArray(geojsonData?.features) ? geojsonData.features : [];
+    const validFeatures = rawFeatures.filter((f) => {
+      if (!f || f.type !== 'Feature') return false;
+      const geom = f.geometry;
+      return (
+        geom &&
+        typeof geom === 'object' &&
+        typeof geom.type === 'string' &&
+        Array.isArray(geom.coordinates) &&
+        geom.coordinates.length > 0
+      );
+    });
 
-        layer.bindTooltip(
-          `<strong>${props.parcel_id}</strong><br/>` +
-          `Crop: <strong>${props.predicted_crop}</strong> (${confPct}%)<br/>` +
-          `Taluk: ${props.taluk || 'Study Area'}<br/>` +
-          `Area: ${areaHa} ha`,
-          { sticky: true, className: 'leaflet-custom-tooltip' }
-        );
+    const safeGeojson = {
+      ...geojsonData,
+      type: 'FeatureCollection',
+      features: validFeatures
+    };
 
-        layer.on({
-          mouseover: (e) => {
-            const l = e.target;
-            l.setStyle(highlightStyle);
-            l.bringToFront();
-          },
-          mouseout: (e) => {
-            const l = e.target;
-            parcelLayer.resetStyle(l);
-          },
-          click: (e) => {
-            onSelectParcel(feature);
-            L.DomEvent.stopPropagation(e);
-            const popupContent = createParcelPopupContent(props);
-            layer.bindPopup(popupContent, { maxWidth: 320 }).openPopup();
-          }
-        });
-      }
-    }).addTo(map);
+    let parcelLayer = null;
+    try {
+      parcelLayer = L.geoJSON(safeGeojson, {
+        style: parcelStyle,
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties || {};
+          const confPct = Math.round((props.confidence || 0) * 100);
+          const areaHa = props.area_ha ? Number(props.area_ha).toFixed(2) : (props.area_sq_km ? (Number(props.area_sq_km) * 100).toFixed(2) : '1.50');
 
-    geojsonLayerRef.current = parcelLayer;
+          layer.bindTooltip(
+            `<strong>${props.parcel_id}</strong><br/>` +
+            `Crop: <strong>${props.predicted_crop}</strong> (${confPct}%)<br/>` +
+            `Taluk: ${props.taluk || 'Study Area'}<br/>` +
+            `Area: ${areaHa} ha`,
+            { sticky: true, className: 'leaflet-custom-tooltip' }
+          );
+
+          layer.on({
+            mouseover: (e) => {
+              const l = e.target;
+              l.setStyle(highlightStyle);
+              l.bringToFront();
+            },
+            mouseout: (e) => {
+              const l = e.target;
+              parcelLayer.resetStyle(l);
+            },
+            click: (e) => {
+              if (onSelectParcel) {
+                onSelectParcel(props);
+              }
+              L.DomEvent.stopPropagation(e);
+              const popupContent = createParcelPopupContent(props);
+              layer.bindPopup(popupContent, { maxWidth: 320 }).openPopup();
+            }
+          });
+        }
+      }).addTo(map);
+
+      geojsonLayerRef.current = parcelLayer;
+    } catch (layerErr) {
+      console.error('Error creating Leaflet parcel GeoJSON layer:', layerErr);
+      return;
+    }
 
     // Helper to verify bounds are valid WGS84 lat/lon coordinates
     const isValidWgs84 = (b) => {
@@ -302,17 +393,17 @@ export default function MapView({
     };
 
     // Auto-fit bounds on initial load of parcels
-    if (!hasFitInitialBoundsRef.current && parcelLayer.getLayers().length > 0) {
+    if (parcelLayer && !hasFitInitialBoundsRef.current && parcelLayer.getLayers().length > 0) {
       const bounds = parcelLayer.getBounds();
       if (isValidWgs84(bounds)) {
-        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+        map.fitBounds(bounds, { padding: [35, 35], maxZoom: 14 });
         hasFitInitialBoundsRef.current = true;
       } else {
-        map.setView([8.695, 77.502], 12);
+        map.setView([8.695, 77.492], 13);
         hasFitInitialBoundsRef.current = true;
       }
     }
-  }, [geojsonData, onSelectParcel]);
+  }, [geojsonData, showParcelBoundaries, onSelectParcel]);
 
   // Fly / fit bounds when selectedTaluk changes
   useEffect(() => {
@@ -326,18 +417,18 @@ export default function MapView({
     };
 
     if (selectedTaluk && selectedTaluk.toLowerCase().includes('ambasamudram')) {
-      map.flyTo([8.712, 77.445], 13, { duration: 0.8 });
+      map.flyTo([8.704, 77.525], 13, { duration: 0.8 });
     } else if (selectedTaluk && selectedTaluk.toLowerCase().includes('cheranmahadevi')) {
-      map.flyTo([8.685, 77.55], 13, { duration: 0.8 });
+      map.flyTo([8.692, 77.460], 13, { duration: 0.8 });
     } else {
       if (geojsonLayerRef.current && geojsonLayerRef.current.getLayers().length > 0) {
         const bounds = geojsonLayerRef.current.getBounds();
         if (isValidWgs84(bounds)) {
-          map.flyToBounds(bounds, { padding: [50, 50], maxZoom: 15, duration: 0.8 });
+          map.flyToBounds(bounds, { padding: [35, 35], maxZoom: 14, duration: 0.8 });
           return;
         }
       }
-      map.flyTo([8.695, 77.502], 12, { duration: 0.8 });
+      map.flyTo([8.695, 77.492], 13, { duration: 0.8 });
     }
   }, [selectedTaluk]);
 
@@ -349,11 +440,11 @@ export default function MapView({
         const bounds = geojsonLayerRef.current.getBounds();
         const s = bounds.getSouth(), n = bounds.getNorth(), w = bounds.getWest(), e = bounds.getEast();
         if (bounds.isValid() && s >= -90 && n <= 90 && w >= -180 && e <= 180) {
-          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+          map.fitBounds(bounds, { padding: [35, 35], maxZoom: 14 });
           return;
         }
       }
-      map.setView([8.695, 77.502], 12);
+      map.setView([8.695, 77.492], 13);
     }
   };
 
@@ -361,56 +452,27 @@ export default function MapView({
     <div className="map-viewport-wrapper">
       <div ref={mapContainerRef} className="map-container-elem" />
 
-      {/* Floating Action Controls top right */}
-      <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 700, display: 'flex', gap: '0.5rem' }}>
-        <a
-          href="http://localhost:8000/map"
-          target="_blank"
-          rel="noreferrer"
-          className="map-recenter-pill-btn"
-          title="Open Standalone Folium Fullscreen Map"
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}
-        >
-          🌐 Standalone Folium Map
-        </a>
+      {/* Floating Action Controls on map left toolbar */}
+      <div className="map-left-floating-bar">
         <button
           onClick={handleFitParcels}
-          className="map-recenter-pill-btn"
-          title="Fit view to current parcels"
+          className="map-tool-btn"
+          title="Fit view to all parcels"
         >
-          🎯 Fit All Parcels
+          🎯
         </button>
-      </div>
-
-      {/* Clean White Professional Map Legend (Bottom Right) */}
-      <div className="map-legend">
-        <div className="legend-title">Classification Legend</div>
-        <div className="legend-items">
-          <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#16a34a', border: '1.5px solid #14532d', borderRadius: 3 }} />
-            <span>Paddy (நெல்)</span>
-          </div>
-          <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#eab308', border: '1.5px solid #854d0e', borderRadius: 3 }} />
-            <span>Banana (வாழை)</span>
-          </div>
-          <div className="legend-item">
-            <span style={{ width: 14, height: 14, background: '#9333ea', border: '1.5px solid #581c87', borderRadius: 3 }} />
-            <span>Other / Fallow</span>
-          </div>
-          {showInfra && (
-            <>
-              <div className="legend-item">
-                <span style={{ width: 20, height: 3, background: '#0284c7', display: 'inline-block' }} />
-                <span>Thamirabarani River</span>
-              </div>
-              <div className="legend-item">
-                <span style={{ width: 20, height: 3, background: '#ea580c', display: 'inline-block' }} />
-                <span>Major Highways</span>
-              </div>
-            </>
-          )}
-        </div>
+        <button
+          className="map-tool-btn"
+          title="Toggle Layers"
+        >
+          🥞
+        </button>
+        <button
+          className="map-tool-btn"
+          title="Distance & Area Measurement"
+        >
+          📐
+        </button>
       </div>
     </div>
   );

@@ -18,7 +18,9 @@ export default function MetricsModal({ isOpen, onClose, metrics, featureImportan
         {/* Modal Header */}
         <div className="modal-header">
           <div>
-            <h2 className="modal-title">Random Forest Model Performance & Evaluation</h2>
+            <h2 className="modal-title">
+              {metrics?.model_name ? `${metrics.model_name.replace(/_/g, ' ')} Performance & Evaluation` : 'ML Model Performance & Evaluation'}
+            </h2>
             <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
               Spatial GroupShuffleSplit Evaluation (Zero parcel leakage across training/test splits)
             </p>

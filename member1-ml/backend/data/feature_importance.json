@@ -1,0 +1,2131 @@
+{
+  "top_features": [
+    {
+      "rank": 1,
+      "feature": "CI_red_edge_temporal_range",
+      "importance": 0.077695
+    },
+    {
+      "rank": 2,
+      "feature": "EVI2_temporal_std",
+      "importance": 0.064854
+    },
+    {
+      "rank": 3,
+      "feature": "EVI2_temporal_max",
+      "importance": 0.036097
+    },
+    {
+      "rank": 4,
+      "feature": "CI_red_edge_temporal_std",
+      "importance": 0.034459
+    },
+    {
+      "rank": 5,
+      "feature": "2026-09-09_Diff_B08_B04",
+      "importance": 0.028822
+    },
+    {
+      "rank": 6,
+      "feature": "EVI2_temporal_range",
+      "importance": 0.026844
+    },
+    {
+      "rank": 7,
+      "feature": "2026-09-09_Diff_B08_B11",
+      "importance": 0.02583
+    },
+    {
+      "rank": 8,
+      "feature": "2026-09-09_B12",
+      "importance": 0.022098
+    },
+    {
+      "rank": 9,
+      "feature": "2026-09-09_B11",
+      "importance": 0.019641
+    },
+    {
+      "rank": 10,
+      "feature": "2026-09-09_B03",
+      "importance": 0.014707
+    },
+    {
+      "rank": 11,
+      "feature": "2026-09-09_B04",
+      "importance": 0.013994
+    },
+    {
+      "rank": 12,
+      "feature": "NDMI_temporal_max",
+      "importance": 0.011182
+    },
+    {
+      "rank": 13,
+      "feature": "2026-03-20_Diff_B08_B11",
+      "importance": 0.010498
+    },
+    {
+      "rank": 14,
+      "feature": "NDVI_temporal_max",
+      "importance": 0.010169
+    },
+    {
+      "rank": 15,
+      "feature": "2026-09-09_EVI",
+      "importance": 0.010042
+    },
+    {
+      "rank": 16,
+      "feature": "EVI2_temporal_p10",
+      "importance": 0.01004
+    },
+    {
+      "rank": 17,
+      "feature": "2026-03-20_B08",
+      "importance": 0.009911
+    },
+    {
+      "rank": 18,
+      "feature": "EVI_temporal_max",
+      "importance": 0.009402
+    },
+    {
+      "rank": 19,
+      "feature": "EVI_temporal_std",
+      "importance": 0.009225
+    },
+    {
+      "rank": 20,
+      "feature": "NDWI_temporal_p10",
+      "importance": 0.009012
+    },
+    {
+      "rank": 21,
+      "feature": "B04_temporal_min",
+      "importance": 0.00895
+    },
+    {
+      "rank": 22,
+      "feature": "B04_temporal_std",
+      "importance": 0.008638
+    },
+    {
+      "rank": 23,
+      "feature": "2026-09-09_CI_red_edge",
+      "importance": 0.008018
+    },
+    {
+      "rank": 24,
+      "feature": "NDRE_B05_temporal_p90",
+      "importance": 0.007886
+    },
+    {
+      "rank": 25,
+      "feature": "B04_temporal_range",
+      "importance": 0.007637
+    },
+    {
+      "rank": 26,
+      "feature": "2026-03-20_CI_red_edge",
+      "importance": 0.007545
+    },
+    {
+      "rank": 27,
+      "feature": "2026-03-20_NDMI",
+      "importance": 0.007473
+    },
+    {
+      "rank": 28,
+      "feature": "NDVI_temporal_min",
+      "importance": 0.007096
+    },
+    {
+      "rank": 29,
+      "feature": "B11_temporal_max",
+      "importance": 0.006846
+    },
+    {
+      "rank": 30,
+      "feature": "2026-09-09_Diff_B08_B05",
+      "importance": 0.00619
+    },
+    {
+      "rank": 31,
+      "feature": "2026-09-09_B02",
+      "importance": 0.005725
+    },
+    {
+      "rank": 32,
+      "feature": "B11_temporal_min",
+      "importance": 0.005673
+    },
+    {
+      "rank": 33,
+      "feature": "NDWI_temporal_max",
+      "importance": 0.00567
+    },
+    {
+      "rank": 34,
+      "feature": "NDRE_B05_temporal_range",
+      "importance": 0.005642
+    },
+    {
+      "rank": 35,
+      "feature": "CI_red_edge_temporal_p90",
+      "importance": 0.005598
+    },
+    {
+      "rank": 36,
+      "feature": "B08_temporal_median",
+      "importance": 0.005422
+    },
+    {
+      "rank": 37,
+      "feature": "2026-03-20_NDWI",
+      "importance": 0.005391
+    },
+    {
+      "rank": 38,
+      "feature": "delta_NDMI_max_pos",
+      "importance": 0.005348
+    },
+    {
+      "rank": 39,
+      "feature": "2026-03-20_B8A",
+      "importance": 0.005166
+    },
+    {
+      "rank": 40,
+      "feature": "2026-09-09_NDVI",
+      "importance": 0.005055
+    },
+    {
+      "rank": 41,
+      "feature": "delta_NDVI_max_neg",
+      "importance": 0.005021
+    },
+    {
+      "rank": 42,
+      "feature": "2026-03-20_GNDVI",
+      "importance": 0.004987
+    },
+    {
+      "rank": 43,
+      "feature": "2026-09-09_B08",
+      "importance": 0.004905
+    },
+    {
+      "rank": 44,
+      "feature": "delta_EVI_std_change",
+      "importance": 0.004854
+    },
+    {
+      "rank": 45,
+      "feature": "B11_temporal_p10",
+      "importance": 0.004851
+    },
+    {
+      "rank": 46,
+      "feature": "NDMI_temporal_std",
+      "importance": 0.00481
+    },
+    {
+      "rank": 47,
+      "feature": "2026-03-20_Ratio_B08_B06",
+      "importance": 0.004785
+    },
+    {
+      "rank": 48,
+      "feature": "MSI_temporal_p25",
+      "importance": 0.00465
+    },
+    {
+      "rank": 49,
+      "feature": "B04_temporal_p10",
+      "importance": 0.004458
+    },
+    {
+      "rank": 50,
+      "feature": "2026-04-02_B08",
+      "importance": 0.004355
+    },
+    {
+      "rank": 51,
+      "feature": "NDMI_temporal_p75",
+      "importance": 0.004225
+    },
+    {
+      "rank": 52,
+      "feature": "SAVI_temporal_mean",
+      "importance": 0.004149
+    },
+    {
+      "rank": 53,
+      "feature": "2026-03-20_MTCI",
+      "importance": 0.004024
+    },
+    {
+      "rank": 54,
+      "feature": "2026-09-09_GNDVI",
+      "importance": 0.004004
+    },
+    {
+      "rank": 55,
+      "feature": "2026-04-02_NDVI",
+      "importance": 0.003981
+    },
+    {
+      "rank": 56,
+      "feature": "2026-04-02_B11",
+      "importance": 0.003957
+    },
+    {
+      "rank": 57,
+      "feature": "MTCI_temporal_max",
+      "importance": 0.003935
+    },
+    {
+      "rank": 58,
+      "feature": "B05_temporal_std",
+      "importance": 0.003911
+    },
+    {
+      "rank": 59,
+      "feature": "2026-04-02_B12",
+      "importance": 0.003772
+    },
+    {
+      "rank": 60,
+      "feature": "NDRE_B06_temporal_p75",
+      "importance": 0.003767
+    },
+    {
+      "rank": 61,
+      "feature": "B05_temporal_p90",
+      "importance": 0.003753
+    },
+    {
+      "rank": 62,
+      "feature": "B08_temporal_max",
+      "importance": 0.003694
+    },
+    {
+      "rank": 63,
+      "feature": "NDVI_temporal_range",
+      "importance": 0.003596
+    },
+    {
+      "rank": 64,
+      "feature": "NDMI_temporal_p90",
+      "importance": 0.003529
+    },
+    {
+      "rank": 65,
+      "feature": "MSI_temporal_p10",
+      "importance": 0.003407
+    },
+    {
+      "rank": 66,
+      "feature": "2026-09-09_NDRE_B07",
+      "importance": 0.003387
+    },
+    {
+      "rank": 67,
+      "feature": "MSI_temporal_std",
+      "importance": 0.003366
+    },
+    {
+      "rank": 68,
+      "feature": "NDWI_temporal_p25",
+      "importance": 0.003347
+    },
+    {
+      "rank": 69,
+      "feature": "B05_temporal_range",
+      "importance": 0.003326
+    },
+    {
+      "rank": 70,
+      "feature": "2026-09-09_NDWI",
+      "importance": 0.003317
+    },
+    {
+      "rank": 71,
+      "feature": "2026-04-02_B03",
+      "importance": 0.003195
+    },
+    {
+      "rank": 72,
+      "feature": "EVI_temporal_range",
+      "importance": 0.00317
+    },
+    {
+      "rank": 73,
+      "feature": "delta_NDMI_step_1_to_2",
+      "importance": 0.00311
+    },
+    {
+      "rank": 74,
+      "feature": "2026-04-22_NDMI",
+      "importance": 0.003101
+    },
+    {
+      "rank": 75,
+      "feature": "2026-04-22_B11",
+      "importance": 0.003045
+    },
+    {
+      "rank": 76,
+      "feature": "EVI2_temporal_mean",
+      "importance": 0.003032
+    },
+    {
+      "rank": 77,
+      "feature": "NDVI_temporal_std",
+      "importance": 0.003009
+    },
+    {
+      "rank": 78,
+      "feature": "2026-03-20_Diff_B08_B04",
+      "importance": 0.002982
+    },
+    {
+      "rank": 79,
+      "feature": "2026-03-20_NDVI",
+      "importance": 0.002922
+    },
+    {
+      "rank": 80,
+      "feature": "EVI_temporal_p75",
+      "importance": 0.002882
+    },
+    {
+      "rank": 81,
+      "feature": "delta_NDVI_max_pos",
+      "importance": 0.002852
+    },
+    {
+      "rank": 82,
+      "feature": "pheno_auc_ndre_normalized",
+      "importance": 0.002852
+    },
+    {
+      "rank": 83,
+      "feature": "2026-03-20_Ratio_B08_B11",
+      "importance": 0.002839
+    },
+    {
+      "rank": 84,
+      "feature": "2026-03-20_B07",
+      "importance": 0.002681
+    },
+    {
+      "rank": 85,
+      "feature": "NDVI_temporal_p10",
+      "importance": 0.00268
+    },
+    {
+      "rank": 86,
+      "feature": "B04_temporal_p75",
+      "importance": 0.00267
+    },
+    {
+      "rank": 87,
+      "feature": "2026-04-02_EVI",
+      "importance": 0.002659
+    },
+    {
+      "rank": 88,
+      "feature": "CI_red_edge_temporal_min",
+      "importance": 0.002591
+    },
+    {
+      "rank": 89,
+      "feature": "pheno_max_ndvi_decline_rate",
+      "importance": 0.002549
+    },
+    {
+      "rank": 90,
+      "feature": "MTCI_temporal_median",
+      "importance": 0.002525
+    },
+    {
+      "rank": 91,
+      "feature": "2026-03-20_NDRE_B06",
+      "importance": 0.002509
+    },
+    {
+      "rank": 92,
+      "feature": "2026-04-02_Ratio_B08_B12",
+      "importance": 0.002509
+    },
+    {
+      "rank": 93,
+      "feature": "2026-03-20_SAVI",
+      "importance": 0.002499
+    },
+    {
+      "rank": 94,
+      "feature": "2026-04-02_MSAVI",
+      "importance": 0.002487
+    },
+    {
+      "rank": 95,
+      "feature": "2026-03-20_MSI",
+      "importance": 0.002477
+    },
+    {
+      "rank": 96,
+      "feature": "2026-04-02_Diff_B08_B05",
+      "importance": 0.002453
+    },
+    {
+      "rank": 97,
+      "feature": "2026-04-02_MTCI",
+      "importance": 0.00244
+    },
+    {
+      "rank": 98,
+      "feature": "2026-04-02_CI_red_edge",
+      "importance": 0.002408
+    },
+    {
+      "rank": 99,
+      "feature": "NDVI_temporal_mean",
+      "importance": 0.002396
+    },
+    {
+      "rank": 100,
+      "feature": "B08_temporal_p90",
+      "importance": 0.002367
+    },
+    {
+      "rank": 101,
+      "feature": "2026-04-22_B8A",
+      "importance": 0.002352
+    },
+    {
+      "rank": 102,
+      "feature": "NDWI_temporal_mean",
+      "importance": 0.00235
+    },
+    {
+      "rank": 103,
+      "feature": "NDRE_B05_temporal_min",
+      "importance": 0.002336
+    },
+    {
+      "rank": 104,
+      "feature": "B11_temporal_mean",
+      "importance": 0.002326
+    },
+    {
+      "rank": 105,
+      "feature": "B08_temporal_p25",
+      "importance": 0.002308
+    },
+    {
+      "rank": 106,
+      "feature": "B11_temporal_median",
+      "importance": 0.002298
+    },
+    {
+      "rank": 107,
+      "feature": "2026-09-09_B07",
+      "importance": 0.002298
+    },
+    {
+      "rank": 108,
+      "feature": "2026-03-20_B11",
+      "importance": 0.002285
+    },
+    {
+      "rank": 109,
+      "feature": "B08_temporal_std",
+      "importance": 0.00225
+    },
+    {
+      "rank": 110,
+      "feature": "2026-09-09_NDMI",
+      "importance": 0.002246
+    },
+    {
+      "rank": 111,
+      "feature": "NDWI_temporal_median",
+      "importance": 0.002244
+    },
+    {
+      "rank": 112,
+      "feature": "2026-04-02_NDMI",
+      "importance": 0.002231
+    },
+    {
+      "rank": 113,
+      "feature": "B11_temporal_std",
+      "importance": 0.002229
+    },
+    {
+      "rank": 114,
+      "feature": "pheno_ndvi_peak_date_idx",
+      "importance": 0.002194
+    },
+    {
+      "rank": 115,
+      "feature": "2026-09-09_NDRE_B06",
+      "importance": 0.002185
+    },
+    {
+      "rank": 116,
+      "feature": "delta_NDMI_mean_change",
+      "importance": 0.002173
+    },
+    {
+      "rank": 117,
+      "feature": "EVI2_temporal_p75",
+      "importance": 0.002169
+    },
+    {
+      "rank": 118,
+      "feature": "2026-04-02_GNDVI",
+      "importance": 0.002163
+    },
+    {
+      "rank": 119,
+      "feature": "delta_NDMI_max_neg",
+      "importance": 0.002149
+    },
+    {
+      "rank": 120,
+      "feature": "B08_temporal_p75",
+      "importance": 0.002148
+    },
+    {
+      "rank": 121,
+      "feature": "NDMI_temporal_median",
+      "importance": 0.002141
+    },
+    {
+      "rank": 122,
+      "feature": "NDRE_B07_temporal_median",
+      "importance": 0.002136
+    },
+    {
+      "rank": 123,
+      "feature": "delta_NDRE_step_3_to_4",
+      "importance": 0.002131
+    },
+    {
+      "rank": 124,
+      "feature": "B08_temporal_mean",
+      "importance": 0.002125
+    },
+    {
+      "rank": 125,
+      "feature": "delta_NDVI_mean_change",
+      "importance": 0.00205
+    },
+    {
+      "rank": 126,
+      "feature": "MTCI_temporal_p75",
+      "importance": 0.002043
+    },
+    {
+      "rank": 127,
+      "feature": "delta_NDMI_step_3_to_4",
+      "importance": 0.002027
+    },
+    {
+      "rank": 128,
+      "feature": "2026-04-22_MTCI",
+      "importance": 0.002012
+    },
+    {
+      "rank": 129,
+      "feature": "2026-04-02_B04",
+      "importance": 0.001995
+    },
+    {
+      "rank": 130,
+      "feature": "2026-04-02_B02",
+      "importance": 0.001991
+    },
+    {
+      "rank": 131,
+      "feature": "2026-04-22_NDVI",
+      "importance": 0.001985
+    },
+    {
+      "rank": 132,
+      "feature": "2026-03-20_Ratio_B08_B05",
+      "importance": 0.001984
+    },
+    {
+      "rank": 133,
+      "feature": "NDWI_temporal_p90",
+      "importance": 0.001973
+    },
+    {
+      "rank": 134,
+      "feature": "2026-04-02_EVI2",
+      "importance": 0.001964
+    },
+    {
+      "rank": 135,
+      "feature": "2026-03-20_B02",
+      "importance": 0.001939
+    },
+    {
+      "rank": 136,
+      "feature": "delta_NDRE_std_change",
+      "importance": 0.001938
+    },
+    {
+      "rank": 137,
+      "feature": "2026-04-02_Diff_B08_B11",
+      "importance": 0.001902
+    },
+    {
+      "rank": 138,
+      "feature": "EVI_temporal_p90",
+      "importance": 0.001858
+    },
+    {
+      "rank": 139,
+      "feature": "2026-09-09_Ratio_B08_B12",
+      "importance": 0.00184
+    },
+    {
+      "rank": 140,
+      "feature": "2026-09-09_B8A",
+      "importance": 0.00184
+    },
+    {
+      "rank": 141,
+      "feature": "2026-03-20_B05",
+      "importance": 0.001839
+    },
+    {
+      "rank": 142,
+      "feature": "2026-03-20_B03",
+      "importance": 0.001833
+    },
+    {
+      "rank": 143,
+      "feature": "2026-04-02_B05",
+      "importance": 0.001813
+    },
+    {
+      "rank": 144,
+      "feature": "delta_NDVI_std_change",
+      "importance": 0.001794
+    },
+    {
+      "rank": 145,
+      "feature": "2026-09-09_Diff_B08_B07",
+      "importance": 0.001772
+    },
+    {
+      "rank": 146,
+      "feature": "2026-04-22_B02",
+      "importance": 0.001761
+    },
+    {
+      "rank": 147,
+      "feature": "EVI_temporal_p10",
+      "importance": 0.001759
+    },
+    {
+      "rank": 148,
+      "feature": "2026-04-22_B05",
+      "importance": 0.001754
+    },
+    {
+      "rank": 149,
+      "feature": "delta_EVI_step_2_to_3",
+      "importance": 0.001751
+    },
+    {
+      "rank": 150,
+      "feature": "B08_temporal_min",
+      "importance": 0.00171
+    },
+    {
+      "rank": 151,
+      "feature": "2026-03-20_B12",
+      "importance": 0.00171
+    },
+    {
+      "rank": 152,
+      "feature": "2026-03-20_B04",
+      "importance": 0.001692
+    },
+    {
+      "rank": 153,
+      "feature": "B11_temporal_p75",
+      "importance": 0.001674
+    },
+    {
+      "rank": 154,
+      "feature": "2026-04-02_Diff_B08_B04",
+      "importance": 0.001656
+    },
+    {
+      "rank": 155,
+      "feature": "B04_temporal_p25",
+      "importance": 0.001649
+    },
+    {
+      "rank": 156,
+      "feature": "2026-03-20_Diff_B08_B05",
+      "importance": 0.001646
+    },
+    {
+      "rank": 157,
+      "feature": "2026-04-02_NDRE_B06",
+      "importance": 0.001643
+    },
+    {
+      "rank": 158,
+      "feature": "delta_NDRE_max_neg",
+      "importance": 0.001609
+    },
+    {
+      "rank": 159,
+      "feature": "delta_NDVI_step_3_to_4",
+      "importance": 0.001599
+    },
+    {
+      "rank": 160,
+      "feature": "delta_NDMI_std_change",
+      "importance": 0.001598
+    },
+    {
+      "rank": 161,
+      "feature": "2026-03-20_EVI",
+      "importance": 0.001597
+    },
+    {
+      "rank": 162,
+      "feature": "NDMI_temporal_min",
+      "importance": 0.00159
+    },
+    {
+      "rank": 163,
+      "feature": "NDVI_temporal_p75",
+      "importance": 0.001542
+    },
+    {
+      "rank": 164,
+      "feature": "B11_temporal_range",
+      "importance": 0.001539
+    },
+    {
+      "rank": 165,
+      "feature": "2026-03-20_NDRE_B07",
+      "importance": 0.001526
+    },
+    {
+      "rank": 166,
+      "feature": "CI_red_edge_temporal_median",
+      "importance": 0.001501
+    },
+    {
+      "rank": 167,
+      "feature": "delta_EVI_max_neg",
+      "importance": 0.00148
+    },
+    {
+      "rank": 168,
+      "feature": "MTCI_temporal_mean",
+      "importance": 0.001475
+    },
+    {
+      "rank": 169,
+      "feature": "CI_red_edge_temporal_p75",
+      "importance": 0.001459
+    },
+    {
+      "rank": 170,
+      "feature": "EVI_temporal_mean",
+      "importance": 0.001458
+    },
+    {
+      "rank": 171,
+      "feature": "NDWI_temporal_range",
+      "importance": 0.00142
+    },
+    {
+      "rank": 172,
+      "feature": "2026-04-22_Diff_B08_B04",
+      "importance": 0.001419
+    },
+    {
+      "rank": 173,
+      "feature": "CI_red_edge_temporal_p10",
+      "importance": 0.001402
+    },
+    {
+      "rank": 174,
+      "feature": "MSI_temporal_range",
+      "importance": 0.001397
+    },
+    {
+      "rank": 175,
+      "feature": "B11_temporal_p25",
+      "importance": 0.00139
+    },
+    {
+      "rank": 176,
+      "feature": "pheno_auc_ndvi_normalized",
+      "importance": 0.001339
+    },
+    {
+      "rank": 177,
+      "feature": "NDMI_temporal_p10",
+      "importance": 0.001322
+    },
+    {
+      "rank": 178,
+      "feature": "2026-04-02_MSI",
+      "importance": 0.001289
+    },
+    {
+      "rank": 179,
+      "feature": "2026-03-20_Ratio_B08_B12",
+      "importance": 0.001263
+    },
+    {
+      "rank": 180,
+      "feature": "MTCI_temporal_std",
+      "importance": 0.001262
+    },
+    {
+      "rank": 181,
+      "feature": "2026-03-20_NDRE_B05",
+      "importance": 0.001208
+    },
+    {
+      "rank": 182,
+      "feature": "CI_red_edge_temporal_mean",
+      "importance": 0.001171
+    },
+    {
+      "rank": 183,
+      "feature": "NDRE_B06_temporal_p90",
+      "importance": 0.001121
+    },
+    {
+      "rank": 184,
+      "feature": "EVI_temporal_median",
+      "importance": 0.001088
+    },
+    {
+      "rank": 185,
+      "feature": "2026-04-02_NDRE_B07",
+      "importance": 0.001066
+    },
+    {
+      "rank": 186,
+      "feature": "2026-04-02_NDRE_B05",
+      "importance": 0.001048
+    },
+    {
+      "rank": 187,
+      "feature": "delta_NDVI_step_2_to_3",
+      "importance": 0.001018
+    },
+    {
+      "rank": 188,
+      "feature": "2026-04-02_SAVI",
+      "importance": 0.001018
+    },
+    {
+      "rank": 189,
+      "feature": "B04_temporal_median",
+      "importance": 0.001006
+    },
+    {
+      "rank": 190,
+      "feature": "pheno_ndre_peak_date_idx",
+      "importance": 0.000982
+    },
+    {
+      "rank": 191,
+      "feature": "pheno_max_ndre_decline_rate",
+      "importance": 0.000973
+    },
+    {
+      "rank": 192,
+      "feature": "delta_EVI_max_pos",
+      "importance": 0.000961
+    },
+    {
+      "rank": 193,
+      "feature": "2026-04-22_NDRE_B07",
+      "importance": 0.000946
+    },
+    {
+      "rank": 194,
+      "feature": "NDWI_temporal_min",
+      "importance": 0.000946
+    },
+    {
+      "rank": 195,
+      "feature": "MTCI_temporal_p25",
+      "importance": 0.000944
+    },
+    {
+      "rank": 196,
+      "feature": "B08_temporal_range",
+      "importance": 0.000939
+    },
+    {
+      "rank": 197,
+      "feature": "MTCI_temporal_min",
+      "importance": 0.000931
+    },
+    {
+      "rank": 198,
+      "feature": "2026-04-02_B07",
+      "importance": 0.000924
+    },
+    {
+      "rank": 199,
+      "feature": "2026-04-22_CI_red_edge",
+      "importance": 0.0009
+    },
+    {
+      "rank": 200,
+      "feature": "2026-03-20_OSAVI",
+      "importance": 0.000896
+    },
+    {
+      "rank": 201,
+      "feature": "2026-09-09_B05",
+      "importance": 0.000892
+    },
+    {
+      "rank": 202,
+      "feature": "pheno_max_ndvi_growth_rate",
+      "importance": 0.000841
+    },
+    {
+      "rank": 203,
+      "feature": "delta_EVI_step_1_to_2",
+      "importance": 0.000838
+    },
+    {
+      "rank": 204,
+      "feature": "2026-04-22_B04",
+      "importance": 0.000833
+    },
+    {
+      "rank": 205,
+      "feature": "MSI_temporal_mean",
+      "importance": 0.000832
+    },
+    {
+      "rank": 206,
+      "feature": "2026-03-20_Diff_B08_B06",
+      "importance": 0.000823
+    },
+    {
+      "rank": 207,
+      "feature": "2026-09-09_B06",
+      "importance": 0.000821
+    },
+    {
+      "rank": 208,
+      "feature": "NDWI_temporal_p75",
+      "importance": 0.000816
+    },
+    {
+      "rank": 209,
+      "feature": "NDVI_temporal_median",
+      "importance": 0.000799
+    },
+    {
+      "rank": 210,
+      "feature": "2026-03-20_B06",
+      "importance": 0.000788
+    },
+    {
+      "rank": 211,
+      "feature": "2026-09-09_MTCI",
+      "importance": 0.000786
+    },
+    {
+      "rank": 212,
+      "feature": "EVI2_temporal_p90",
+      "importance": 0.000781
+    },
+    {
+      "rank": 213,
+      "feature": "B04_temporal_max",
+      "importance": 0.000778
+    },
+    {
+      "rank": 214,
+      "feature": "pheno_evi_peak_date_idx",
+      "importance": 0.00077
+    },
+    {
+      "rank": 215,
+      "feature": "NDRE_B06_temporal_mean",
+      "importance": 0.000768
+    },
+    {
+      "rank": 216,
+      "feature": "2026-04-22_Diff_B08_B11",
+      "importance": 0.000767
+    },
+    {
+      "rank": 217,
+      "feature": "2026-04-22_B08",
+      "importance": 0.000762
+    },
+    {
+      "rank": 218,
+      "feature": "2026-03-20_EVI2",
+      "importance": 0.000755
+    },
+    {
+      "rank": 219,
+      "feature": "MSI_temporal_median",
+      "importance": 0.000754
+    },
+    {
+      "rank": 220,
+      "feature": "delta_NDVI_step_1_to_2",
+      "importance": 0.00075
+    },
+    {
+      "rank": 221,
+      "feature": "2026-04-22_Diff_B08_B06",
+      "importance": 0.000741
+    },
+    {
+      "rank": 222,
+      "feature": "2026-04-22_B06",
+      "importance": 0.000733
+    },
+    {
+      "rank": 223,
+      "feature": "2026-04-22_B03",
+      "importance": 0.000721
+    },
+    {
+      "rank": 224,
+      "feature": "delta_NDMI_step_2_to_3",
+      "importance": 0.000704
+    },
+    {
+      "rank": 225,
+      "feature": "NDRE_B05_temporal_p75",
+      "importance": 0.000693
+    },
+    {
+      "rank": 226,
+      "feature": "delta_EVI_step_3_to_4",
+      "importance": 0.000667
+    },
+    {
+      "rank": 227,
+      "feature": "EVI_temporal_p25",
+      "importance": 0.000666
+    },
+    {
+      "rank": 228,
+      "feature": "2026-04-22_B12",
+      "importance": 0.000651
+    },
+    {
+      "rank": 229,
+      "feature": "MTCI_temporal_range",
+      "importance": 0.000642
+    },
+    {
+      "rank": 230,
+      "feature": "B05_temporal_min",
+      "importance": 0.000639
+    },
+    {
+      "rank": 231,
+      "feature": "B08_temporal_p10",
+      "importance": 0.000634
+    },
+    {
+      "rank": 232,
+      "feature": "B05_temporal_p25",
+      "importance": 0.000627
+    },
+    {
+      "rank": 233,
+      "feature": "NDRE_B05_temporal_median",
+      "importance": 0.000604
+    },
+    {
+      "rank": 234,
+      "feature": "2026-04-22_EVI",
+      "importance": 0.0006
+    },
+    {
+      "rank": 235,
+      "feature": "NDRE_B07_temporal_range",
+      "importance": 0.00059
+    },
+    {
+      "rank": 236,
+      "feature": "CI_red_edge_temporal_p25",
+      "importance": 0.000589
+    },
+    {
+      "rank": 237,
+      "feature": "NDWI_temporal_std",
+      "importance": 0.000581
+    },
+    {
+      "rank": 238,
+      "feature": "delta_EVI_mean_change",
+      "importance": 0.000577
+    },
+    {
+      "rank": 239,
+      "feature": "pheno_max_ndre_growth_rate",
+      "importance": 0.000573
+    },
+    {
+      "rank": 240,
+      "feature": "SAVI_temporal_min",
+      "importance": 0.000559
+    },
+    {
+      "rank": 241,
+      "feature": "2026-03-20_Ratio_B08_B04",
+      "importance": 0.000553
+    },
+    {
+      "rank": 242,
+      "feature": "EVI2_temporal_median",
+      "importance": 0.000514
+    },
+    {
+      "rank": 243,
+      "feature": "B04_temporal_mean",
+      "importance": 0.000513
+    },
+    {
+      "rank": 244,
+      "feature": "2026-04-02_Diff_B08_B06",
+      "importance": 0.000497
+    },
+    {
+      "rank": 245,
+      "feature": "pheno_mean_ndvi_rate",
+      "importance": 0.000493
+    },
+    {
+      "rank": 246,
+      "feature": "SAVI_temporal_median",
+      "importance": 0.000491
+    },
+    {
+      "rank": 247,
+      "feature": "delta_NDRE_step_2_to_3",
+      "importance": 0.000487
+    },
+    {
+      "rank": 248,
+      "feature": "2026-04-22_Ratio_B08_B12",
+      "importance": 0.000482
+    },
+    {
+      "rank": 249,
+      "feature": "NDRE_B06_temporal_min",
+      "importance": 0.000437
+    },
+    {
+      "rank": 250,
+      "feature": "NDRE_B06_temporal_max",
+      "importance": 0.000428
+    },
+    {
+      "rank": 251,
+      "feature": "B05_temporal_mean",
+      "importance": 0.000428
+    },
+    {
+      "rank": 252,
+      "feature": "2026-04-22_NDRE_B05",
+      "importance": 0.000412
+    },
+    {
+      "rank": 253,
+      "feature": "2026-04-02_NDWI",
+      "importance": 0.000411
+    },
+    {
+      "rank": 254,
+      "feature": "2026-09-09_NDRE_B05",
+      "importance": 0.000377
+    },
+    {
+      "rank": 255,
+      "feature": "NDMI_temporal_mean",
+      "importance": 0.000371
+    },
+    {
+      "rank": 256,
+      "feature": "NDRE_B06_temporal_p10",
+      "importance": 0.000369
+    },
+    {
+      "rank": 257,
+      "feature": "EVI_temporal_min",
+      "importance": 0.000364
+    },
+    {
+      "rank": 258,
+      "feature": "delta_NDRE_step_1_to_2",
+      "importance": 0.000361
+    },
+    {
+      "rank": 259,
+      "feature": "2026-04-02_B06",
+      "importance": 0.000357
+    },
+    {
+      "rank": 260,
+      "feature": "2026-09-09_Ratio_B08_B05",
+      "importance": 0.000336
+    },
+    {
+      "rank": 261,
+      "feature": "CI_red_edge_temporal_max",
+      "importance": 0.000326
+    },
+    {
+      "rank": 262,
+      "feature": "2026-04-02_Diff_B08_B07",
+      "importance": 0.000325
+    },
+    {
+      "rank": 263,
+      "feature": "2026-03-20_Diff_B08_B07",
+      "importance": 0.000321
+    },
+    {
+      "rank": 264,
+      "feature": "B05_temporal_max",
+      "importance": 0.000304
+    },
+    {
+      "rank": 265,
+      "feature": "NDRE_B05_temporal_p25",
+      "importance": 0.000251
+    },
+    {
+      "rank": 266,
+      "feature": "B11_temporal_p90",
+      "importance": 0.000242
+    },
+    {
+      "rank": 267,
+      "feature": "2026-09-09_SAVI",
+      "importance": 0.000238
+    },
+    {
+      "rank": 268,
+      "feature": "B05_temporal_p10",
+      "importance": 0.000237
+    },
+    {
+      "rank": 269,
+      "feature": "2026-04-02_Ratio_B08_B07",
+      "importance": 0.000233
+    },
+    {
+      "rank": 270,
+      "feature": "2026-04-22_EVI2",
+      "importance": 0.000226
+    },
+    {
+      "rank": 271,
+      "feature": "2026-09-09_MSI",
+      "importance": 0.000225
+    },
+    {
+      "rank": 272,
+      "feature": "2026-04-22_Ratio_B08_B07",
+      "importance": 0.000223
+    },
+    {
+      "rank": 273,
+      "feature": "2026-04-22_NDWI",
+      "importance": 0.000221
+    },
+    {
+      "rank": 274,
+      "feature": "NDRE_B07_temporal_mean",
+      "importance": 0.00021
+    },
+    {
+      "rank": 275,
+      "feature": "2026-04-22_GNDVI",
+      "importance": 0.000196
+    },
+    {
+      "rank": 276,
+      "feature": "MSI_temporal_max",
+      "importance": 0.000185
+    },
+    {
+      "rank": 277,
+      "feature": "EVI2_temporal_min",
+      "importance": 0.000185
+    },
+    {
+      "rank": 278,
+      "feature": "NDRE_B06_temporal_median",
+      "importance": 0.000168
+    },
+    {
+      "rank": 279,
+      "feature": "2026-04-02_OSAVI",
+      "importance": 0.000145
+    },
+    {
+      "rank": 280,
+      "feature": "NDRE_B06_temporal_range",
+      "importance": 0.000145
+    },
+    {
+      "rank": 281,
+      "feature": "2026-04-22_OSAVI",
+      "importance": 0.000114
+    },
+    {
+      "rank": 282,
+      "feature": "2026-04-02_B8A",
+      "importance": 0.000111
+    },
+    {
+      "rank": 283,
+      "feature": "NDRE_B06_temporal_p25",
+      "importance": 9.9e-05
+    },
+    {
+      "rank": 284,
+      "feature": "SAVI_temporal_p75",
+      "importance": 9.7e-05
+    },
+    {
+      "rank": 285,
+      "feature": "NDRE_B07_temporal_min",
+      "importance": 7.3e-05
+    },
+    {
+      "rank": 286,
+      "feature": "NDMI_temporal_range",
+      "importance": 7.3e-05
+    },
+    {
+      "rank": 287,
+      "feature": "2026-03-20_MSAVI",
+      "importance": 7.2e-05
+    },
+    {
+      "rank": 288,
+      "feature": "2026-09-09_EVI2",
+      "importance": 0.0
+    },
+    {
+      "rank": 289,
+      "feature": "2026-09-09_OSAVI",
+      "importance": 0.0
+    },
+    {
+      "rank": 290,
+      "feature": "2026-09-09_MSAVI",
+      "importance": 0.0
+    },
+    {
+      "rank": 291,
+      "feature": "SAVI_temporal_std",
+      "importance": 0.0
+    },
+    {
+      "rank": 292,
+      "feature": "SAVI_temporal_range",
+      "importance": 0.0
+    },
+    {
+      "rank": 293,
+      "feature": "SAVI_temporal_p10",
+      "importance": 0.0
+    },
+    {
+      "rank": 294,
+      "feature": "SAVI_temporal_p25",
+      "importance": 0.0
+    },
+    {
+      "rank": 295,
+      "feature": "SAVI_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 296,
+      "feature": "NDRE_B05_temporal_mean",
+      "importance": 0.0
+    },
+    {
+      "rank": 297,
+      "feature": "NDRE_B05_temporal_max",
+      "importance": 0.0
+    },
+    {
+      "rank": 298,
+      "feature": "NDRE_B05_temporal_std",
+      "importance": 0.0
+    },
+    {
+      "rank": 299,
+      "feature": "2026-04-22_MSAVI",
+      "importance": 0.0
+    },
+    {
+      "rank": 300,
+      "feature": "NDRE_B05_temporal_p10",
+      "importance": 0.0
+    },
+    {
+      "rank": 301,
+      "feature": "2026-04-22_SAVI",
+      "importance": 0.0
+    },
+    {
+      "rank": 302,
+      "feature": "2026-04-22_Ratio_B08_B06",
+      "importance": 0.0
+    },
+    {
+      "rank": 303,
+      "feature": "2026-04-22_Ratio_B08_B04",
+      "importance": 0.0
+    },
+    {
+      "rank": 304,
+      "feature": "2026-04-22_Ratio_B08_B05",
+      "importance": 0.0
+    },
+    {
+      "rank": 305,
+      "feature": "2026-04-22_NDRE_B06",
+      "importance": 0.0
+    },
+    {
+      "rank": 306,
+      "feature": "2026-04-22_MSI",
+      "importance": 0.0
+    },
+    {
+      "rank": 307,
+      "feature": "EVI2_temporal_p25",
+      "importance": 0.0
+    },
+    {
+      "rank": 308,
+      "feature": "2026-04-22_Diff_B08_B07",
+      "importance": 0.0
+    },
+    {
+      "rank": 309,
+      "feature": "2026-04-22_Diff_B08_B05",
+      "importance": 0.0
+    },
+    {
+      "rank": 310,
+      "feature": "2026-04-22_Ratio_B08_B11",
+      "importance": 0.0
+    },
+    {
+      "rank": 311,
+      "feature": "delta_NDRE_max_pos",
+      "importance": 0.0
+    },
+    {
+      "rank": 312,
+      "feature": "delta_NDRE_mean_change",
+      "importance": 0.0
+    },
+    {
+      "rank": 313,
+      "feature": "2026-09-09_Ratio_B08_B07",
+      "importance": 0.0
+    },
+    {
+      "rank": 314,
+      "feature": "2026-09-09_Diff_B08_B06",
+      "importance": 0.0
+    },
+    {
+      "rank": 315,
+      "feature": "2026-09-09_Ratio_B08_B04",
+      "importance": 0.0
+    },
+    {
+      "rank": 316,
+      "feature": "2026-09-09_Ratio_B08_B06",
+      "importance": 0.0
+    },
+    {
+      "rank": 317,
+      "feature": "2026-09-09_Ratio_B08_B11",
+      "importance": 0.0
+    },
+    {
+      "rank": 318,
+      "feature": "NDVI_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 319,
+      "feature": "NDVI_temporal_p25",
+      "importance": 0.0
+    },
+    {
+      "rank": 320,
+      "feature": "2026-04-02_Ratio_B08_B11",
+      "importance": 0.0
+    },
+    {
+      "rank": 321,
+      "feature": "SAVI_temporal_max",
+      "importance": 0.0
+    },
+    {
+      "rank": 322,
+      "feature": "2026-04-22_B07",
+      "importance": 0.0
+    },
+    {
+      "rank": 323,
+      "feature": "MTCI_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 324,
+      "feature": "2026-04-02_Ratio_B08_B04",
+      "importance": 0.0
+    },
+    {
+      "rank": 325,
+      "feature": "2026-04-02_Ratio_B08_B06",
+      "importance": 0.0
+    },
+    {
+      "rank": 326,
+      "feature": "2026-04-02_Ratio_B08_B05",
+      "importance": 0.0
+    },
+    {
+      "rank": 327,
+      "feature": "MSI_temporal_min",
+      "importance": 0.0
+    },
+    {
+      "rank": 328,
+      "feature": "NDRE_B07_temporal_p25",
+      "importance": 0.0
+    },
+    {
+      "rank": 329,
+      "feature": "NDRE_B07_temporal_p10",
+      "importance": 0.0
+    },
+    {
+      "rank": 330,
+      "feature": "NDRE_B07_temporal_std",
+      "importance": 0.0
+    },
+    {
+      "rank": 331,
+      "feature": "NDRE_B07_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 332,
+      "feature": "NDMI_temporal_p25",
+      "importance": 0.0
+    },
+    {
+      "rank": 333,
+      "feature": "NDRE_B07_temporal_p75",
+      "importance": 0.0
+    },
+    {
+      "rank": 334,
+      "feature": "NDRE_B07_temporal_max",
+      "importance": 0.0
+    },
+    {
+      "rank": 335,
+      "feature": "NDRE_B06_temporal_std",
+      "importance": 0.0
+    },
+    {
+      "rank": 336,
+      "feature": "B05_temporal_median",
+      "importance": 0.0
+    },
+    {
+      "rank": 337,
+      "feature": "MSI_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 338,
+      "feature": "MSI_temporal_p75",
+      "importance": 0.0
+    },
+    {
+      "rank": 339,
+      "feature": "B04_temporal_p90",
+      "importance": 0.0
+    },
+    {
+      "rank": 340,
+      "feature": "B05_temporal_p75",
+      "importance": 0.0
+    },
+    {
+      "rank": 341,
+      "feature": "MTCI_temporal_p10",
+      "importance": 0.0
+    },
+    {
+      "rank": 342,
+      "feature": "pheno_ndmi_amplitude",
+      "importance": 0.0
+    },
+    {
+      "rank": 343,
+      "feature": "pheno_ndmi_peak_date_idx",
+      "importance": 0.0
+    },
+    {
+      "rank": 344,
+      "feature": "pheno_ndre_amplitude",
+      "importance": 0.0
+    },
+    {
+      "rank": 345,
+      "feature": "pheno_ndvi_amplitude",
+      "importance": 0.0
+    },
+    {
+      "rank": 346,
+      "feature": "pheno_evi_peak_val",
+      "importance": 0.0
+    },
+    {
+      "rank": 347,
+      "feature": "pheno_ndvi_peak_val",
+      "importance": 0.0
+    },
+    {
+      "rank": 348,
+      "feature": "pheno_ndre_peak_val",
+      "importance": 0.0
+    },
+    {
+      "rank": 349,
+      "feature": "pheno_ndmi_peak_val",
+      "importance": 0.0
+    },
+    {
+      "rank": 350,
+      "feature": "pheno_vegetation_duration_ratio",
+      "importance": 0.0
+    },
+    {
+      "rank": 351,
+      "feature": "pheno_ndvi_obs_above_045",
+      "importance": 0.0
+    },
+    {
+      "rank": 352,
+      "feature": "pheno_ndvi_obs_above_035",
+      "importance": 0.0
+    },
+    {
+      "rank": 353,
+      "feature": "pheno_ndvi_obs_above_030",
+      "importance": 0.0
+    },
+    {
+      "rank": 354,
+      "feature": "2026-03-20_Ratio_B08_B07",
+      "importance": 0.0
+    }
+  ],
+  "n_features": 354,
+  "model": "XGBoost_Advanced",
+  "CI_red_edge_temporal_range": 0.077695,
+  "EVI2_temporal_std": 0.064854,
+  "EVI2_temporal_max": 0.036097,
+  "CI_red_edge_temporal_std": 0.034459,
+  "2026-09-09_Diff_B08_B04": 0.028822,
+  "EVI2_temporal_range": 0.026844,
+  "2026-09-09_Diff_B08_B11": 0.02583,
+  "2026-09-09_B12": 0.022098,
+  "2026-09-09_B11": 0.019641,
+  "2026-09-09_B03": 0.014707,
+  "2026-09-09_B04": 0.013994,
+  "NDMI_temporal_max": 0.011182,
+  "2026-03-20_Diff_B08_B11": 0.010498,
+  "NDVI_temporal_max": 0.010169,
+  "2026-09-09_EVI": 0.010042,
+  "EVI2_temporal_p10": 0.01004,
+  "2026-03-20_B08": 0.009911,
+  "EVI_temporal_max": 0.009402,
+  "EVI_temporal_std": 0.009225,
+  "NDWI_temporal_p10": 0.009012,
+  "B04_temporal_min": 0.00895,
+  "B04_temporal_std": 0.008638,
+  "2026-09-09_CI_red_edge": 0.008018,
+  "NDRE_B05_temporal_p90": 0.007886,
+  "B04_temporal_range": 0.007637,
+  "2026-03-20_CI_red_edge": 0.007545,
+  "2026-03-20_NDMI": 0.007473,
+  "NDVI_temporal_min": 0.007096,
+  "B11_temporal_max": 0.006846,
+  "2026-09-09_Diff_B08_B05": 0.00619,
+  "2026-09-09_B02": 0.005725,
+  "B11_temporal_min": 0.005673,
+  "NDWI_temporal_max": 0.00567,
+  "NDRE_B05_temporal_range": 0.005642,
+  "CI_red_edge_temporal_p90": 0.005598,
+  "B08_temporal_median": 0.005422,
+  "2026-03-20_NDWI": 0.005391,
+  "delta_NDMI_max_pos": 0.005348,
+  "2026-03-20_B8A": 0.005166,
+  "2026-09-09_NDVI": 0.005055,
+  "delta_NDVI_max_neg": 0.005021,
+  "2026-03-20_GNDVI": 0.004987,
+  "2026-09-09_B08": 0.004905,
+  "delta_EVI_std_change": 0.004854,
+  "B11_temporal_p10": 0.004851,
+  "NDMI_temporal_std": 0.00481,
+  "2026-03-20_Ratio_B08_B06": 0.004785,
+  "MSI_temporal_p25": 0.00465,
+  "B04_temporal_p10": 0.004458,
+  "2026-04-02_B08": 0.004355,
+  "NDMI_temporal_p75": 0.004225,
+  "SAVI_temporal_mean": 0.004149,
+  "2026-03-20_MTCI": 0.004024,
+  "2026-09-09_GNDVI": 0.004004,
+  "2026-04-02_NDVI": 0.003981,
+  "2026-04-02_B11": 0.003957,
+  "MTCI_temporal_max": 0.003935,
+  "B05_temporal_std": 0.003911,
+  "2026-04-02_B12": 0.003772,
+  "NDRE_B06_temporal_p75": 0.003767,
+  "B05_temporal_p90": 0.003753,
+  "B08_temporal_max": 0.003694,
+  "NDVI_temporal_range": 0.003596,
+  "NDMI_temporal_p90": 0.003529,
+  "MSI_temporal_p10": 0.003407,
+  "2026-09-09_NDRE_B07": 0.003387,
+  "MSI_temporal_std": 0.003366,
+  "NDWI_temporal_p25": 0.003347,
+  "B05_temporal_range": 0.003326,
+  "2026-09-09_NDWI": 0.003317,
+  "2026-04-02_B03": 0.003195,
+  "EVI_temporal_range": 0.00317,
+  "delta_NDMI_step_1_to_2": 0.00311,
+  "2026-04-22_NDMI": 0.003101,
+  "2026-04-22_B11": 0.003045,
+  "EVI2_temporal_mean": 0.003032,
+  "NDVI_temporal_std": 0.003009,
+  "2026-03-20_Diff_B08_B04": 0.002982,
+  "2026-03-20_NDVI": 0.002922,
+  "EVI_temporal_p75": 0.002882,
+  "delta_NDVI_max_pos": 0.002852,
+  "pheno_auc_ndre_normalized": 0.002852,
+  "2026-03-20_Ratio_B08_B11": 0.002839,
+  "2026-03-20_B07": 0.002681,
+  "NDVI_temporal_p10": 0.00268,
+  "B04_temporal_p75": 0.00267,
+  "2026-04-02_EVI": 0.002659,
+  "CI_red_edge_temporal_min": 0.002591,
+  "pheno_max_ndvi_decline_rate": 0.002549,
+  "MTCI_temporal_median": 0.002525,
+  "2026-03-20_NDRE_B06": 0.002509,
+  "2026-04-02_Ratio_B08_B12": 0.002509,
+  "2026-03-20_SAVI": 0.002499,
+  "2026-04-02_MSAVI": 0.002487,
+  "2026-03-20_MSI": 0.002477,
+  "2026-04-02_Diff_B08_B05": 0.002453,
+  "2026-04-02_MTCI": 0.00244,
+  "2026-04-02_CI_red_edge": 0.002408,
+  "NDVI_temporal_mean": 0.002396,
+  "B08_temporal_p90": 0.002367,
+  "2026-04-22_B8A": 0.002352,
+  "NDWI_temporal_mean": 0.00235,
+  "NDRE_B05_temporal_min": 0.002336,
+  "B11_temporal_mean": 0.002326,
+  "B08_temporal_p25": 0.002308,
+  "B11_temporal_median": 0.002298,
+  "2026-09-09_B07": 0.002298,
+  "2026-03-20_B11": 0.002285,
+  "B08_temporal_std": 0.00225,
+  "2026-09-09_NDMI": 0.002246,
+  "NDWI_temporal_median": 0.002244,
+  "2026-04-02_NDMI": 0.002231,
+  "B11_temporal_std": 0.002229,
+  "pheno_ndvi_peak_date_idx": 0.002194,
+  "2026-09-09_NDRE_B06": 0.002185,
+  "delta_NDMI_mean_change": 0.002173,
+  "EVI2_temporal_p75": 0.002169,
+  "2026-04-02_GNDVI": 0.002163,
+  "delta_NDMI_max_neg": 0.002149,
+  "B08_temporal_p75": 0.002148,
+  "NDMI_temporal_median": 0.002141,
+  "NDRE_B07_temporal_median": 0.002136,
+  "delta_NDRE_step_3_to_4": 0.002131,
+  "B08_temporal_mean": 0.002125,
+  "delta_NDVI_mean_change": 0.00205,
+  "MTCI_temporal_p75": 0.002043,
+  "delta_NDMI_step_3_to_4": 0.002027,
+  "2026-04-22_MTCI": 0.002012,
+  "2026-04-02_B04": 0.001995,
+  "2026-04-02_B02": 0.001991,
+  "2026-04-22_NDVI": 0.001985,
+  "2026-03-20_Ratio_B08_B05": 0.001984,
+  "NDWI_temporal_p90": 0.001973,
+  "2026-04-02_EVI2": 0.001964,
+  "2026-03-20_B02": 0.001939,
+  "delta_NDRE_std_change": 0.001938,
+  "2026-04-02_Diff_B08_B11": 0.001902,
+  "EVI_temporal_p90": 0.001858,
+  "2026-09-09_Ratio_B08_B12": 0.00184,
+  "2026-09-09_B8A": 0.00184,
+  "2026-03-20_B05": 0.001839,
+  "2026-03-20_B03": 0.001833,
+  "2026-04-02_B05": 0.001813,
+  "delta_NDVI_std_change": 0.001794,
+  "2026-09-09_Diff_B08_B07": 0.001772,
+  "2026-04-22_B02": 0.001761,
+  "EVI_temporal_p10": 0.001759,
+  "2026-04-22_B05": 0.001754,
+  "delta_EVI_step_2_to_3": 0.001751,
+  "B08_temporal_min": 0.00171,
+  "2026-03-20_B12": 0.00171,
+  "2026-03-20_B04": 0.001692,
+  "B11_temporal_p75": 0.001674,
+  "2026-04-02_Diff_B08_B04": 0.001656,
+  "B04_temporal_p25": 0.001649,
+  "2026-03-20_Diff_B08_B05": 0.001646,
+  "2026-04-02_NDRE_B06": 0.001643,
+  "delta_NDRE_max_neg": 0.001609,
+  "delta_NDVI_step_3_to_4": 0.001599,
+  "delta_NDMI_std_change": 0.001598,
+  "2026-03-20_EVI": 0.001597,
+  "NDMI_temporal_min": 0.00159,
+  "NDVI_temporal_p75": 0.001542,
+  "B11_temporal_range": 0.001539,
+  "2026-03-20_NDRE_B07": 0.001526,
+  "CI_red_edge_temporal_median": 0.001501,
+  "delta_EVI_max_neg": 0.00148,
+  "MTCI_temporal_mean": 0.001475,
+  "CI_red_edge_temporal_p75": 0.001459,
+  "EVI_temporal_mean": 0.001458,
+  "NDWI_temporal_range": 0.00142,
+  "2026-04-22_Diff_B08_B04": 0.001419,
+  "CI_red_edge_temporal_p10": 0.001402,
+  "MSI_temporal_range": 0.001397,
+  "B11_temporal_p25": 0.00139,
+  "pheno_auc_ndvi_normalized": 0.001339,
+  "NDMI_temporal_p10": 0.001322,
+  "2026-04-02_MSI": 0.001289,
+  "2026-03-20_Ratio_B08_B12": 0.001263,
+  "MTCI_temporal_std": 0.001262,
+  "2026-03-20_NDRE_B05": 0.001208,
+  "CI_red_edge_temporal_mean": 0.001171,
+  "NDRE_B06_temporal_p90": 0.001121,
+  "EVI_temporal_median": 0.001088,
+  "2026-04-02_NDRE_B07": 0.001066,
+  "2026-04-02_NDRE_B05": 0.001048,
+  "delta_NDVI_step_2_to_3": 0.001018,
+  "2026-04-02_SAVI": 0.001018,
+  "B04_temporal_median": 0.001006,
+  "pheno_ndre_peak_date_idx": 0.000982,
+  "pheno_max_ndre_decline_rate": 0.000973,
+  "delta_EVI_max_pos": 0.000961,
+  "2026-04-22_NDRE_B07": 0.000946,
+  "NDWI_temporal_min": 0.000946,
+  "MTCI_temporal_p25": 0.000944,
+  "B08_temporal_range": 0.000939,
+  "MTCI_temporal_min": 0.000931,
+  "2026-04-02_B07": 0.000924,
+  "2026-04-22_CI_red_edge": 0.0009,
+  "2026-03-20_OSAVI": 0.000896,
+  "2026-09-09_B05": 0.000892,
+  "pheno_max_ndvi_growth_rate": 0.000841,
+  "delta_EVI_step_1_to_2": 0.000838,
+  "2026-04-22_B04": 0.000833,
+  "MSI_temporal_mean": 0.000832,
+  "2026-03-20_Diff_B08_B06": 0.000823,
+  "2026-09-09_B06": 0.000821,
+  "NDWI_temporal_p75": 0.000816,
+  "NDVI_temporal_median": 0.000799,
+  "2026-03-20_B06": 0.000788,
+  "2026-09-09_MTCI": 0.000786,
+  "EVI2_temporal_p90": 0.000781,
+  "B04_temporal_max": 0.000778,
+  "pheno_evi_peak_date_idx": 0.00077,
+  "NDRE_B06_temporal_mean": 0.000768,
+  "2026-04-22_Diff_B08_B11": 0.000767,
+  "2026-04-22_B08": 0.000762,
+  "2026-03-20_EVI2": 0.000755,
+  "MSI_temporal_median": 0.000754,
+  "delta_NDVI_step_1_to_2": 0.00075,
+  "2026-04-22_Diff_B08_B06": 0.000741,
+  "2026-04-22_B06": 0.000733,
+  "2026-04-22_B03": 0.000721,
+  "delta_NDMI_step_2_to_3": 0.000704,
+  "NDRE_B05_temporal_p75": 0.000693,
+  "delta_EVI_step_3_to_4": 0.000667,
+  "EVI_temporal_p25": 0.000666,
+  "2026-04-22_B12": 0.000651,
+  "MTCI_temporal_range": 0.000642,
+  "B05_temporal_min": 0.000639,
+  "B08_temporal_p10": 0.000634,
+  "B05_temporal_p25": 0.000627,
+  "NDRE_B05_temporal_median": 0.000604,
+  "2026-04-22_EVI": 0.0006,
+  "NDRE_B07_temporal_range": 0.00059,
+  "CI_red_edge_temporal_p25": 0.000589,
+  "NDWI_temporal_std": 0.000581,
+  "delta_EVI_mean_change": 0.000577,
+  "pheno_max_ndre_growth_rate": 0.000573,
+  "SAVI_temporal_min": 0.000559,
+  "2026-03-20_Ratio_B08_B04": 0.000553,
+  "EVI2_temporal_median": 0.000514,
+  "B04_temporal_mean": 0.000513,
+  "2026-04-02_Diff_B08_B06": 0.000497,
+  "pheno_mean_ndvi_rate": 0.000493,
+  "SAVI_temporal_median": 0.000491,
+  "delta_NDRE_step_2_to_3": 0.000487,
+  "2026-04-22_Ratio_B08_B12": 0.000482,
+  "NDRE_B06_temporal_min": 0.000437,
+  "NDRE_B06_temporal_max": 0.000428,
+  "B05_temporal_mean": 0.000428,
+  "2026-04-22_NDRE_B05": 0.000412,
+  "2026-04-02_NDWI": 0.000411,
+  "2026-09-09_NDRE_B05": 0.000377,
+  "NDMI_temporal_mean": 0.000371,
+  "NDRE_B06_temporal_p10": 0.000369,
+  "EVI_temporal_min": 0.000364,
+  "delta_NDRE_step_1_to_2": 0.000361,
+  "2026-04-02_B06": 0.000357,
+  "2026-09-09_Ratio_B08_B05": 0.000336,
+  "CI_red_edge_temporal_max": 0.000326,
+  "2026-04-02_Diff_B08_B07": 0.000325,
+  "2026-03-20_Diff_B08_B07": 0.000321,
+  "B05_temporal_max": 0.000304,
+  "NDRE_B05_temporal_p25": 0.000251,
+  "B11_temporal_p90": 0.000242,
+  "2026-09-09_SAVI": 0.000238,
+  "B05_temporal_p10": 0.000237,
+  "2026-04-02_Ratio_B08_B07": 0.000233,
+  "2026-04-22_EVI2": 0.000226,
+  "2026-09-09_MSI": 0.000225,
+  "2026-04-22_Ratio_B08_B07": 0.000223,
+  "2026-04-22_NDWI": 0.000221,
+  "NDRE_B07_temporal_mean": 0.00021,
+  "2026-04-22_GNDVI": 0.000196,
+  "MSI_temporal_max": 0.000185,
+  "EVI2_temporal_min": 0.000185,
+  "NDRE_B06_temporal_median": 0.000168,
+  "2026-04-02_OSAVI": 0.000145,
+  "NDRE_B06_temporal_range": 0.000145,
+  "2026-04-22_OSAVI": 0.000114,
+  "2026-04-02_B8A": 0.000111,
+  "NDRE_B06_temporal_p25": 9.9e-05,
+  "SAVI_temporal_p75": 9.7e-05,
+  "NDRE_B07_temporal_min": 7.3e-05,
+  "NDMI_temporal_range": 7.3e-05,
+  "2026-03-20_MSAVI": 7.2e-05,
+  "2026-09-09_EVI2": 0.0,
+  "2026-09-09_OSAVI": 0.0,
+  "2026-09-09_MSAVI": 0.0,
+  "SAVI_temporal_std": 0.0,
+  "SAVI_temporal_range": 0.0,
+  "SAVI_temporal_p10": 0.0,
+  "SAVI_temporal_p25": 0.0,
+  "SAVI_temporal_p90": 0.0,
+  "NDRE_B05_temporal_mean": 0.0,
+  "NDRE_B05_temporal_max": 0.0,
+  "NDRE_B05_temporal_std": 0.0,
+  "2026-04-22_MSAVI": 0.0,
+  "NDRE_B05_temporal_p10": 0.0,
+  "2026-04-22_SAVI": 0.0,
+  "2026-04-22_Ratio_B08_B06": 0.0,
+  "2026-04-22_Ratio_B08_B04": 0.0,
+  "2026-04-22_Ratio_B08_B05": 0.0,
+  "2026-04-22_NDRE_B06": 0.0,
+  "2026-04-22_MSI": 0.0,
+  "EVI2_temporal_p25": 0.0,
+  "2026-04-22_Diff_B08_B07": 0.0,
+  "2026-04-22_Diff_B08_B05": 0.0,
+  "2026-04-22_Ratio_B08_B11": 0.0,
+  "delta_NDRE_max_pos": 0.0,
+  "delta_NDRE_mean_change": 0.0,
+  "2026-09-09_Ratio_B08_B07": 0.0,
+  "2026-09-09_Diff_B08_B06": 0.0,
+  "2026-09-09_Ratio_B08_B04": 0.0,
+  "2026-09-09_Ratio_B08_B06": 0.0,
+  "2026-09-09_Ratio_B08_B11": 0.0,
+  "NDVI_temporal_p90": 0.0,
+  "NDVI_temporal_p25": 0.0,
+  "2026-04-02_Ratio_B08_B11": 0.0,
+  "SAVI_temporal_max": 0.0,
+  "2026-04-22_B07": 0.0,
+  "MTCI_temporal_p90": 0.0,
+  "2026-04-02_Ratio_B08_B04": 0.0,
+  "2026-04-02_Ratio_B08_B06": 0.0,
+  "2026-04-02_Ratio_B08_B05": 0.0,
+  "MSI_temporal_min": 0.0,
+  "NDRE_B07_temporal_p25": 0.0,
+  "NDRE_B07_temporal_p10": 0.0,
+  "NDRE_B07_temporal_std": 0.0,
+  "NDRE_B07_temporal_p90": 0.0,
+  "NDMI_temporal_p25": 0.0,
+  "NDRE_B07_temporal_p75": 0.0,
+  "NDRE_B07_temporal_max": 0.0,
+  "NDRE_B06_temporal_std": 0.0,
+  "B05_temporal_median": 0.0,
+  "MSI_temporal_p90": 0.0,
+  "MSI_temporal_p75": 0.0,
+  "B04_temporal_p90": 0.0,
+  "B05_temporal_p75": 0.0,
+  "MTCI_temporal_p10": 0.0,
+  "pheno_ndmi_amplitude": 0.0,
+  "pheno_ndmi_peak_date_idx": 0.0,
+  "pheno_ndre_amplitude": 0.0,
+  "pheno_ndvi_amplitude": 0.0,
+  "pheno_evi_peak_val": 0.0,
+  "pheno_ndvi_peak_val": 0.0,
+  "pheno_ndre_peak_val": 0.0,
+  "pheno_ndmi_peak_val": 0.0,
+  "pheno_vegetation_duration_ratio": 0.0,
+  "pheno_ndvi_obs_above_045": 0.0,
+  "pheno_ndvi_obs_above_035": 0.0,
+  "pheno_ndvi_obs_above_030": 0.0,
+  "2026-03-20_Ratio_B08_B07": 0.0,
+  "NDVI_mean": 0.002396
+}

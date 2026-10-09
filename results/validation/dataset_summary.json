@@ -1,0 +1,73 @@
+{
+  "audit_name": "VIT MAPATHON Cadastral Crop Validation Audit",
+  "study_area": {
+    "name": "Ambasamudram & Cheranmahadevi Taluks",
+    "district": "Tirunelveli",
+    "state": "Tamil Nadu",
+    "river_basin": "Thamirabarani",
+    "total_aoi_sq_km": 119.41,
+    "total_parcels": 293,
+    "total_parcels_area_ha": 171.65,
+    "total_parcels_area_acres": 424.17,
+    "total_parcels_area_sq_km": 1.7165
+  },
+  "spatial_integrity": {
+    "source_crs": "EPSG:4326",
+    "working_projected_crs": "EPSG:32643",
+    "null_geometries": 0,
+    "empty_geometries": 0,
+    "valid_geometries_pct": 100.0,
+    "aoi_containment_pct": 100.0,
+    "status": "PASSED"
+  },
+  "crop_counts": [
+    {
+      "Crop_Class": "Paddy",
+      "Parcel_Count": 123,
+      "Percentage_of_Total_Parcels": 41.98,
+      "Mean_Confidence": 0.8498,
+      "Min_Confidence": 0.418,
+      "Max_Confidence": 1.0
+    },
+    {
+      "Crop_Class": "Banana",
+      "Parcel_Count": 109,
+      "Percentage_of_Total_Parcels": 37.2,
+      "Mean_Confidence": 0.8879,
+      "Min_Confidence": 0.4364,
+      "Max_Confidence": 1.0
+    },
+    {
+      "Crop_Class": "Other",
+      "Parcel_Count": 61,
+      "Percentage_of_Total_Parcels": 20.82,
+      "Mean_Confidence": 0.8571,
+      "Min_Confidence": 0.5411,
+      "Max_Confidence": 1.0
+    }
+  ],
+  "crop_acreage": [
+    {
+      "Crop_Class": "Paddy",
+      "Area_Hectares": 77.03,
+      "Area_Acres": 190.36,
+      "Area_Sq_Km": 0.7703,
+      "Percentage_of_Total_Area": 44.88
+    },
+    {
+      "Crop_Class": "Banana",
+      "Area_Hectares": 54.41,
+      "Area_Acres": 134.45,
+      "Area_Sq_Km": 0.5441,
+      "Percentage_of_Total_Area": 31.7
+    },
+    {
+      "Crop_Class": "Other",
+      "Area_Hectares": 40.21,
+      "Area_Acres": 99.36,
+      "Area_Sq_Km": 0.4021,
+      "Percentage_of_Total_Area": 23.43
+    }
+  ],
+  "timestamp": "2026-10-08T20:23:01.845957+00:00"
+}

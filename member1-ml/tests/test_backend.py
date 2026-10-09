@@ -171,3 +171,72 @@ def test_download_pdf_report():
     assert len(res.content) > 1000
 
 
+def test_get_parcels_geojson():
+    res = client.get("/api/parcels/geojson")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["type"] == "FeatureCollection"
+    assert len(data["features"]) > 0
+
+
+def test_get_crops():
+    res = client.get("/api/crops")
+    assert res.status_code == 200
+    data = res.json()
+    assert "classes" in data
+    assert "Paddy" in data["classes"]
+    assert "Banana" in data["classes"]
+    assert "Non-Crop" in data["classes"]
+    assert "crop_summary" in data
+
+
+def test_get_disaster_fund_priority():
+    res = client.get("/api/fund-priority")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "success"
+    assert "priority_rankings" in data
+    assert "total_damaged_area_ha" in data
+
+
+def test_chat_parcel_crop_count():
+    res = client.post("/api/chat", json={"message": "What is the crop count in PARCEL_0128?"})
+    assert res.status_code == 200
+    reply = res.json()["reply"]
+    assert "PARCEL_0128" in reply
+    assert "764" in reply  # Exact detected banana count from YOLOv8
+    assert "Banana" in reply
+
+
+def test_chat_planting_capacity():
+    res = client.post("/api/chat", json={"message": "How many crops can be planted in PARCEL_0126?"})
+    assert res.status_code == 200
+    reply = res.json()["reply"]
+    assert "PARCEL_0126" in reply
+    assert "Planting Capacity" in reply
+    assert "542" in reply  # Detected existing plants
+    assert "Remaining Plantable" in reply
+
+
+def test_chat_hazard_loss_rate():
+    res = client.post("/api/chat", json={"message": "If flood occurs what is the loss rate for banana in PARCEL_0128?"})
+    assert res.status_code == 200
+    reply = res.json()["reply"]
+    assert "PARCEL_0128" in reply
+    assert "Disaster & Hazard Loss Valuation" in reply
+    assert "SDRF" in reply
+    assert "₹" in reply or "Rs" in reply
+
+
+def test_chat_api_key_auto_capture():
+    mock_key = "AIzaSyA_AUTOMATED_TEST_KEY_FOR_MAPATHON_35"
+    res = client.post("/api/chat", json={"message": f"here is my api key: {mock_key}"})
+    assert res.status_code == 200
+    reply = res.json()["reply"]
+    assert "Successfully Connected & Saved" in reply
+    # Clean up test key from env
+    from services.gemini_service import set_gemini_api_key
+    set_gemini_api_key("", persist=True)
+
+
+

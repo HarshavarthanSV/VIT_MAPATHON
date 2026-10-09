@@ -199,6 +199,8 @@ class TimeSeriesDB:
             model_versions.add(r["model_version"])
             try:
                 geom = json.loads(r["geom_json"])
+                if not isinstance(geom, dict) or not geom.get("type") or not geom.get("coordinates"):
+                    geom = None
             except Exception:
                 geom = None
 
@@ -281,6 +283,8 @@ class TimeSeriesDB:
         for r in rows:
             try:
                 geom = json.loads(r["geom_json"])
+                if not isinstance(geom, dict) or not geom.get("type") or not geom.get("coordinates"):
+                    geom = None
             except Exception:
                 geom = None
 
@@ -511,6 +515,11 @@ class TimeSeriesDB:
         Evaluates data freshness against threshold.
         Returns 'Fresh', 'Delayed', 'Data may be outdated', or 'No recent usable satellite observation available.'
         """
+        try:
+            threshold_days = int(threshold_days)
+        except Exception:
+            threshold_days = 60
+
         sql = """
             SELECT 
                 MAX(observation_date) as last_obs_date,

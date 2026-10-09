@@ -223,6 +223,13 @@ def generate_interactive_map():
     min_lon, max_lon = min(all_lons), max(all_lons)
     m.fit_bounds([[min_lat, min_lon], [max_lat, max_lon]], padding=(20, 20))
 
+    # Also build the high-fidelity UI reference map
+    try:
+        from postprocessing.generate_reference_map_html import generate as generate_ref
+        generate_ref()
+    except Exception as e:
+        print(f"[WARN] Reference generator warning: {e}")
+
     # Save HTML
     os.makedirs(os.path.dirname(output_html), exist_ok=True)
     m.save(output_html)

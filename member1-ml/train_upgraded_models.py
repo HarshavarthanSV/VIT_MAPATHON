@@ -409,9 +409,9 @@ def train_and_deliver(
     stats_payload = {
         "study_area_summary": {
             "total_parcels": total_parcels,
-            "total_study_area_sq_km": 240.65,
+            "total_study_area_sq_km": 119.41,
             "total_parcels_area_sq_km": round(total_sq_km, 4),
-            "total_study_area_hectares": 24065.0,
+            "total_study_area_hectares": 11940.54,
             "overall_mean_confidence": round(float(merged_gdf["confidence"].mean()), 4),
             "study_area_taluks": "Ambasamudram & Cheranmahadevi",
             "meets_min_area_requirement": True,

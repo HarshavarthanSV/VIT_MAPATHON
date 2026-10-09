@@ -6,6 +6,7 @@ Provides REST endpoints for Agricultural Land Parcel & Crop Identification in Ti
 
 import os
 import sys
+import json
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -77,27 +78,57 @@ def get_interactive_map():
 
 @app.get("/api/health")
 def health_check():
-    """Returns system status, active database backend, and study area metadata."""
-    geojson_available = resolve_artifact_path("classified_parcels.geojson") is not None
-    stats_available = resolve_artifact_path("crop_statistics.json") is not None
+    """Returns system status, active database backend, and dynamic study area metadata."""
+    geojson_path = resolve_artifact_path("classified_parcels.geojson")
+    stats_path = resolve_artifact_path("crop_statistics.json")
+    
+    study_name = "Ambasamudram & Cheranmahadevi Taluks"
+    center = [8.70, 77.49]
+    target_crops = ["Paddy", "Banana", "Other"]
+
+    if stats_path:
+        try:
+            with open(stats_path, "r", encoding="utf-8") as f:
+                s = json.load(f)
+            study_name = s.get("study_area_summary", {}).get("study_area_taluks", study_name)
+            if "crop_distribution" in s:
+                target_crops = list(s["crop_distribution"].keys())
+        except Exception:
+            pass
+
+    if geojson_path:
+        try:
+            with open(geojson_path, "r", encoding="utf-8") as f:
+                fc = json.load(f)
+            coords = []
+            for feat in fc.get("features", []):
+                geom = feat.get("geometry", {})
+                if geom.get("type") == "Polygon":
+                    for ring in geom.get("coordinates", []):
+                        coords.extend(ring)
+            if coords:
+                center = [round(sum(c[1] for c in coords) / len(coords), 4),
+                          round(sum(c[0] for c in coords) / len(coords), 4)]
+        except Exception:
+            pass
 
     return {
         "status": "healthy",
         "module": "Member 1 — AI, ML & Backend API",
         "study_area": {
-            "name": "Ambasamudram & Cheranmahadevi Taluks",
+            "name": study_name,
             "district": "Tirunelveli",
             "state": "Tamil Nadu",
-            "target_crops": ["Paddy", "Banana", "Other"],
-            "center": [8.70, 77.49]
+            "target_crops": target_crops,
+            "center": center
         },
         "database": {
             "postgis_connected": is_db_connected(),
             "mode": "PostGIS" if is_db_connected() else "GeoJSON_Fallback",
         },
         "artifacts_available": {
-            "classified_parcels": geojson_available,
-            "crop_statistics": stats_available
+            "classified_parcels": geojson_path is not None,
+            "crop_statistics": stats_path is not None
         }
     }
 

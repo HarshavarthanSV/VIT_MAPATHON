@@ -1,0 +1,4 @@
+Crop_Class,Parcel_Count,Percentage_of_Total_Parcels,Mean_Confidence,Min_Confidence,Max_Confidence
+Paddy,123,41.98,0.8498,0.418,1.0
+Banana,109,37.2,0.8879,0.4364,1.0
+Other,61,20.82,0.8571,0.5411,1.0

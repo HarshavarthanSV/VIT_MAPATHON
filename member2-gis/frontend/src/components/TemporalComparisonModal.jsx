@@ -44,7 +44,7 @@ export default function TemporalComparisonModal({ isOpen, onClose, onOpenChat })
               <h2 className="modal-title">Bi-Seasonal Crop Comparison & AI Agronomic Advisory</h2>
             </div>
             <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '3px' }}>
-              Comparing Period 1 (Kuruvai / S-W Monsoon 2025) vs Period 2 (Samba / Post-N-E Monsoon 2025–26) across Ambasamudram & Cheranmahadevi
+              Comparing {p1.short_name || 'Baseline Observation'} vs {p2.short_name || 'Peak Observation'} across Ambasamudram & Cheranmahadevi
             </p>
           </div>
 
@@ -119,8 +119,8 @@ export default function TemporalComparisonModal({ isOpen, onClose, onOpenChat })
                   <thead>
                     <tr>
                       <th style={{ width: '28%' }}>Agronomic & Remote Sensing Metric</th>
-                      <th style={{ width: '22%' }}>Period 1: Kuruvai 2025</th>
-                      <th style={{ width: '22%' }}>Period 2: Samba 2025-26</th>
+                      <th style={{ width: '22%' }}>{p1.short_name || 'Period 1 (Baseline)'}</th>
+                      <th style={{ width: '22%' }}>{p2.short_name || 'Period 2 (Peak)'}</th>
                       <th style={{ width: '14%' }}>Net Shift (Δ)</th>
                       <th style={{ width: '14%' }}>Observation</th>
                     </tr>
@@ -128,59 +128,67 @@ export default function TemporalComparisonModal({ isOpen, onClose, onOpenChat })
                   <tbody>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#166534' }}>🌾 Paddy Cultivated Area</td>
-                      <td>{p1.paddy_area_ha} ha ({p1.paddy_parcels} parcels)</td>
-                      <td>{p2.paddy_area_ha} ha ({p2.paddy_parcels} parcels)</td>
+                      <td>{p1.paddy_area_ha ?? '--'} ha ({p1.paddy_parcels ?? '--'} parcels)</td>
+                      <td>{p2.paddy_area_ha ?? '--'} ha ({p2.paddy_parcels ?? '--'} parcels)</td>
                       <td>
-                        <span className="delta-chip-positive">+{deltas.paddy_area_ha_delta} ha (+{deltas.paddy_pct_delta}%)</span>
+                        <span className="delta-chip-positive">
+                          {deltas.paddy_area_ha_delta > 0 ? `+${deltas.paddy_area_ha_delta}` : deltas.paddy_area_ha_delta} ha ({deltas.paddy_pct_delta > 0 ? `+${deltas.paddy_pct_delta}` : deltas.paddy_pct_delta}%)
+                        </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Monsoon expansion</td>
                     </tr>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#854d0e' }}>🍌 Banana Plantation Area</td>
-                      <td>{p1.banana_area_ha} ha ({p1.banana_parcels} parcels)</td>
-                      <td>{p2.banana_area_ha} ha ({p2.banana_parcels} parcels)</td>
+                      <td>{p1.banana_area_ha ?? '--'} ha ({p1.banana_parcels ?? '--'} parcels)</td>
+                      <td>{p2.banana_area_ha ?? '--'} ha ({p2.banana_parcels ?? '--'} parcels)</td>
                       <td>
-                        <span className="delta-chip-neutral">{deltas.banana_area_ha_delta} ha ({deltas.banana_pct_delta}%)</span>
+                        <span className="delta-chip-neutral">
+                          {deltas.banana_area_ha_delta > 0 ? `+${deltas.banana_area_ha_delta}` : deltas.banana_area_ha_delta} ha ({deltas.banana_pct_delta > 0 ? `+${deltas.banana_pct_delta}` : deltas.banana_pct_delta}%)
+                        </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Perennial stability</td>
                     </tr>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#6b21a8' }}>🍂 Fallow & Other Plots</td>
-                      <td>{p1.other_area_ha} ha ({p1.other_parcels} parcels)</td>
-                      <td>{p2.other_area_ha} ha ({p2.other_parcels} parcels)</td>
+                      <td>{p1.other_area_ha ?? '--'} ha ({p1.other_parcels ?? '--'} parcels)</td>
+                      <td>{p2.other_area_ha ?? '--'} ha ({p2.other_parcels ?? '--'} parcels)</td>
                       <td>
                         <span className="delta-chip-positive" style={{ background: '#fef3c7', color: '#b45309', borderColor: '#fde68a' }}>
-                          {deltas.other_area_ha_delta} ha ({deltas.other_pct_delta}%)
+                          {deltas.other_area_ha_delta > 0 ? `+${deltas.other_area_ha_delta}` : deltas.other_area_ha_delta} ha ({deltas.other_pct_delta > 0 ? `+${deltas.other_pct_delta}` : deltas.other_pct_delta}%)
                         </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Converted to wetland</td>
                     </tr>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#0f172a' }}>📈 Mean Vegetation Vigor (NDVI)</td>
-                      <td>{p1.mean_ndvi} (Vegetative)</td>
-                      <td>{p2.mean_ndvi} (Heading & Grain-Fill)</td>
+                      <td>{p1.mean_ndvi ?? '--'} {p1.vegetation_stage ? `(${p1.vegetation_stage})` : ''}</td>
+                      <td>{p2.mean_ndvi ?? '--'} {p2.vegetation_stage ? `(${p2.vegetation_stage})` : ''}</td>
                       <td>
-                        <span className="delta-chip-positive">+{deltas.ndvi_pct_delta}%</span>
+                        <span className="delta-chip-positive">
+                          {deltas.ndvi_pct_delta > 0 ? `+${deltas.ndvi_pct_delta}` : deltas.ndvi_pct_delta}%
+                        </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Peak canopy growth</td>
                     </tr>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#0284c7' }}>💧 Canopy Water Moisture (NDWI)</td>
-                      <td>{p1.mean_ndwi}</td>
-                      <td>{p2.mean_ndwi}</td>
+                      <td>{p1.mean_ndwi ?? '--'}</td>
+                      <td>{p2.mean_ndwi ?? '--'}</td>
                       <td>
                         <span className="delta-chip-positive" style={{ background: '#e0f2fe', color: '#0284c7', borderColor: '#bae6fd' }}>
-                          +{deltas.ndwi_pct_delta}%
+                          {deltas.ndwi_pct_delta > 0 ? `+${deltas.ndwi_pct_delta}` : deltas.ndwi_pct_delta}%
                         </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Canal recharge</td>
                     </tr>
                     <tr>
                       <td style={{ fontWeight: 600, color: '#475569' }}>🌱 Soil-Adjusted Index (SAVI)</td>
-                      <td>{p1.mean_savi}</td>
-                      <td>{p2.mean_savi}</td>
+                      <td>{p1.mean_savi ?? '--'}</td>
+                      <td>{p2.mean_savi ?? '--'}</td>
                       <td>
-                        <span className="delta-chip-positive">+{deltas.savi_pct_delta}%</span>
+                        <span className="delta-chip-positive">
+                          {deltas.savi_pct_delta > 0 ? `+${deltas.savi_pct_delta}` : deltas.savi_pct_delta}%
+                        </span>
                       </td>
                       <td style={{ fontSize: '0.72rem', color: '#64748b' }}>Dense soil coverage</td>
                     </tr>

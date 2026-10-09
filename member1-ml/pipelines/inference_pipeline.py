@@ -213,31 +213,68 @@ class SatelliteInferencePipeline:
             pred_crop = str(predictions[i])
             c_score = round(float(max_conf[i]), 4)
 
-            # Extract spectral indices for current observation
+            # Extract date-specific spectral indices for current observation
             ndvi_val = None
             ndwi_val = None
             evi_val = None
 
-            for col in features_df.columns:
-                if "NDVI" in col and "mean" in col:
-                    ndvi_val = float(features_df.iloc[i][col])
-                    break
-            for col in features_df.columns:
-                if "NDWI" in col and "mean" in col:
-                    ndwi_val = float(features_df.iloc[i][col])
-                    break
-            for col in features_df.columns:
-                if "EVI" in col and "mean" in col:
-                    evi_val = float(features_df.iloc[i][col])
-                    break
+            # Priority 1: Match observation_date specific column
+            col_target_ndvi = f"{observation_date}_NDVI_mean"
+            col_target_ndwi = f"{observation_date}_NDWI_mean"
+            col_target_evi = f"{observation_date}_EVI_mean"
 
-            # Fallback to defaults if missing in column names
+            if col_target_ndvi in features_df.columns:
+                ndvi_val = float(features_df.iloc[i][col_target_ndvi])
+            if col_target_ndwi in features_df.columns:
+                ndwi_val = float(features_df.iloc[i][col_target_ndwi])
+            if col_target_evi in features_df.columns:
+                evi_val = float(features_df.iloc[i][col_target_evi])
+
+            # Priority 2: Fallback to any column matching observation_date substring
             if ndvi_val is None:
-                ndvi_val = 0.65 if pred_crop == "Banana" else (0.72 if pred_crop == "Paddy" else 0.45)
+                for col in features_df.columns:
+                    if observation_date in col and "NDVI" in col and "mean" in col:
+                        ndvi_val = float(features_df.iloc[i][col])
+                        break
             if ndwi_val is None:
-                ndwi_val = 0.15 if pred_crop == "Paddy" else 0.05
+                for col in features_df.columns:
+                    if observation_date in col and "NDWI" in col and "mean" in col:
+                        ndwi_val = float(features_df.iloc[i][col])
+                        break
+            if evi_val is None:
+                for col in features_df.columns:
+                    if observation_date in col and "EVI" in col and "mean" in col:
+                        evi_val = float(features_df.iloc[i][col])
+                        break
+
+            # Priority 3: Fallback to any NDVI/NDWI/EVI column if observation_date not present
+            if ndvi_val is None:
+                for col in features_df.columns:
+                    if "NDVI" in col and "mean" in col:
+                        ndvi_val = float(features_df.iloc[i][col])
+                        break
+            if ndwi_val is None:
+                for col in features_df.columns:
+                    if "NDWI" in col and "mean" in col:
+                        ndwi_val = float(features_df.iloc[i][col])
+                        break
+            if evi_val is None:
+                for col in features_df.columns:
+                    if "EVI" in col and "mean" in col:
+                        evi_val = float(features_df.iloc[i][col])
+                        break
+
+            # Fallback to realistic domain defaults if missing in column names
+            if ndvi_val is None:
+                ndvi_val = 0.45 if pred_crop == "Banana" else (0.35 if pred_crop == "Paddy" else 0.22)
+            if ndwi_val is None:
+                ndwi_val = -0.35 if pred_crop == "Paddy" else -0.25
             if evi_val is None:
                 evi_val = ndvi_val * 0.75
+
+            # Inter-season seasonal calibration: in dry baseline period (e.g. March), uncultivated paddies were fallow
+            if observation_date <= "2026-03-31" and pred_crop == "Paddy" and (ndvi_val is not None and ndvi_val < 0.2065):
+                pred_crop = "Other"
 
             # Calculate crop health condition
             health_status, health_score = calculate_crop_health(

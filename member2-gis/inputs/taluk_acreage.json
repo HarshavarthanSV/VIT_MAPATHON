@@ -1,0 +1,20 @@
+[
+  {
+    "taluk": "Cheranmahadevi",
+    "total_parcels": 415,
+    "total_area_ha": 726.05,
+    "paddy_ha": 300.81,
+    "banana_ha": 274.37,
+    "other_ha": 150.87,
+    "mean_ndvi": 0.74
+  },
+  {
+    "taluk": "Ambasamudram",
+    "total_parcels": 435,
+    "total_area_ha": 760.54,
+    "paddy_ha": 309.89,
+    "banana_ha": 293.38,
+    "other_ha": 157.27,
+    "mean_ndvi": 0.74
+  }
+]

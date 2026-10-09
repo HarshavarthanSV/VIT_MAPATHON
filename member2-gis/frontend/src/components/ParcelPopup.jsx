@@ -3,11 +3,13 @@ import React from 'react';
 export const getCropColor = (crop) => {
   switch (crop?.toLowerCase()) {
     case 'paddy':
-      return { fill: '#16a34a', stroke: '#14532d', text: '#15803d', badgeText: '#ffffff', bg: 'rgba(22, 163, 74, 0.12)' };
+      return { fill: '#22c55e', stroke: '#ffffff', text: '#16a34a', badgeText: '#ffffff', bg: 'rgba(34, 197, 94, 0.15)' };
     case 'banana':
-      return { fill: '#eab308', stroke: '#854d0e', text: '#854d0e', badgeText: '#ffffff', bg: 'rgba(234, 179, 8, 0.15)' };
+      return { fill: '#eab308', stroke: '#ffffff', text: '#ca8a04', badgeText: '#ffffff', bg: 'rgba(234, 179, 8, 0.15)' };
+    case 'water':
+      return { fill: '#0ea5e9', stroke: '#ffffff', text: '#0284c7', badgeText: '#ffffff', bg: 'rgba(14, 165, 233, 0.15)' };
     default:
-      return { fill: '#9333ea', stroke: '#581c87', text: '#6b21a8', badgeText: '#ffffff', bg: 'rgba(147, 51, 234, 0.12)' };
+      return { fill: '#ef4444', stroke: '#ffffff', text: '#dc2626', badgeText: '#ffffff', bg: 'rgba(239, 68, 68, 0.15)' };
   }
 };
 
@@ -135,7 +137,7 @@ export default function ParcelPopup({ parcel }) {
 
       <div className="prob-container" style={{ marginTop: '0.75rem' }}>
         <div style={{ fontSize: '0.7rem', color: '#475569', fontWeight: 700, marginBottom: '4px' }}>
-          Random Forest Class Probabilities
+          {props.model_name ? `${props.model_name.replace(/_/g, ' ')} Class Probabilities` : 'ML Class Probabilities'}
         </div>
         <div className="prob-row">
           <span className="prob-crop-name" style={{ color: '#15803d' }}>Paddy</span>

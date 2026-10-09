@@ -1,43 +1,35 @@
 {
-  "model_name": "XGBoost_Advanced",
-  "model_version": "v2.0",
-  "feature_set": "FEATURE_SET_TEMPORAL",
   "overall": {
-    "accuracy": 0.9153,
-    "test_accuracy": 0.9153,
-    "balanced_accuracy": 0.9045,
-    "test_f1_macro": 0.9114,
-    "test_f1_weighted": 0.9159,
-    "test_precision_macro": 0.9228,
-    "test_recall_macro": 0.9045,
-    "cv_5fold_accuracy_mean": 0.8716,
-    "cv_5fold_f1_macro_mean": 0.8634,
-    "baseline_accuracy": 0.8814,
-    "baseline_f1_macro": 0.8706,
-    "accuracy_improvement": 0.0339,
-    "f1_improvement": 0.0408,
+    "accuracy": 0.8814,
+    "test_accuracy": 0.8814,
+    "test_f1_macro": 0.8706,
+    "test_f1_weighted": 0.8791,
+    "test_precision_macro": 0.9102,
+    "test_recall_macro": 0.8532,
+    "cv_5fold_accuracy_mean": 0.8378,
+    "cv_5fold_f1_macro_mean": 0.8326,
     "n_train_samples": 234,
     "n_test_samples": 59,
     "n_total_parcels": 293,
-    "n_features": 354
+    "n_features": 240
   },
   "per_class": {
     "Banana": {
-      "precision": 1.0,
+      "precision": 0.9091,
       "recall": 0.9091,
-      "f1_score": 0.9524,
+      "f1_score": 0.9091,
       "support": 22
     },
     "Other": {
-      "precision": 0.9167,
-      "recall": 0.8462,
-      "f1_score": 0.88,
+      "precision": 1.0,
+      "recall": 0.6923,
+      "f1_score": 0.8182,
       "support": 13
     },
     "Paddy": {
-      "precision": 0.8519,
+      "precision": 0.8214,
       "recall": 0.9583,
-      "f1_score": 0.902,
+      "f1_score": 0.8846,
       "support": 24
     }
   },
@@ -54,13 +46,13 @@
         2
       ],
       [
-        0,
-        11,
-        2
+        1,
+        9,
+        3
       ],
       [
-        0,
         1,
+        0,
         23
       ]
     ],
@@ -71,21 +63,15 @@
         0.0909
       ],
       [
-        0.0,
-        0.8462,
-        0.1538
+        0.0769,
+        0.6923,
+        0.2308
       ],
       [
-        0.0,
         0.0417,
+        0.0,
         0.9583
       ]
     ]
-  },
-  "confidence_summary": {
-    "high_confidence_count": 287,
-    "medium_confidence_count": 3,
-    "low_confidence_count": 3,
-    "mean_confidence": 0.9767
   }
 }

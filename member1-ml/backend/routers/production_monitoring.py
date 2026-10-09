@@ -28,6 +28,7 @@ if backend_dir not in sys.path:
 
 from timeseries_db import TimeSeriesDB
 from model_registry import ModelRegistry
+from database import load_json_artifact
 
 logger = logging.getLogger("ProductionMonitoringRouter")
 router = APIRouter(prefix="/api", tags=["production_monitoring"])
@@ -154,3 +155,69 @@ def get_data_status(threshold_days: int = Query(60, ge=1, description="Days thre
     - 'No recent usable satellite observation available.': No records exist
     """
     return _ts_db.get_data_freshness_status(threshold_days=threshold_days)
+
+
+@router.get("/crops", response_model=Dict[str, Any])
+def get_supported_crops():
+    """
+    Returns validated 3-class crop taxonomy (Paddy, Banana, Non-Crop) and acreage summary.
+    """
+    stats = load_json_artifact("crop_statistics.json") or {}
+    dist = stats.get("crop_distribution", {})
+    return {
+        "classes": ["Paddy", "Banana", "Non-Crop"],
+        "aliases": {"Other": "Non-Crop", "Non-Crop": "Other"},
+        "crop_summary": dist,
+        "total_parcels": stats.get("study_area_summary", {}).get("total_parcels", 293),
+        "total_area_ha": stats.get("study_area_summary", {}).get("total_parcels_area_hectares", 171.65)
+    }
+
+
+@router.get("/fund-priority", response_model=Dict[str, Any])
+def get_disaster_fund_priority():
+    """
+    Returns disaster relief & compensation fund allocation prioritization.
+    Ranks agricultural parcels impacted by extreme weather/hazards (flood, drought, cyclone)
+    by composite vulnerability score (Damage % × Area Ha × Crop Weight).
+    """
+    hazards = _ts_db.get_latest_hazards()
+    affected = hazards.get("affected_parcels", [])
+    
+    crop_weights = {"Banana": 1.5, "Paddy": 1.2, "Other": 0.8, "Non-Crop": 0.8}
+    ranked_parcels = []
+    total_fund_allocation_inr = 0.0
+    
+    for p in affected:
+        dmg = float(p.get("damage_percent", 0.0))
+        area = float(p.get("area_ha", 0.5))
+        c_weight = crop_weights.get(p.get("crop", "Other"), 1.0)
+        
+        score = round((dmg / 100.0) * min(area / 2.0, 1.0) * c_weight * 100.0, 2)
+        base_rate_per_ha = 25000 if p.get("crop") == "Banana" else 15000
+        estimated_relief_inr = round((dmg / 100.0) * area * base_rate_per_ha, 2)
+        total_fund_allocation_inr += estimated_relief_inr
+        
+        priority_tier = "CRITICAL" if score >= 50 else ("HIGH" if score >= 25 else "MODERATE")
+        
+        ranked_parcels.append({
+            "parcel_id": p.get("parcel_id"),
+            "crop": p.get("crop"),
+            "hazard": p.get("hazard"),
+            "severity": p.get("severity"),
+            "damage_percent": dmg,
+            "area_ha": area,
+            "priority_score": score,
+            "priority_tier": priority_tier,
+            "estimated_relief_inr": estimated_relief_inr
+        })
+    
+    ranked_parcels.sort(key=lambda x: x["priority_score"], reverse=True)
+    
+    return {
+        "status": "success",
+        "total_affected_parcels": len(ranked_parcels),
+        "total_damaged_area_ha": round(hazards.get("total_damaged_area_ha", 0.0), 2),
+        "total_estimated_relief_inr": round(total_fund_allocation_inr, 2),
+        "hazard_summary": hazards.get("hazard_summary", {}),
+        "priority_rankings": ranked_parcels
+    }

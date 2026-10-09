@@ -6,7 +6,9 @@ Parcels Router: Serves GeoJSON parcel vector layers with dynamic filtering.
 import json
 import logging
 from typing import Optional, Dict, Any, List
+import os
 from fastapi import APIRouter, Query, HTTPException, Depends
+from fastapi.responses import FileResponse
 try:
     from sqlalchemy import text
     from sqlalchemy.orm import Session
@@ -110,9 +112,15 @@ def get_parcels(
     for feat in features:
         props = feat.get("properties", {})
         
-        # Crop filter (case-insensitive check)
-        if crop and props.get("predicted_crop", "").lower() != crop.lower():
-            continue
+        # Crop filter (case-insensitive check with Non-Crop / Other alias support)
+        if crop:
+            c_req = crop.strip().lower()
+            p_crop = props.get("predicted_crop", "").lower()
+            if c_req in ["other", "non-crop", "non_crop", "noncrop"]:
+                if p_crop not in ["other", "non-crop", "non_crop", "noncrop"]:
+                    continue
+            elif p_crop != c_req:
+                continue
             
         # Confidence filter
         if min_confidence is not None and float(props.get("confidence", 0.0)) < min_confidence:
@@ -130,6 +138,30 @@ def get_parcels(
         "total_features": len(filtered_features),
         "features": filtered_features
     }
+
+
+@router.get("/geojson", response_model=Dict[str, Any])
+def get_parcels_geojson(
+    crop: Optional[str] = Query(None, description="Filter by crop name: Paddy, Banana, Other, Non-Crop"),
+    min_confidence: Optional[float] = Query(None, ge=0.0, le=1.0, description="Minimum confidence threshold"),
+    limit: Optional[int] = Query(None, ge=1, description="Optional maximum parcel count"),
+    db: Optional[Session] = Depends(get_db)
+):
+    """Returns GeoJSON FeatureCollection alias endpoint for Web GIS / Leaflet integration."""
+    return get_parcels(crop=crop, min_confidence=min_confidence, limit=limit, db=db)
+
+
+@router.get("/thumbnail")
+def get_parcel_thumbnail():
+    """Serves high-resolution aerial tile image of agricultural field for parcel preview."""
+    cur_dir = os.path.dirname(os.path.abspath(__file__)) # .../routers
+    backend_dir = os.path.dirname(cur_dir) # .../backend
+    member1_dir = os.path.dirname(backend_dir) # .../member1-ml
+    repo_root = os.path.dirname(member1_dir) # .../VIT
+    tile_path = os.path.join(repo_root, "data", "tree_counting", "images", "train", "b1_amba_tile_0000.jpg")
+    if os.path.exists(tile_path):
+        return FileResponse(tile_path, media_type="image/jpeg")
+    raise HTTPException(status_code=404, detail="Thumbnail image not found")
 
 
 @router.get("/{parcel_id}", response_model=Dict[str, Any])
